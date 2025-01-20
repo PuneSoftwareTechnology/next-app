@@ -1,25 +1,3 @@
-// import Typography from "../atoms/Typography";
-
-// const Footer = () => {
-//   const currentYear = new Date().getFullYear();
-
-//   return (
-//     <footer
-//       className="bg-gray-800 text-white mx-auto py-2 mt-40"
-//       role="contentinfo"
-//     >
-//       <Typography
-//         variant="p"
-//         className="text-sm md:text-base text-center text-white"
-//       >
-//         &copy; {currentYear} Pune Software Technologies. All rights reserved.
-//       </Typography>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
-
 import Typography from "../atoms/Typography";
 
 const Footer = () => {
