@@ -15,24 +15,31 @@ const Footer = () => {
         </Typography>
 
         {/* Footer Links */}
-        <nav aria-label="Footer Navigation" className="mt-4 ">
-          <ul className="flex flex-col md:flex-row justify-center items-center gap-y-2 md:gap-x-6 text-center">
+        <nav
+          aria-label="Footer Navigation"
+          className="mt-4 flex flex-col sm:flex-row justify-center items-center gap-y-2 sm:gap-x-6 text-center"
+        >
+          <ul className="flex flex-col sm:flex-row justify-center items-center gap-y-2 sm:gap-x-6 text-center">
             <li>
               <a
-                href="#privacy"
+                href="/privacy-policy"
                 className="text-sm md:text-base hover:text-gray-400"
                 title="Privacy Policy"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Privacy Policy
               </a>
             </li>
             <li>
               <a
-                href="#terms"
+                href="/terms-of-use"
                 className="text-sm md:text-base hover:text-gray-400"
-                title="Terms of Service"
+                title="Terms of use"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Terms of Service
+                Terms of Use
               </a>
             </li>
             <li>
