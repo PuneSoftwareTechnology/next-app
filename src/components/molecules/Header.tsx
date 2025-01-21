@@ -20,10 +20,11 @@ const navItems: NavItem[] = [
       { label: "SAP Training", href: "/courses/sap" },
       { label: "Cloud Technologies", href: "/courses/cloud" },
       {
-        label: "Data Analytics Certification",
+        label: "Data Analytics",
         href: "/courses/data-analytics",
       },
-      { label: "AI and Machine Learning", href: "/courses/ai-ml" },
+      { label: "Machine Learning & AI", href: "/courses/ai-ml" },
+      { label: "Cyber Security", href: "/courses/cyber-security" },
     ],
   },
   { label: "Blog", href: "/blog" },
@@ -85,12 +86,12 @@ const Header = () => {
                   <FiChevronDown className="ml-1 text-gray-500" />
                 </div>
                 {activeSubMenu === item.label && (
-                  <ul className="absolute left-0 pt-2 bg-white shadow-lg rounded w-56">
+                  <ul className="absolute left-0 pt-2 bg-gray-200 shadow-lg rounded w-56">
                     {item.subMenu.map((subItem) => (
                       <li key={subItem.label}>
                         <Link
                           href={subItem.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+                          className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rounded-md transition-colors"
                           aria-label={subItem.label}
                         >
                           {subItem.label}

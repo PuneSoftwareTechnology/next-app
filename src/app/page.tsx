@@ -4,6 +4,8 @@ import { IoCall } from "react-icons/io5";
 import { SiWhatsapp } from "react-icons/si";
 import Head from "next/head";
 import { ReactElement } from "react";
+import HeroSection from "@/components/screens/HeroSection";
+import ProgramHighlights from "@/components/screens/ProgramAdvantages";
 
 type ContactButton = {
   href: string;
@@ -33,6 +35,8 @@ const HomePage = () => {
       {/* Main Content */}
       <div>
         <Header />
+        <HeroSection />
+        <ProgramHighlights />
         <Footer />
       </div>
 

@@ -4,10 +4,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer
-      className="bg-gray-800 text-white mx-auto py-6 mt-40"
-      role="contentinfo"
-    >
+    <footer className="bg-gray-800 text-white mx-auto py-6" role="contentinfo">
       <div className="container mx-auto px-6">
         {/* Footer text */}
         <Typography
@@ -18,8 +15,8 @@ const Footer = () => {
         </Typography>
 
         {/* Footer Links */}
-        <nav aria-label="Footer Navigation" className="mt-4">
-          <ul className="flex justify-center space-x-6">
+        <nav aria-label="Footer Navigation" className="mt-4 ">
+          <ul className="flex flex-col md:flex-row justify-center items-center gap-y-2 md:gap-x-6 text-center">
             <li>
               <a
                 href="#privacy"

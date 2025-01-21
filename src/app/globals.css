@@ -3,19 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Mode Colors (default) */
+  --background: linear-gradient(to right, #f0f9ff, #e0f2fe);
+  --foreground: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: linear-gradient(to right, #f0f9ff, #e0f2fe);
     --foreground: #ededed;
   }
 }
 
+/* Example usage */
 body {
-  color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground);
 }
