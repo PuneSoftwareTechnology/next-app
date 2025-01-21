@@ -28,7 +28,7 @@ const navItems: NavItem[] = [
     ],
   },
   { label: "Blog", href: "/blog" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 const Header = () => {

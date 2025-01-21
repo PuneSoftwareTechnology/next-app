@@ -20,3 +20,23 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/* Add smooth marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0); /* Start position */
+  }
+  50% {
+    transform: translateX(
+      15%
+    ); /* End position, moves full width of the content */
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 5s linear infinite; /* Adjust time for speed */
+}

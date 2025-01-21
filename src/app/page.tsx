@@ -2,10 +2,13 @@ import Footer from "@/components/molecules/Footer";
 import Header from "@/components/molecules/Header";
 import { IoCall } from "react-icons/io5";
 import { SiWhatsapp } from "react-icons/si";
-import Head from "next/head";
 import { ReactElement } from "react";
 import HeroSection from "@/components/screens/HeroSection";
 import ProgramHighlights from "@/components/screens/ProgramAdvantages";
+import WhyChooseUs from "@/components/screens/WhyChooseUs";
+import Courses from "@/components/screens/Courses";
+import TestimonialsPage from "@/components/screens/Testomonials";
+import PlacementPage from "@/components/screens/PlacementsPage";
 
 type ContactButton = {
   href: string;
@@ -37,6 +40,10 @@ const HomePage = () => {
         <Header />
         <HeroSection />
         <ProgramHighlights />
+        <WhyChooseUs />
+        <Courses />
+        <TestimonialsPage />
+        <PlacementPage />
         <Footer />
       </div>
 

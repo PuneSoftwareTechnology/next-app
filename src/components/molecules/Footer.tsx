@@ -44,7 +44,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="#contact"
+                href="/contact-us"
                 className="text-sm md:text-base hover:text-gray-400"
                 title="Contact Us"
               >
