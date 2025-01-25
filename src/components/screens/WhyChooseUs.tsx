@@ -41,7 +41,10 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8  px-6 md:px-32">
+    <section
+      className="container mx-auto px-4 py-8  px-6 md:px-32"
+      aria-label="Pune Software Technologies Why Choose Us Section"
+    >
       <Typography variant="h2" className="text-center mb-4">
         Why <span className="text-primary">Choose Us?</span>
       </Typography>
@@ -66,7 +69,7 @@ const WhyChooseUs = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

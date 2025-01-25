@@ -31,7 +31,10 @@ const testimonials = [
 
 const TestimonialsPage: FC = () => {
   return (
-    <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <section
+      className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
+      aria-label="Pune Software Technologies Testimonials Section"
+    >
       <h1 className="text-3xl font-semibold text-center text-gray-900 mb-8">
         Student Testimonials
       </h1>
@@ -52,7 +55,7 @@ const TestimonialsPage: FC = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

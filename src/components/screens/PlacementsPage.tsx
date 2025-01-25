@@ -45,14 +45,17 @@ const logosData: Logo[] = [
 
 const PlacementPage = () => {
   return (
-    <section aria-label="Company Logos Marquee" className="bg-green-700 py-6">
+    <section
+      aria-label="Pune Software Technologies Placment Compnies Section"
+      className="py-6"
+    >
       <Typography variant="h2" as="h2" className=" text-center">
         Our Aluminis placed in
       </Typography>
       <div className="overflow-hidden">
         <div className="whitespace-nowrap animate-marquee">
           {logosData.map((logo, index) => (
-            <div key={index} className="inline-block px-12 py-4 bg-red-400">
+            <div key={index} className="inline-block px-12 py-4 ">
               <Image
                 src={logo.src}
                 alt={logo.alt}

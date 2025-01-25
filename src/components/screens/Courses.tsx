@@ -30,7 +30,10 @@ const Courses = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8 px-6 md:px-32">
+    <section
+      className="container mx-auto px-4 py-8 px-6 md:px-32"
+      aria-label="Pune Software Technologies Courses Section"
+    >
       <Typography variant="h2" className="text-center mb-6">
         Choose your <span className="text-primary">area of interest</span>
       </Typography>
@@ -52,7 +55,7 @@ const Courses = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

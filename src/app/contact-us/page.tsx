@@ -1,5 +1,6 @@
 // src/pages/contact-us.tsx
 import Typography from "@/components/atoms/Typography";
+import Header from "@/components/molecules/Header";
 import Head from "next/head";
 
 const ContactUs = () => {
@@ -19,7 +20,8 @@ const ContactUs = () => {
         <link rel="canonical" href="https://yourwebsite.com/contact-us" />
       </Head>
       <div className="bg-blue-500 text-white py-8">
-        <div className="container mx-auto px-4 text-center">
+        <Header />
+        <div className="container mx-auto px-4 text-center mt-20">
           <Typography variant="h2" className="mb-4">
             Do you want to know how the Software Testing Course <br />
             will be an excellent fit for your career?
