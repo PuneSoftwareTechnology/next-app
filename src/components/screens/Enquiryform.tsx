@@ -42,7 +42,7 @@ const EnquiryForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     setLoading(true);
     e.preventDefault();
-    let validationErrors = { name: "", phone: "", email: "", message: "" };
+    const validationErrors = { name: "", phone: "", email: "", message: "" };
     let isValid = true;
 
     // Name validation

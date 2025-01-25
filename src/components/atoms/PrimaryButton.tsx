@@ -9,7 +9,8 @@ interface PrimaryButtonProps {
   children: React.ReactNode;
   stretch?: boolean;
   rest?: React.ButtonHTMLAttributes<HTMLButtonElement>;
-  ariaLabel?: string; // aria-label for accessibility and SEO
+  ariaLabel?: string;
+  className?: string;
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({
@@ -21,6 +22,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   stretch = false,
   rest,
   ariaLabel = "button",
+  className,
 }) => {
   const isButtonDisabled = disabled || loading;
 
@@ -36,7 +38,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
         isButtonDisabled
           ? "bg-gray-400 cursor-not-allowed"
           : "bg-blue-600 hover:bg-blue-700 "
-      }`}
+      } ${className}`}
       {...rest}
     >
       <div className="flex justify-center items-center gap-x-2 font-semibold">

@@ -5,7 +5,6 @@ import axios, { AxiosError } from "axios";
 interface DemoResponse {
   success: boolean;
   message: string;
-  data: any;
 }
 
 export const sendDemoRequest = async (
