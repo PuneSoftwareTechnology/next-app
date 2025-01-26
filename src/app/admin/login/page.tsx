@@ -1,4 +1,3 @@
-// app/admin/login/page.tsx
 "use client";
 import React, { useState } from "react";
 import Head from "next/head";
@@ -6,59 +5,35 @@ import Typography from "@/components/atoms/Typography";
 import InputBox from "@/components/atoms/InputBox";
 import PrimaryButton from "@/components/atoms/PrimaryButton";
 import { useRouter } from "next/navigation";
+import { adminLogin } from "@/APIS/admin.service";
+import { toast } from "react-toastify";
+import useStore from "@/util/zustand/store";
 
 const AdminLogin: React.FC = () => {
   const [credentials, setCredentials] = useState({
-    email: "",
+    username: "",
     password: "",
   });
-
-  const [error, setError] = useState({
-    email: "",
-    password: "",
-  });
-
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const setAuthenticated = useStore((state) => state.setAuthenticated);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCredentials({ ...credentials, [name]: value });
-    setError({ ...error, [name]: "" });
-  };
-
-  const validateInputs = () => {
-    let valid = true;
-    const newError = { email: "", password: "" };
-
-    if (!credentials.email) {
-      newError.email = "Email is required";
-      valid = false;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(credentials.email)) {
-      newError.email = "Enter a valid email address";
-      valid = false;
-    }
-
-    if (!credentials.password) {
-      newError.password = "Password is required";
-      valid = false;
-    }
-
-    setError(newError);
-    return valid;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateInputs()) return;
-
     setLoading(true);
     try {
-      // Simulate API call for login (this should be replaced with actual logic)
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      localStorage.setItem("isAuthenticated", "true"); // Set user as authenticated
-      router.push("/admin"); // Redirect to the admin page/dashboard
+      const response = await adminLogin(credentials);
+      if (response?.success) {
+        setAuthenticated(true);
+        localStorage.setItem("authToken", response.token);
+      } else {
+        toast.error("Login failed! try again.");
+      }
     } catch (err) {
       console.error("Login failed", err);
     } finally {
@@ -130,16 +105,21 @@ const AdminLogin: React.FC = () => {
             Admin Login
           </Typography>
           <form onSubmit={handleSubmit} className="space-y-4">
+            <Typography variant="h5" as="h5">
+              Username
+            </Typography>
             <InputBox
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Email Address"
-              value={credentials.email}
+              id="username"
+              name="username"
+              type="username"
+              placeholder="Username Address"
+              value={credentials.username}
               onChange={handleInputChange}
-              error={error.email}
               required
             />
+            <Typography variant="h5" as="h5">
+              Password
+            </Typography>
             <InputBox
               id="password"
               name="password"
@@ -147,10 +127,9 @@ const AdminLogin: React.FC = () => {
               placeholder="Password"
               value={credentials.password}
               onChange={handleInputChange}
-              error={error.password}
               required
             />
-            <PrimaryButton type="submit" loading={loading}>
+            <PrimaryButton type="submit" stretch loading={loading}>
               {loading ? "Logging in..." : "Login"}
             </PrimaryButton>
           </form>

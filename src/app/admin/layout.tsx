@@ -1,21 +1,14 @@
 "use client";
+import useStore from "@/util/zustand/store";
 import AdminLogin from "./login/page";
-import { useState, useEffect } from "react";
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const isAuthenticated = useStore((state) => state.isAuthenticated);
 
-  // Simulate checking authentication status (e.g., from localStorage or a cookie)
-  useEffect(() => {
-    const authStatus = localStorage.getItem("isAuthenticated");
-    setIsAuthenticated(authStatus === "true");
-  }, []);
-
-  // If not authenticated, show the login page
   if (!isAuthenticated) {
     return <AdminLogin />;
   }

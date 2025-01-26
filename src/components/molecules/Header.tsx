@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 import Image from "next/image";
-import PST_LOGO from "../../assests/images/PST_LOGO.jpeg";
+import PST_LOGO from "../../assests/images/Logo.png";
 
 interface NavItem {
   label: string;
@@ -60,8 +60,8 @@ const Header = () => {
           <Image
             src={PST_LOGO}
             alt="Pune Software Technologies logo"
-            width={100}
-            height={100}
+            width={50}
+            height={50}
             priority
           />
           <span className="text-lg font-bold text-gray-800 md:hidden lg:block ">
