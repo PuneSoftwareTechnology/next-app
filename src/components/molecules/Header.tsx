@@ -18,17 +18,17 @@ const navItems: NavItem[] = [
   {
     label: "All Courses",
     subMenu: [
-      { label: "SAP Training", href: "/courses/sap" },
-      { label: "Cloud Technologies", href: "/courses/cloud" },
+      { label: "SAP Training", href: "/course-category/sap" },
+      { label: "Cloud Technologies", href: "/course-category/cloud" },
       {
         label: "Data Analytics",
-        href: "/courses/data-analytics",
+        href: "/course-category/data-analytics",
       },
-      { label: "Machine Learning & AI", href: "/courses/ai-ml" },
-      { label: "Cyber Security", href: "/courses/cyber-security" },
+      { label: "Machine Learning & AI", href: "/course-category/ai-ml" },
+      { label: "Cyber Security", href: "/course-category/cyber-security" },
     ],
   },
-  { label: "Blog", href: "/blog" },
+  { label: "Blog", href: "/all-blogs" },
   { label: "Contact Us", href: "/contact-us" },
 ];
 

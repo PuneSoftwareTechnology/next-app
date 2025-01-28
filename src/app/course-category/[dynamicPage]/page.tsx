@@ -43,6 +43,7 @@ export default function DynamicPage({
     sap: "Learn about SAP and its applications.",
     cloud: "Discover cloud computing technologies.",
     "ai-ml": "Explore Artificial Intelligence and Machine Learning.",
+    "data-analytics": "Learn Data analytics",
     "cyber-security": "Master Cyber Security practices.",
   };
   if (!content[dynamicPage]) {
@@ -66,7 +67,7 @@ export default function DynamicPage({
           as="h2"
           className="font-[700] text-center mb-8"
         >
-          Explore SAP Courses
+          Explore {content[dynamicPage]}
         </Typography>
         <Typography
           variant="h3"
