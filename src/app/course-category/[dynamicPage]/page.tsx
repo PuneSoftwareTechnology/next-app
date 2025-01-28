@@ -9,27 +9,23 @@ import WhyChooseUs from "@/components/screens/WhyChooseUs";
 import TestimonialsPage from "@/components/screens/Testomonials";
 import FAQPage from "@/components/screens/Faq";
 import Footer from "@/components/molecules/Footer";
+import Link from "next/link";
 
 // SEO Metadata
 export const metadata: Metadata = {
-  title: "SAP Courses | Learn SAP Functional Modules",
+  title: "Courses | Learn and Master Your Skills",
   description:
-    "Explore various SAP functional modules, including SAP FICO, MM, SD, PP, CO, and EWM, to enhance your expertise.",
-  keywords: [
-    "SAP Courses",
-    "SAP Functional Modules",
-    "SAP S4HANA",
-    "SAP Training",
-  ],
+    "Explore a wide range of courses including SAP, Cloud, AI/ML, and more to advance your career.",
+  keywords: ["Courses", "Learning", "SAP Training", "AI-ML", "Cloud Computing"],
 };
 
 const courses = [
-  { name: "SAP FICO S4HANA" },
-  { name: "SAP MM S4HANA" },
-  { name: "SAP SD S4HANA" },
-  { name: "SAP PP S4HANA" },
-  { name: "SAP CO S4HANA" },
-  { name: "SAP EWM S4HANA" },
+  { name: "SAP FICO S4HANA", id: "sap-fico-s4hana" },
+  { name: "SAP MM S4HANA", id: "sap-mm-s4hana" },
+  { name: "SAP SD S4HANA", id: "sap-sd-s4hana" },
+  { name: "SAP PP S4HANA", id: "sap-pp-s4hana" },
+  { name: "SAP CO S4HANA", id: "sap-co-s4hana" },
+  { name: "SAP EWM S4HANA", id: "sap-ewm-s4hana" },
 ];
 
 export default function DynamicPage({
@@ -78,26 +74,29 @@ export default function DynamicPage({
         </Typography>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {courses.map((course, index) => (
-            <div
+            <Link
               key={index}
-              className="border rounded-md overflow-hidden shadow-lg group hover:bg-white transition-all duration-300"
+              href={`/course/${course?.id}`}
+              className="text-blue-500 mt-2 inline-block"
             >
-              <div className="relative h-48 w-full">
-                <Image
-                  alt="course-image"
-                  src={LOGO}
-                  layout="fill"
-                  objectFit="cover"
-                />
+              <div className="border rounded-md overflow-hidden shadow-lg group hover:bg-white transition-all duration-300">
+                <div className="relative h-48 w-full">
+                  <Image
+                    alt="course-image"
+                    src={LOGO}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <Typography
+                  variant="h6"
+                  as="h6"
+                  className="text-center py-2 bg-white group-hover:bg-gray-100 transition-all duration-300"
+                >
+                  {course.name}
+                </Typography>
               </div>
-              <Typography
-                variant="h6"
-                as="h6"
-                className="text-center py-2 bg-white group-hover:bg-gray-100 transition-all duration-300"
-              >
-                {course.name}
-              </Typography>
-            </div>
+            </Link>
           ))}
         </div>
         <WhyChooseUs />
