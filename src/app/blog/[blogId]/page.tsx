@@ -3,9 +3,40 @@ import { useParams } from "next/navigation"; // Use useParams in app directory
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import { notFound } from "next/navigation";
-import { blogs } from "@/app/all-blogs/page";
 import Header from "@/components/molecules/Header";
 import Footer from "@/components/molecules/Footer";
+import Image from "next/image";
+import LOGO from "../../../assests/images/Logo.png";
+
+type Blog = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  category: string;
+  content: string;
+};
+
+const blogs: Blog[] = [
+  {
+    id: "understanding-artificial-intelligence-and-machine-learning",
+    title: "Understanding Artificial Intelligence and Machine Learning",
+    description:
+      "A deep dive into AI and ML technologies, their uses, and their future.",
+    image: "/images/ai-ml.jpg",
+    category: "AI-ML",
+    content: "Full content of the AI and ML blog goes here...",
+  },
+  {
+    id: "introduction-to-sap-a-beginner's-guide",
+    title: "Introduction to SAP: A Beginner's Guide",
+    description:
+      "Learn the basics of SAP, its modules, and its applications in enterprise systems.",
+    image: "/images/sap.jpg",
+    category: "SAP",
+    content: "Full content of the SAP blog goes here...",
+  },
+];
 
 const BlogDetail = () => {
   const { blogId } = useParams(); // Use useParams to get dynamic route params
@@ -37,8 +68,8 @@ const BlogDetail = () => {
       <Header />
       <div className="container mx-auto px-4 py-8 md:px-32 mt-24">
         <div className="bg-white p-8 rounded-lg shadow-md">
-          <img
-            src={blog.image}
+          <Image
+            src={LOGO}
             alt={blog.title}
             className="w-full h-56 object-cover rounded-md"
             width={500}

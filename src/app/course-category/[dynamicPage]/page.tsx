@@ -1,15 +1,15 @@
-import Header from "@/components/molecules/Header";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Header from "@/components/molecules/Header";
 import Image from "next/image";
 import Typography from "@/components/atoms/Typography";
-import { Metadata } from "next";
-import COURSE_IMAGE from "../../../assests/images/swe.webp";
-import LOGO from "../../../assests/images/Logo.png";
 import WhyChooseUs from "@/components/screens/WhyChooseUs";
 import TestimonialsPage from "@/components/screens/Testomonials";
 import FAQPage from "@/components/screens/Faq";
 import Footer from "@/components/molecules/Footer";
 import Link from "next/link";
+import COURSE_IMAGE from "../../../assests/images/swe.webp";
+import LOGO from "../../../assests/images/Logo.png";
 
 // SEO Metadata
 export const metadata: Metadata = {
@@ -28,12 +28,12 @@ const courses = [
   { name: "SAP EWM S4HANA", id: "sap-ewm-s4hana" },
 ];
 
-export default function DynamicPage({
-  params,
-}: {
-  params: { dynamicPage: string };
-}) {
-  const { dynamicPage } = params;
+// Define Params as a Promise
+type Params = Promise<{ dynamicPage: string }>;
+
+export default async function DynamicPage({ params }: { params: Params }) {
+  // Await params to access dynamicPage
+  const { dynamicPage } = await params;
 
   const content: Record<string, string> = {
     sap: "Learn about SAP and its applications.",
@@ -42,8 +42,9 @@ export default function DynamicPage({
     "data-analytics": "Learn Data analytics",
     "cyber-security": "Master Cyber Security practices.",
   };
+
   if (!content[dynamicPage]) {
-    notFound();
+    notFound(); // Show a 404 if content not found
   }
 
   return (
@@ -76,7 +77,7 @@ export default function DynamicPage({
           {courses.map((course, index) => (
             <Link
               key={index}
-              href={`/course/${course?.id}`}
+              href={`/course/${course.id}`}
               className="text-blue-500 mt-2 inline-block"
             >
               <div className="border rounded-md overflow-hidden shadow-lg group hover:bg-white transition-all duration-300">

@@ -5,6 +5,8 @@ import Head from "next/head";
 import { notFound } from "next/navigation";
 import Header from "@/components/molecules/Header";
 import Footer from "@/components/molecules/Footer";
+import Image from "next/image";
+import LOGO from "../../../assests/images/Logo.png";
 
 // Mock course data
 const courses = [
@@ -55,8 +57,8 @@ const CourseDetail = () => {
       <Header />
       <main className="container mx-auto px-4 md:px-32 py-8 mt-24">
         <div className="bg-white p-8 rounded-lg shadow-md">
-          <img
-            src={course.image}
+          <Image
+            src={LOGO}
             alt={course.name}
             className="w-full h-56 object-cover rounded-md"
             width={500} // Set width and height for Image optimization

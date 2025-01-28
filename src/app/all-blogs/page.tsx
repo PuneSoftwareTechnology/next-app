@@ -3,9 +3,16 @@ import Head from "next/head";
 import Header from "@/components/molecules/Header";
 import LOGO from "../../assests/images/Logo.png";
 import Image from "next/image";
-
-// data/blogs.ts
-export const blogs = [
+import { FC } from "react";
+type Blog = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  category: string;
+  content: string;
+};
+const blogs: Blog[] = [
   {
     id: "understanding-artificial-intelligence-and-machine-learning",
     title: "Understanding Artificial Intelligence and Machine Learning",
@@ -16,7 +23,7 @@ export const blogs = [
     content: "Full content of the AI and ML blog goes here...",
   },
   {
-    id: "introduction-to-sap-a-beginnerg-guide",
+    id: "introduction-to-sap-a-beginner's-guide",
     title: "Introduction to SAP: A Beginner's Guide",
     description:
       "Learn the basics of SAP, its modules, and its applications in enterprise systems.",
@@ -24,10 +31,8 @@ export const blogs = [
     category: "SAP",
     content: "Full content of the SAP blog goes here...",
   },
-  // Add more blogs as needed
 ];
-
-const AllBlogs = () => {
+const AllBlogs: FC = () => {
   return (
     <>
       <Head>
@@ -39,7 +44,7 @@ const AllBlogs = () => {
         <meta name="robots" content="index, follow" />
       </Head>
       <Header />
-      <main className="container mx-auto px-4 md:px-32 py-8 ">
+      <main className="container mx-auto px-4 md:px-32 py-8">
         <h1 className="text-3xl font-bold text-center mb-8">All Blogs</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
