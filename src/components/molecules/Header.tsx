@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 import Image from "next/image";
 import PST_LOGO from "../../assests/images/Logo.png";
+import Typography from "../atoms/Typography";
 
 interface NavItem {
   label: string;
@@ -80,9 +81,9 @@ const Header = () => {
                 onMouseLeave={() => setActiveSubMenu(null)}
               >
                 <div className="flex items-center cursor-pointer">
-                  <span className="text-gray-700 hover:text-blue-500 transition-colors">
+                  <Typography variant="h6" as="h6">
                     {item.label}
-                  </span>
+                  </Typography>
                   <FiChevronDown className="ml-1 text-gray-500" />
                 </div>
                 {activeSubMenu === item.label && (
@@ -94,7 +95,9 @@ const Header = () => {
                           className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rounded-md transition-colors"
                           aria-label={subItem.label}
                         >
-                          {subItem.label}
+                          <Typography variant="h6" as="h6">
+                            {subItem.label}
+                          </Typography>
                         </Link>
                       </li>
                     ))}
@@ -108,7 +111,9 @@ const Header = () => {
                 className="text-gray-700 hover:text-blue-500 transition-colors"
                 aria-label={item.label}
               >
-                {item.label}
+                <Typography variant="h6" as="h6">
+                  {item.label}
+                </Typography>
               </Link>
             )
           )}

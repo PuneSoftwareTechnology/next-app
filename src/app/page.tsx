@@ -10,6 +10,7 @@ import Courses from "@/components/screens/Courses";
 import TestimonialsPage from "@/components/screens/Testomonials";
 import PlacementPage from "@/components/screens/PlacementsPage";
 import EnquiryForm from "@/components/screens/Enquiryform";
+import BlogSection from "@/components/screens/BlogSection";
 
 type ContactButton = {
   href: string;
@@ -43,6 +44,7 @@ const HomePage = () => {
         <ProgramHighlights />
         <WhyChooseUs />
         <Courses />
+        <BlogSection />
         <TestimonialsPage />
         <PlacementPage />
         <EnquiryForm />
