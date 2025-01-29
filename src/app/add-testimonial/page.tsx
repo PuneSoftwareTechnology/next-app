@@ -121,7 +121,7 @@ const TestimonialForm: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow max-w-lg md:mx-auto py-6 mx-2 px-4 bg-white rounded-lg shadow-lg mt-24 mb-8">
+      <main className="flex-grow max-w-lg md:w-2/3 md:mx-auto py-6 mx-2 px-4 bg-white rounded-lg shadow-lg mt-24 mb-8">
         <Typography variant="h2" as="h2" className="text-center mb-4">
           Testimonial Form
         </Typography>
