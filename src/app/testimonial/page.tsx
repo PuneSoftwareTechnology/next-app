@@ -17,6 +17,15 @@ interface FormData {
   course: string;
 }
 
+type FormErrors = {
+  name?: string;
+  title?: string;
+  company?: string;
+  testimonial?: string;
+  email?: string;
+  rating?: string;
+};
+
 const TestimonialForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -28,7 +37,7 @@ const TestimonialForm: React.FC = () => {
     course: "general",
   });
 
-  const [errors, setErrors] = useState<any>({});
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -45,7 +54,7 @@ const TestimonialForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    let formErrors: any = {};
+    const formErrors: FormErrors = {};
 
     // Validation
     if (!formData.name) formErrors.name = "Name is required";
