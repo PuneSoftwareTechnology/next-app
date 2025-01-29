@@ -34,7 +34,7 @@ const TestimonialForm: React.FC = () => {
     testimonial: "",
     email: "",
     rating: 0,
-    course: "general",
+    course: "sap",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -58,8 +58,6 @@ const TestimonialForm: React.FC = () => {
 
     // Validation
     if (!formData.name) formErrors.name = "Name is required";
-    if (!formData.title) formErrors.title = "Title is required";
-    if (!formData.company) formErrors.company = "Company is required";
     if (!formData.testimonial)
       formErrors.testimonial = "Testimonial is required";
     if (!formData.rating) formErrors.rating = "Rating is required";
@@ -94,78 +92,58 @@ const TestimonialForm: React.FC = () => {
       value: "cyber-security",
       href: "/course-category/cyber-security",
     },
-    { label: "General Feedback", value: "general" },
-  ];
-
-  // Form fields definition
-  const formFields = [
-    {
-      id: "name",
-      name: "name",
-      type: "text",
-      placeholder: "Your Name",
-      label: "Name",
-      error: errors.name,
-    },
-    {
-      id: "title",
-      name: "title",
-      type: "text",
-      placeholder: "Your Title/Position",
-      label: "Title",
-      error: errors.title,
-    },
-    {
-      id: "company",
-      name: "company",
-      type: "text",
-      placeholder: "Company/Organization",
-      label: "Company",
-      error: errors.company,
-    },
-    {
-      id: "email",
-      name: "email",
-      type: "email",
-      placeholder: "Your Email (Optional)",
-      label: "Email",
-      error: errors.email,
-    },
   ];
 
   return (
     <>
       <Header />
-      <main className="max-w-lg md:mx-auto py-6 mx-2 px-4 bg-white rounded-lg shadow-lg mt-24 mb-8 ">
+      <main className="max-w-lg md:mx-auto py-6 mx-2 px-4 bg-white rounded-lg shadow-lg mt-24 mb-8">
         <Typography variant="h2" as="h2" className="text-center mb-4">
           Testimonial Form
         </Typography>
 
         <form onSubmit={handleSubmit}>
-          {/* Map through the form fields to generate InputBox components */}
-          {formFields.map(({ id, name, type, placeholder, label, error }) => (
-            <div className="mb-4" key={id}>
-              <label
-                htmlFor={id}
-                className="block text-sm font-medium text-gray-700"
-              >
-                {label}
-              </label>
-              <InputBox
-                id={id}
-                name={name}
-                type={type}
-                placeholder={placeholder}
-                value={formData[name as keyof FormData].toString()} // Convert value to string
-                onChange={handleChange}
-                required
-                error={error}
-              />
-              {error && <p className="text-red-500 text-xs">{error}</p>}
-            </div>
-          ))}
+          {/* Name Field */}
+          <div className="mb-4">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Name
+            </label>
+            <InputBox
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              error={errors.name}
+            />
+            {errors.name && (
+              <p className="text-red-500 text-xs">{errors.name}</p>
+            )}
+          </div>
 
-          {/* Testimonial textarea */}
+          {/* Course Dropdown */}
+          <div className="mb-4">
+            <label
+              htmlFor="course"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Course
+            </label>
+            <Dropdown
+              id="course"
+              name="course"
+              options={courseOptions}
+              value={formData.course}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* Testimonial Textarea */}
           <div className="mb-4">
             <label
               htmlFor="testimonial"
@@ -210,21 +188,6 @@ const TestimonialForm: React.FC = () => {
               <p className="text-red-500 text-xs">{errors.rating}</p>
             )}
           </div>
-
-          {/* Dropdown for course feedback */}
-          <label
-            htmlFor="Course Selected"
-            className="block text-sm font-medium text-gray-700 mb-2"
-          >
-            Course selected
-          </label>
-          <Dropdown
-            id="course"
-            name="course"
-            options={courseOptions}
-            value={formData.course}
-            onChange={handleChange}
-          />
 
           {/* Submit Button */}
           <button
