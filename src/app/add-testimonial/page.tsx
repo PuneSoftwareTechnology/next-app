@@ -6,38 +6,36 @@ import { HiStar } from "react-icons/hi";
 import Dropdown from "@/components/atoms/Dropdown";
 import Header from "@/components/molecules/Header";
 import Footer from "@/components/molecules/Footer";
+import { createTestimonial } from "@/APIS/testimonial.service";
+import PrimaryButton from "@/components/atoms/PrimaryButton";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   name: string;
-  title: string;
-  company: string;
   testimonial: string;
-  email: string;
   rating: number;
   course: string;
 }
 
 type FormErrors = {
   name?: string;
-  title?: string;
-  company?: string;
   testimonial?: string;
-  email?: string;
   rating?: string;
 };
 
 const TestimonialForm: React.FC = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    title: "",
-    company: "",
     testimonial: "",
-    email: "",
     rating: 0,
-    course: "sap",
+    course: "SAP",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -52,7 +50,7 @@ const TestimonialForm: React.FC = () => {
     setFormData((prev) => ({ ...prev, rating }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formErrors: FormErrors = {};
 
@@ -65,46 +63,71 @@ const TestimonialForm: React.FC = () => {
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
     } else {
-      // Handle form submission (e.g., API call)
-      console.log(formData);
+      try {
+        setLoading(true);
+        const response = await createTestimonial({
+          name: formData.name,
+          course: formData.course.toUpperCase(),
+          star_ratings: formData.rating,
+          testimonial: formData.testimonial,
+        });
+
+        if (response?.success) {
+          toast.success("Testimonial submitted successfully!");
+          router.push("/");
+        } else {
+          toast.error("Failed to submit testimonial.");
+        }
+      } catch (error) {
+        console.error("Error submitting testimonial:", error);
+        toast.error("An error occurred while submitting your testimonial.");
+      } finally {
+        setLoading(false);
+        setFormData({
+          name: "",
+          testimonial: "",
+          rating: 0,
+          course: "SAP",
+        });
+      }
     }
   };
 
   const courseOptions = [
-    { label: "SAP Training", value: "sap", href: "/course-category/sap" },
+    { label: "SAP Training", value: "SAP", href: "/course-category/sap" },
     {
       label: "Cloud Technologies",
-      value: "cloud",
+      value: "CLOUD",
       href: "/course-category/cloud",
     },
     {
       label: "Data Analytics",
-      value: "data-analytics",
+      value: "DATA-ANALYTICS",
       href: "/course-category/data-analytics",
     },
     {
       label: "Machine Learning & AI",
-      value: "ai-ml",
+      value: "AI-ML",
       href: "/course-category/ai-ml",
     },
     {
       label: "Cyber Security",
-      value: "cyber-security",
+      value: "CYBER-SECURITY",
       href: "/course-category/cyber-security",
     },
+    { label: "General", value: "GENERAL", href: "/course-category/general" },
   ];
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="max-w-lg md:mx-auto py-6 mx-2 px-4 bg-white rounded-lg shadow-lg mt-24 mb-8">
+      <main className="flex-grow max-w-lg md:mx-auto py-6 mx-2 px-4 bg-white rounded-lg shadow-lg mt-24 mb-8">
         <Typography variant="h2" as="h2" className="text-center mb-4">
           Testimonial Form
         </Typography>
 
         <form onSubmit={handleSubmit}>
-          {/* Name Field */}
-          <div className="mb-4">
+          <div className="my-8">
             <label
               htmlFor="name"
               className="block text-sm font-medium text-gray-700"
@@ -126,7 +149,6 @@ const TestimonialForm: React.FC = () => {
             )}
           </div>
 
-          {/* Course Dropdown */}
           <div className="mb-4">
             <label
               htmlFor="course"
@@ -143,7 +165,6 @@ const TestimonialForm: React.FC = () => {
             />
           </div>
 
-          {/* Testimonial Textarea */}
           <div className="mb-4">
             <label
               htmlFor="testimonial"
@@ -165,10 +186,9 @@ const TestimonialForm: React.FC = () => {
             )}
           </div>
 
-          {/* Rating Section */}
-          <div className="mb-4">
+          <div className="mt-4 mb-8 flex justify-start items-center gap-x-2">
             <label className="block text-sm font-medium text-gray-700">
-              Rating
+              Ratings
             </label>
             <div className="flex space-x-1">
               {[1, 2, 3, 4, 5].map((star) => (
@@ -189,17 +209,13 @@ const TestimonialForm: React.FC = () => {
             )}
           </div>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full py-2 mt-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600"
-          >
-            Submit Testimonial
-          </button>
+          <PrimaryButton stretch loading={loading} type="submit">
+            {loading ? "Submitting..." : "Submit Testimonial"}
+          </PrimaryButton>
         </form>
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
