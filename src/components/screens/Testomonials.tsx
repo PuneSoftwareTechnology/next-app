@@ -1,61 +1,127 @@
-import { FC } from "react";
+"use client";
+import { FC, useEffect, useState } from "react";
+import Head from "next/head";
 import Typography from "../atoms/Typography";
-
-const testimonials = [
-  {
-    name: "Ankita Chitranshu",
-    review:
-      "I highly recommend training here. The instructor is passionate and dedicated, very descriptive and detail oriented. The course is easy to follow. All relevant tools were provided.",
-  },
-  {
-    name: "Madhuri Pathak",
-    review:
-      "I am currently learning SAP (FICO). I would love to recommend this institute for its structured way for teaching and engaging students in implementing real-time use case scenarios. Our trainer, Rakesh sir, his teaching techniques are very effective.",
-  },
-  {
-    name: "Kiran Deshmukh",
-    review:
-      "I am currently learning SAP BW/4HANA, and the training experience has been exceptional. The faculty is highly experienced and incredibly supportive, always available to clear any doubts I have. I appreciate the real-time, hands-on approach in the course.",
-  },
-  {
-    name: "Pratham Dongre",
-    review:
-      "Mr. Rakesh Sir's SAP FICO course was a great learning experience. The instructor's knowledge and expertise were evident in the way they explained complex concepts in a clear and concise manner. The hands-on exercises provided valuable practical experience.",
-  },
-  {
-    name: "Pooja Sonawane",
-    review:
-      "I recently completed SAP FICO course in Tech Concept Hub and it was amazing experience. Rakesh Sir's way of teaching techniques is excellent and deeply supportive. He gives knowledge of theoretical as well as practical in an easy-to-understand way.",
-  },
-];
+import { fetchAllTestimonials } from "@/APIS/testimonial.service";
+import { FetchTestimonialResponse } from "@/util/interfaces/testimonial";
+import Loader from "../atoms/Loader";
+import { FaStar, FaRegStarHalfStroke } from "react-icons/fa6";
 
 const TestimonialsPage: FC = () => {
-  return (
-    <section
-      className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
-      aria-label="Pune Software Technologies Testimonials Section"
-    >
-      <h1 className="text-3xl font-semibold text-center text-gray-900 mb-8">
-        Student Testimonials
-      </h1>
+  const [testimonials, setTestimonials] = useState<FetchTestimonialResponse[]>(
+    []
+  );
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<{ [key: number]: boolean }>({});
 
-      {/* Flexbox layout with responsive design */}
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className="bg-white shadow-lg rounded-lg p-6 border-l-4 border-indigo-600"
-          >
-            <Typography variant="h3" as="h3" className="text-xl font-semibold">
-              {testimonial.name}
+  const fetchData = async () => {
+    try {
+      const response = await fetchAllTestimonials();
+      if (response?.success) {
+        setTestimonials(response.data || []);
+      } else {
+        setError("Failed to fetch testimonials.");
+      }
+    } catch (err) {
+      setError("An error occurred while fetching testimonials.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <Loader size="large" ariaLabel="loading-testimonials" />;
+  }
+
+  if (error) {
+    return (
+      <div className="text-center text-red-500 font-semibold">{error}</div>
+    );
+  }
+
+  return (
+    <>
+      {/* SEO Optimization */}
+      <Head>
+        <title>Testimonials - Pune Software Technologies</title>
+        <meta
+          name="description"
+          content="Read what our students have to say about our courses at Pune Software Technologies."
+        />
+        <meta
+          name="keywords"
+          content="Pune Software Technologies, testimonials, student feedback, courses, training"
+        />
+      </Head>
+
+      <section className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <Typography
+          variant="h2"
+          className="text-center text-3xl font-bold text-gray-900"
+        >
+          Testimonials
+        </Typography>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+          {testimonials?.length > 0 ? (
+            testimonials.map((testimonial) => (
+              <div
+                key={testimonial.id}
+                className="bg-white shadow-lg rounded-lg px-6 py-4 transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 border-l-4 border-violet-500"
+              >
+                <Typography
+                  variant="h3"
+                  className="text-lg font-semibold text-gray-800"
+                >
+                  {testimonial.name}
+                </Typography>
+
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) =>
+                    i < Math.floor(testimonial.star_ratings) ? (
+                      <FaStar key={i} />
+                    ) : i < testimonial.star_ratings ? (
+                      <FaRegStarHalfStroke key={i} />
+                    ) : (
+                      <FaStar key={i} className="text-gray-300" />
+                    )
+                  )}
+                </div>
+                <Typography variant="p" className="text-gray-600 mt-2">
+                  {expanded[testimonial.id]
+                    ? testimonial.testimonial
+                    : `${testimonial.testimonial.slice(0, 70)}...`}
+                  {testimonial.testimonial.length > 70 && (
+                    <button
+                      onClick={() =>
+                        setExpanded((prev) => ({
+                          ...prev,
+                          [testimonial.id]: !prev[testimonial.id],
+                        }))
+                      }
+                      className="text-violet-500 mt-2 underline ml-2"
+                    >
+                      {expanded[testimonial.id] ? "Read Less" : "Read More"}
+                    </button>
+                  )}
+                </Typography>
+              </div>
+            ))
+          ) : (
+            <Typography
+              variant="p"
+              className="text-center text-gray-600 col-span-full"
+            >
+              No testimonials available
             </Typography>
-            <Typography variant="p" as="p" className="mt-4 text-gray-700">
-              {testimonial.review}
-            </Typography>
-          </div>
-        ))}
-      </div>
-    </section>
+          )}
+        </div>
+      </section>
+    </>
   );
 };
 

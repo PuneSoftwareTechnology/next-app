@@ -1,6 +1,5 @@
 "use client";
-import InputBox from "@/components/atoms/InputBox";
-import Typography from "@/components/atoms/Typography";
+
 import React, { useState } from "react";
 import { HiStar } from "react-icons/hi";
 import Dropdown from "@/components/atoms/Dropdown";
@@ -11,6 +10,8 @@ import PrimaryButton from "@/components/atoms/PrimaryButton";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
+import Typography from "@/components/atoms/Typography";
+import InputBox from "@/components/atoms/InputBox";
 
 interface FormData {
   name: string;
