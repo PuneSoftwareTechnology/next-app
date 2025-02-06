@@ -1,5 +1,5 @@
 import {
-  FetchTestimonialResponse,
+  ResponseInterFace,
   TestimonialInterface,
 } from "@/util/interfaces/testimonial";
 import { LOCAL_URL } from "@/util/urls";
@@ -35,13 +35,13 @@ export const createTestimonial = async (
 
 export const fetchAllTestimonials = async (
   course?: string
-): Promise<FetchTestimonialResponse | null> => {
+): Promise<ResponseInterFace | null> => {
   try {
     const url = course
       ? `${LOCAL_URL}/testimonial/all/?course=${course}`
       : `${LOCAL_URL}/testimonial/all`;
 
-    const { data } = await axios.get<FetchTestimonialResponse>(url);
+    const { data } = await axios.get<ResponseInterFace>(url);
 
     return data;
   } catch (err) {

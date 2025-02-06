@@ -1,73 +1,95 @@
 import Image from "next/image";
+import { Metadata } from "next";
 import Typography from "../atoms/Typography";
+import { CompanyInterface } from "@/util/interfaces/misc";
+import { LOCAL_URL } from "@/util/urls";
 
-// Define the type for each logo object
-interface Logo {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
+interface ResponseInterface {
+  success: boolean;
+  message: string;
+  data: CompanyInterface[];
 }
 
-// The logosData array with the type of Logo
-const logosData: Logo[] = [
-  {
-    src: "https://imgs.search.brave.com/ll08WyeisibDICyh5c8roZl0CeUXPDVVHaKqLuFWbhM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/d2lrLmNvbS9jb250/ZW50L3VwbG9hZHMv/aW1hZ2VzL3Rjcy10/YXRhLWNvbnN1bHRh/bmN5LXNlcnZpY2Vz/Mjc5Mi5sb2dvd2lr/LmNvbS53ZWJw",
-    alt: "TCS Logo",
-    width: 150,
-    height: 50,
-  },
-  {
-    src: "https://imgs.search.brave.com/gWq8eFATkf4APYQiPycK6zrmYhsKw5mFxF4d_b__FmA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5naXRlbS5jb20v/cGltZ3MvbS8xOTMt/MTkzMjY5OV93aXBy/by1sb2dvLXBuZy10/cmFuc3BhcmVudC1w/bmcucG5n",
-    alt: "Wipro Logo",
-    width: 150,
-    height: 50,
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Infosys_logo.svg/600px-Infosys_logo.svg.png",
-    alt: "Infosys Logo",
-    width: 150,
-    height: 50,
-  },
-  {
-    src: "https://imgs.search.brave.com/UDvuWryBQLVWJbRrX16ijxO4_ZQtb3QuHf5_MEPGxvc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nby53aW5lL2Ev/bG9nby9HZW5wYWN0/L0dlbnBhY3QtTG9n/by53aW5lLnN2Zw",
-    alt: "Genpact Logo",
-    width: 150,
-    height: 50,
-  },
-  {
-    src: "https://imgs.search.brave.com/u7kz0IKq58P1OKHimwltgqmx5d_CMFAOUBWNO40Nvqg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jb21w/YW5pZXNsb2dvLmNv/bS9pbWcvb3JpZy9M/VElNLk5TLWRlYTU5/ZGM2LnBuZz90PTE3/MjAyNDQ0OTI",
-    alt: "LTIMindtree Logo",
-    width: 150,
-    height: 50,
-  },
-];
+// Fetch companies from API
+async function fetchCompanies(): Promise<CompanyInterface[]> {
+  try {
+    const res = await fetch(`${LOCAL_URL}/companies/all`, {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      console.error("API response error:", res.status, res.statusText);
+      return [];
+    }
+    const response: ResponseInterface = await res.json();
+    return response.success ? response.data : [];
+  } catch (error) {
+    return [];
+  }
+}
 
-const PlacementPage = () => {
+// Define metadata for SEO
+export const metadata: Metadata = {
+  title: "Placements - Pune Software Technologies",
+  description:
+    "Discover top companies where our alumni have secured placements. Our successful students are placed in leading tech firms worldwide.",
+  openGraph: {
+    title: "Placements - Pune Software Technologies",
+    description:
+      "Discover top companies where our alumni have secured placements.",
+    type: "website",
+    url: "https://yourwebsite.com/placements",
+    images: [
+      {
+        url: "https://yourwebsite.com/assets/placements-banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Placements Banner",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Placements - Pune Software Technologies",
+    description:
+      "Discover top companies where our alumni have secured placements.",
+    images: ["https://yourwebsite.com/assets/placements-banner.jpg"],
+  },
+  robots: "index, follow",
+  alternates: {
+    canonical: "https://yourwebsite.com/placements",
+  },
+};
+
+// Server Component for SEO optimization
+export default async function PlacementsPage() {
+  const companies = await fetchCompanies();
+
   return (
     <section
-      aria-label="Pune Software Technologies Placment Compnies Section"
-      className="py-6"
+      aria-label="Placement Companies Section"
+      className="py-6 px-6 md:px-32"
     >
-      <Typography variant="h2" as="h2" className=" text-center">
-        Our Aluminis placed in
+      <Typography variant="h2" as="h2" className="text-center mb-8">
+        Our Alumni Placed In
       </Typography>
       <div className="overflow-hidden">
         <div className="whitespace-nowrap animate-marquee">
-          {logosData.map((logo, index) => (
-            <div key={index} className="inline-block px-12 py-4 ">
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={logo.width}
-                height={logo.height}
-              />
+          {companies?.map((company) => (
+            <div key={company.id} className="inline-block px-6 sm:px-12 py-4">
+              <div className="relative w-24 h-16 sm:w-36 sm:h-24">
+                <Image
+                  src={company.company_logo}
+                  alt={`Logo of ${company.company_name} where our alumni work`}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 640px) 100px, 150px"
+                  priority
+                />
+              </div>
             </div>
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default PlacementPage;
+}

@@ -1,10 +1,3 @@
-export interface TestimonialInterface {
-  name: string;
-  course: string;
-  star_ratings: number;
-  testimonial: string;
-}
-
 export interface FetchTestimonialResponse {
   id: number;
   name: string;
@@ -16,7 +9,7 @@ export interface FetchTestimonialResponse {
   user_email: string;
 }
 
-export interface ReposneInterFace {
+export interface ResponseInterFace {
   success: boolean;
   message: string;
   data: FetchTestimonialResponse[];
