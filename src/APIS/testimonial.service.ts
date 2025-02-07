@@ -1,7 +1,4 @@
-import {
-  ResponseInterFace,
-  TestimonialInterface,
-} from "@/util/interfaces/testimonial";
+import { ResponseInterFace } from "@/util/interfaces/testimonial";
 import { LOCAL_URL } from "@/util/urls";
 import axios, { AxiosError } from "axios";
 
@@ -11,7 +8,7 @@ interface TestimonialResponse {
 }
 
 export const createTestimonial = async (
-  payload: TestimonialInterface
+  payload: TestimonialResponse
 ): Promise<TestimonialResponse | null> => {
   try {
     const url = `${LOCAL_URL}/testimonial/create`; // API endpoint for creating a testimonial
