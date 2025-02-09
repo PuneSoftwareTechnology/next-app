@@ -4,7 +4,8 @@ export interface Blog {
   slug: string;
   created_at: string;
   author_id: string;
-  status: "PUBLISHED" | "DRAFT" | "ARCHIVED";
+  introduction: string;
+  featured_image: string;
 }
 
 export interface FetchBlogResponse {

@@ -2,6 +2,7 @@ import Head from "next/head";
 import React from "react";
 import Typography from "../atoms/Typography";
 import Image from "next/image";
+import Link from "next/link"; // Import the Link component
 import { Blog } from "@/util/interfaces/blog";
 import LOGO from "../../assests/images/Logo.png";
 
@@ -34,13 +35,15 @@ const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
         </Typography>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto">
           {blogs.map((blog: Blog, index: number) => (
-            <div
+            <Link
+              href={`/blogs/${blog.slug}`}
               key={index}
               className="flex flex-col justify-between items-center text-center bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow pb-4"
+              aria-label={`Read more about ${blog.title}`}
             >
               <Image
-                src={LOGO}
-                alt={`Logo for blog titled ${blog.title}`} // Descriptive alt text
+                src={blog?.featured_image}
+                alt={`Logo for blog titled ${blog.title}`}
                 height={120}
                 width={200}
                 className="rounded-t-lg object-cover w-full h-40"
@@ -54,10 +57,10 @@ const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
                   {blog.title}
                 </Typography>
                 <Typography variant="p" as="p" className="text-gray-600 px-4">
-                  {blog.slug}
+                  {blog.introduction}
                 </Typography>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
