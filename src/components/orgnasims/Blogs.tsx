@@ -4,7 +4,6 @@ import Typography from "../atoms/Typography";
 import Image from "next/image";
 import Link from "next/link"; // Import the Link component
 import { Blog } from "@/util/interfaces/blog";
-import LOGO from "../../assests/images/Logo.png";
 
 interface BlogsProps {
   blogs: Blog[];

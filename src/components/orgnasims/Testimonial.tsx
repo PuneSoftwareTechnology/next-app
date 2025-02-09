@@ -10,7 +10,7 @@ interface TestimonialsProps {
   testimonials: FetchTestimonialResponse[];
 }
 
-const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
+const Testimonials: FC<TestimonialsProps> = ({ testimonials }) => {
   const [visibleCount, setVisibleCount] = useState<number>(3);
   const [expanded, setExpanded] = useState<{ [key: number]: boolean }>({});
 

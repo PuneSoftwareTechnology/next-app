@@ -16,7 +16,7 @@ const fetchData = async () => {
   }
 };
 
-export default async function () {
+export default async function TestimonialsPage() {
   const testimonials = (await fetchData()) ?? [];
   return (
     <>

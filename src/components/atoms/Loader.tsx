@@ -1,10 +1,9 @@
 import React from "react";
 
-interface LoaderProps {
+interface LoaderProps extends Record<string, unknown> {
   size?: "small" | "medium" | "large";
   ariaLabel?: string;
   className?: string;
-  [key: string]: any; // To allow any other props
 }
 
 const Loader: React.FC<LoaderProps> = ({

@@ -14,3 +14,15 @@ export interface ResponseInterFace {
   message: string;
   data: FetchTestimonialResponse[];
 }
+
+export interface CreateTestimonialInterface {
+  name: string;
+  course: string;
+  star_ratings: number;
+  testimonial: string;
+}
+
+export interface TestimonialResponse {
+  success: boolean;
+  message: string;
+}

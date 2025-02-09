@@ -23,6 +23,7 @@ async function fetchCompanies(): Promise<CompanyInterface[]> {
     const response: ResponseInterface = await res.json();
     return response.success ? response.data : [];
   } catch (error) {
+    console.error("API response error:", error);
     return [];
   }
 }
