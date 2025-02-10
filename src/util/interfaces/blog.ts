@@ -5,6 +5,7 @@ export interface Blog {
   created_at: string;
   author_id: string;
   introduction: string;
+  category: string;
   featured_image: string;
 }
 

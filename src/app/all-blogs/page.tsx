@@ -1,113 +1,133 @@
-import Link from "next/link";
-import Head from "next/head";
-import Header from "@/components/molecules/Header";
-import LOGO from "../../assests/images/Logo.png";
+import { Metadata } from "next";
 import Image from "next/image";
-import { FC, Suspense } from "react";
-import Loader from "@/components/atoms/Loader";
-import GlobalLoader from "@/components/molecules/GlobalLoader";
-type Blog = {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  category: string;
-  content: string;
-};
-const blogs: Blog[] = [
-  {
-    id: "understanding-artificial-intelligence-and-machine-learning",
-    title: "Understanding Artificial Intelligence and Machine Learning",
-    description:
-      "A deep dive into AI and ML technologies, their uses, and their future.",
-    image: "/images/ai-ml.jpg",
-    category: "AI-ML",
-    content: "Full content of the AI and ML blog goes here...",
-  },
-  {
-    id: "introduction-to-sap-a-beginner's-guide",
-    title: "Introduction to SAP: A Beginner's Guide",
-    description:
-      "Learn the basics of SAP, its modules, and its applications in enterprise systems.",
-    image: "/images/sap.jpg",
-    category: "SAP",
-    content: "Full content of the SAP blog goes here...",
-  },
+import Link from "next/link";
+import Header from "@/components/molecules/Header";
+import Footer from "@/components/molecules/Footer";
+import Typography from "@/components/atoms/Typography";
+import { getAllBlogs } from "@/APIS/blog.service";
+import { Blog } from "@/util/interfaces/blog";
+import { formatText } from "@/util/helperFunctions";
+
+const categories = [
+  "SAP",
+  "CLOUD_TECHNOLOGIES",
+  "DATA_ANALYTICS",
+  "ML&AI",
+  "CYBER_SECURITY",
 ];
-const AllBlogs: FC = () => {
+
+const fetchBlogs = async (): Promise<Blog[]> => {
+  try {
+    const response = await getAllBlogs("blog");
+    if (response?.success && Array.isArray(response.data)) {
+      return response.data as Blog[];
+    }
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
+  }
+  return [];
+};
+
+export const metadata: Metadata = {
+  title: "All Blogs | Pune Software Technologies",
+  description: "Explore all the blogs related to AI, ML, SAP, and more.",
+  openGraph: {
+    title: "All Blogs | Pune Software Technologies",
+    description: "Explore all the blogs related to AI, ML, SAP, and more.",
+    url: "https://punesoftwaretechnologies.com/blogs",
+    type: "website",
+  },
+  twitter: {
+    title: "All Blogs | Pune Software Technologies",
+    description: "Explore all the blogs related to AI, ML, SAP, and more.",
+    card: "summary_large_image",
+  },
+};
+
+const AllBlogs = async () => {
+  const blogs = await fetchBlogs();
+
+  const latestBlogs = blogs.slice(0, 4);
+  const categorizedBlogs: Record<string, Blog[]> = {};
+
+  categories.forEach((category) => {
+    categorizedBlogs[category] = [];
+  });
+
+  blogs.forEach((blog) => {
+    if (categories.includes(blog.category)) {
+      categorizedBlogs[blog.category].push(blog);
+    }
+  });
+
   return (
     <>
-      <Suspense fallback={<GlobalLoader />}>
-        <Head>
-          <title>All Blogs | Your Website</title>
-          <meta
-            name="description"
-            content="Explore all the blogs related to AI, ML, SAP, and more."
-          />
-          <meta name="robots" content="index, follow" />
-        </Head>
-        <Header />
-        <main className="container mx-auto px-4 md:px-32 py-8">
-          <h1 className="text-3xl font-bold text-center mb-8">All Blogs</h1>
+      <Header />
+      <div className="p-6 bg-white rounded-lg shadow-lg mt-24 mb-8 sm:p-4 mx-6 md:mx-32">
+        <Typography variant="h1" className="mb-8 text-center">
+          All Blogs
+        </Typography>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {blogs.map((blog) => (
-              <div
-                key={blog.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
-              >
-                <Image
-                  src={LOGO}
-                  alt={blog.title}
-                  className="w-full h-60 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-xl font-semibold">{blog.title}</h3>
-                  <p className="text-gray-600 text-sm">{blog.description}</p>
-                  <Link
-                    href={`/blog/${blog.id}`}
-                    className="text-blue-500 mt-2 inline-block"
-                  >
-                    Read More
-                  </Link>
+        {/* Latest Blogs Section */}
+        <Typography variant="h3" as="h3" className="mb-4 text-left">
+          Latest Blogs
+        </Typography>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+          {latestBlogs.map((blog) => (
+            <BlogCard key={blog.id} blog={blog} />
+          ))}
+        </div>
+
+        {/* Categorized Blogs */}
+        {categories.map(
+          (category) =>
+            categorizedBlogs[category] &&
+            categorizedBlogs[category].length > 0 && (
+              <div key={category} className="mb-12">
+                <Typography variant="h3" as="h3" className="mb-4 text-left">
+                  {formatText(category)}
+                </Typography>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                  {categorizedBlogs[category].map((blog) => (
+                    <BlogCard key={blog.id} blog={blog} />
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-
-          <div className="mt-12">
-            <h2 className="text-2xl font-semibold">Related Blogs</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-6">
-              {blogs
-                .filter((blog) => blog.category === "AI-ML")
-                .map((blog) => (
-                  <Link
-                    key={blog.id}
-                    href={`/blog/${blog.id}`}
-                    className="text-blue-500 mt-2 inline-block"
-                  >
-                    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                      <Image
-                        src={LOGO}
-                        alt={blog.title}
-                        className="w-full h-60 object-cover"
-                      />
-                      <div className="p-4">
-                        <h3 className="text-xl font-semibold">{blog.title}</h3>
-                        <p className="text-gray-600 text-sm">
-                          {blog.description}
-                        </p>
-                        Read More
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-            </div>
-          </div>
-        </main>
-      </Suspense>
+            )
+        )}
+      </div>
+      <Footer />
     </>
   );
 };
+
+const BlogCard = ({ blog }: { blog: Blog }) => (
+  <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <Link href={`/blog/${blog.slug}`}>
+      <Image
+        src={blog?.featured_image}
+        alt={`Blog: ${blog.title}`}
+        height={120}
+        width={200}
+        className="rounded-t-lg object-cover w-full h-40"
+      />
+      <div className="p-4">
+        <Typography
+          variant="h5"
+          as="h5"
+          className="m-4 text-left text-gray-800"
+        >
+          {blog.title}
+        </Typography>
+        <Typography variant="p" as="p" className="text-gray-600 px-4">
+          {blog.introduction}
+        </Typography>
+        <Typography variant="h6" className="text-blue-500">
+          Read More
+        </Typography>
+      </div>
+    </Link>
+  </div>
+);
 
 export default AllBlogs;
