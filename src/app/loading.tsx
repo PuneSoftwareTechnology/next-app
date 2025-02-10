@@ -1,10 +1,10 @@
 import React from "react";
-import Loader from "../atoms/Loader";
-import Header from "./Header";
 import Head from "next/head";
-import Typography from "../atoms/Typography";
+import Loader from "@/components/atoms/Loader";
+import Typography from "@/components/atoms/Typography";
+import Header from "@/components/molecules/Header";
 
-const GlobalLoader: React.FC = () => {
+const Loading: React.FC = () => {
   return (
     <>
       {/* SEO Optimization */}
@@ -22,10 +22,7 @@ const GlobalLoader: React.FC = () => {
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 
-      {/* Header is fully visible */}
       <Header />
-
-      {/* Transparent background with loader */}
       <div
         role="status"
         aria-live="polite"
@@ -35,7 +32,7 @@ const GlobalLoader: React.FC = () => {
         {/* Loader with responsive size */}
         <div className="bg-white p-4 rounded-lg shadow-lg">
           <Loader size="large" className="mx-auto border-gray-800" />
-          <Typography variant="p" as="p" className="mb-6 ">
+          <Typography variant="p" as="p" className="mb-6">
             Loading, please wait...
           </Typography>
         </div>
@@ -44,4 +41,4 @@ const GlobalLoader: React.FC = () => {
   );
 };
 
-export default GlobalLoader;
+export default Loading;
