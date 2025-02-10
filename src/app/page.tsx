@@ -22,13 +22,13 @@ type ContactButton = {
 const HomePage = () => {
   const contactButtons: ContactButton[] = [
     {
-      href: "tel:+917387086618",
+      href: "tel:+919175599880",
       icon: <IoCall size={30} />,
       bgColor: "bg-blue-600",
       ariaLabel: "Call Us",
     },
     {
-      href: "https://wa.me/7387086618",
+      href: "https://wa.me/9175599880",
       icon: <SiWhatsapp size={30} />,
       bgColor: "bg-green-500",
       ariaLabel: "Message us on WhatsApp",
