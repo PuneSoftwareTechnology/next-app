@@ -5,7 +5,7 @@ import GlobalLoader from "../molecules/GlobalLoader";
 
 async function fetchAllBlogs() {
   try {
-    const response = await getAllBlogs();
+    const response = await getAllBlogs("main");
     if (response?.success) {
       return response.data;
     }

@@ -64,6 +64,15 @@ const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
               </Link>
             ))}
           </div>
+          <Link
+            href="/all-blogs"
+            className="bg-blue-600 w-fit my-4 text-white rounded-md px-4 py-2 mx-auto flex justify-center items-center hover:bg-blue-700 transition"
+            aria-label="Read all blogs"
+          >
+            <Typography variant="h6" className="text-white ">
+              Read All
+            </Typography>
+          </Link>
         </section>
       </Suspense>
     </>
