@@ -35,7 +35,7 @@ const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto">
           {blogs.map((blog: Blog, index: number) => (
             <Link
-              href={`/blogs/${blog.slug}`}
+              href={`/blog/${blog.slug}`}
               key={index}
               className="flex flex-col justify-between items-center text-center bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow pb-4"
               aria-label={`Read more about ${blog.title}`}
