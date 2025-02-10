@@ -2,6 +2,7 @@ import { getAllBlogs } from "@/APIS/blog.service";
 import { Suspense } from "react";
 import Loader from "../atoms/Loader";
 import BlogsPage from "../orgnasims/Blogs";
+import GlobalLoader from "../molecules/GlobalLoader";
 
 async function fetchAllBlogs() {
   try {
@@ -21,13 +22,7 @@ export default async function BlogSection() {
 
   return (
     <>
-      <Suspense
-        fallback={
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-100 bg-opacity-75 z-50">
-            <Loader size="large" className="mx-auto border-gray-800" />
-          </div>
-        }
-      >
+      <Suspense fallback={<GlobalLoader />}>
         <BlogsPage blogs={blogs} />
       </Suspense>
     </>
