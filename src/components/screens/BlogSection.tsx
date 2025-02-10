@@ -1,6 +1,5 @@
 import { getAllBlogs } from "@/APIS/blog.service";
 import { Suspense } from "react";
-import Loader from "../atoms/Loader";
 import BlogsPage from "../orgnasims/Blogs";
 import GlobalLoader from "../molecules/GlobalLoader";
 
