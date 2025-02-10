@@ -2,14 +2,14 @@ import {
   FetchBlogResponse,
   FetchOneBlogResponse,
 } from "@/util/interfaces/blog";
-import { BASE_URL, LOCAL_URL } from "@/util/urls";
+import { BASE_URL } from "@/util/urls";
 import axios, { AxiosError } from "axios";
 
 export const getAllBlogs = async (
   type: string
 ): Promise<FetchBlogResponse | null> => {
   try {
-    const url = `${LOCAL_URL}/blog/all?landing_page=${type}`; // API endpoint for fetching all blogs
+    const url = `${BASE_URL}/blog/all?landing_page=${type}`; // API endpoint for fetching all blogs
 
     const { data } = await axios.get<FetchBlogResponse>(url);
 
@@ -33,7 +33,7 @@ export const getOneBlog = async (
   slug: string
 ): Promise<FetchOneBlogResponse | null> => {
   try {
-    const url = `${LOCAL_URL}/blog/?slug=${slug}`; // API endpoint for fetching all blogs
+    const url = `${BASE_URL}/blog/?slug=${slug}`; // API endpoint for fetching all blogs
 
     const { data } = await axios.get<FetchOneBlogResponse>(url);
 
