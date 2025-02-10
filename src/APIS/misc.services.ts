@@ -1,10 +1,10 @@
 import { ResponseInterface } from "@/util/interfaces/misc";
-import { LOCAL_URL } from "@/util/urls";
+import { BASE_URL } from "@/util/urls";
 import axios from "axios";
 
 export const getAllCompanies = async (): Promise<ResponseInterface> => {
   try {
-    const url = `${LOCAL_URL}/companies/all`;
+    const url = `${BASE_URL}/companies/all`;
     const { data } = await axios.get<ResponseInterface>(url);
 
     return data; // Ensure the response follows the expected structure

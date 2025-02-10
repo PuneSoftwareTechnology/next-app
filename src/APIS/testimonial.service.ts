@@ -3,14 +3,14 @@ import {
   ResponseInterFace,
   TestimonialResponse,
 } from "@/util/interfaces/testimonial";
-import { LOCAL_URL } from "@/util/urls";
+import { BASE_URL } from "@/util/urls";
 import axios, { AxiosError } from "axios";
 
 export const createTestimonial = async (
   payload: CreateTestimonialInterface
 ): Promise<TestimonialResponse | null> => {
   try {
-    const url = `${LOCAL_URL}/testimonial/create`; // API endpoint for creating a testimonial
+    const url = `${BASE_URL}/testimonial/create`; // API endpoint for creating a testimonial
     const { data } = await axios.post<TestimonialResponse>(url, payload);
 
     return data;
@@ -34,8 +34,8 @@ export const fetchAllTestimonials = async (
 ): Promise<ResponseInterFace | null> => {
   try {
     const url = course
-      ? `${LOCAL_URL}/testimonial/all/?course=${course}`
-      : `${LOCAL_URL}/testimonial/all`;
+      ? `${BASE_URL}/testimonial/all/?course=${course}`
+      : `${BASE_URL}/testimonial/all`;
 
     const { data } = await axios.get<ResponseInterFace>(url);
 

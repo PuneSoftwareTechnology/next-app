@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Metadata } from "next";
 import Typography from "../atoms/Typography";
 import { CompanyInterface } from "@/util/interfaces/misc";
-import { LOCAL_URL } from "@/util/urls";
+import { BASE_URL } from "@/util/urls";
 
 interface ResponseInterface {
   success: boolean;
@@ -13,7 +13,7 @@ interface ResponseInterface {
 // Fetch companies from API
 async function fetchCompanies(): Promise<CompanyInterface[]> {
   try {
-    const res = await fetch(`${LOCAL_URL}/companies/all`, {
+    const res = await fetch(`${BASE_URL}/companies/all`, {
       cache: "no-store",
     });
     if (!res.ok) {

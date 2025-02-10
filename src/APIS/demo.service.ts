@@ -1,5 +1,5 @@
 import { DemoInterface } from "@/util/interfaces/demo";
-import { LOCAL_URL } from "@/util/urls";
+import { BASE_URL } from "@/util/urls";
 import axios, { AxiosError } from "axios";
 
 interface DemoResponse {
@@ -11,7 +11,7 @@ export const sendDemoRequest = async (
   payload: DemoInterface
 ): Promise<DemoResponse | null> => {
   try {
-    const url = `${LOCAL_URL}/demo/request`;
+    const url = `${BASE_URL}/demo/request`;
     const { data } = await axios.post<DemoResponse>(url, payload);
 
     return data;

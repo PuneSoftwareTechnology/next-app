@@ -1,10 +1,10 @@
 import { FetchBlogResponse } from "@/util/interfaces/blog";
-import { LOCAL_URL } from "@/util/urls";
+import { BASE_URL } from "@/util/urls";
 import axios, { AxiosError } from "axios";
 
 export const getAllBlogs = async (): Promise<FetchBlogResponse | null> => {
   try {
-    const url = `${LOCAL_URL}/blog/all?landing_page=true`; // API endpoint for fetching all blogs
+    const url = `${BASE_URL}/blog/all?landing_page=true`; // API endpoint for fetching all blogs
 
     const { data } = await axios.get<FetchBlogResponse>(url);
 
