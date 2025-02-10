@@ -43,9 +43,9 @@ const HomePage = () => {
         <div>
           <Header />
           <HeroSection />
+          <Courses />
           <ProgramHighlights />
           <WhyChooseUs />
-          <Courses />
           <BlogSection />
           <TestimonialsPage />
           <PlacementPage />
