@@ -37,37 +37,34 @@ const HomePage = () => {
   ];
 
   return (
-    <Suspense fallback={<GlobalLoader />}>
-      <div className="relative min-h-screen bg-gray-50">
-        {/* Main Content */}
-        <div>
-          <Header />
-          <HeroSection />
-          <Courses />
-          <ProgramHighlights />
-          <WhyChooseUs />
-          <BlogSection />
-          <TestimonialsPage />
-          <PlacementPage />
-          <EnquiryForm />
-          <Footer />
-        </div>
-
-        {/* Floating Contact Buttons */}
-        <div className="fixed bottom-4 right-4 flex flex-col items-center space-y-2 md:space-y-4">
-          {contactButtons.map((button, index) => (
-            <a
-              key={index}
-              href={button.href}
-              className={`group ${button.bgColor} text-white rounded-full p-3 shadow-lg transition-transform transform hover:scale-110 hover:opacity-80 relative`}
-              aria-label={button.ariaLabel}
-            >
-              {button.icon}
-            </a>
-          ))}
-        </div>
+    <div className="relative min-h-screen bg-gray-50">
+      {/* Main Content */}
+      <div>
+        <Header />
+        <HeroSection />
+        <Courses />
+        <ProgramHighlights />
+        <WhyChooseUs />
+        <BlogSection />
+        <TestimonialsPage />
+        <PlacementPage />
+        <EnquiryForm />
+        <Footer />
       </div>
-    </Suspense>
+
+      <div className="fixed bottom-4 right-4 flex flex-col items-center space-y-2 md:space-y-4">
+        {contactButtons.map((button, index) => (
+          <a
+            key={index}
+            href={button.href}
+            className={`group ${button.bgColor} text-white rounded-full p-3 shadow-lg transition-transform transform hover:scale-110 hover:opacity-80 relative`}
+            aria-label={button.ariaLabel}
+          >
+            {button.icon}
+          </a>
+        ))}
+      </div>
+    </div>
   );
 };
 

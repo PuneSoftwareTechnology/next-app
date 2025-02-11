@@ -21,9 +21,7 @@ export default async function TestimonialsPage() {
   const testimonials = (await fetchData()) ?? [];
   return (
     <>
-      <Suspense fallback={<GlobalLoader />}>
-        <Testimonials testimonials={testimonials} />
-      </Suspense>
+      <Testimonials testimonials={testimonials} />
     </>
   );
 }

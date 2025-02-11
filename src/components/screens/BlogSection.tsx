@@ -21,9 +21,7 @@ export default async function BlogSection() {
 
   return (
     <>
-      <Suspense fallback={<GlobalLoader />}>
-        <BlogsPage blogs={blogs} />
-      </Suspense>
+      <BlogsPage blogs={blogs} />
     </>
   );
 }
