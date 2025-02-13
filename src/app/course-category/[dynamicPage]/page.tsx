@@ -12,6 +12,7 @@ import COURSE_IMAGE from "../../../assests/images/swe.webp";
 import LOGO from "../../../assests/images/Logo.png";
 import { Suspense } from "react";
 import GlobalLoader from "@/components/molecules/GlobalLoader";
+import BlogSection from "@/components/screens/BlogSection";
 
 // SEO Metadata
 export const metadata: Metadata = {
@@ -109,6 +110,7 @@ export default async function DynamicPage({ params }: { params: Params }) {
           <WhyChooseUs />
           <TestimonialsPage />
           <FAQPage />
+          <BlogSection />
         </main>
         <Footer />
       </Suspense>
