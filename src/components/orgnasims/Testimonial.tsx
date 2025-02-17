@@ -62,9 +62,9 @@ const Testimonials: FC<TestimonialsProps> = ({ testimonials }) => {
 
                   <div className="flex text-yellow-400">
                     {[...Array(5)].map((_, i) =>
-                      i < Math.floor(testimonial.star_ratings) ? (
+                      i < Math.floor(testimonial.star_rating) ? (
                         <FaStar key={i} />
-                      ) : i < testimonial.star_ratings ? (
+                      ) : i < testimonial.star_rating ? (
                         <FaRegStarHalfStroke key={i} />
                       ) : (
                         <FaStar key={i} className="text-gray-300" />

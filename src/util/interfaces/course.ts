@@ -21,3 +21,17 @@ export interface CoursesResponse {
   message: string;
   data: Course[];
 }
+
+export interface Courses {
+  id: string;
+  name: string;
+  description: string;
+  slug: string;
+  featured_image: string;
+}
+
+export interface AllCoursesResponse {
+  success: boolean;
+  message: string;
+  data: Courses[];
+}
