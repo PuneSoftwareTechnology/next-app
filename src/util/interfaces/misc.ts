@@ -1,7 +1,7 @@
 export interface CompanyInterface {
   id: number;
-  company_name: string;
-  company_logo: string;
+  name: string;
+  logo_url: string;
   created_at: string;
   updated_at: string;
   deleted: boolean;

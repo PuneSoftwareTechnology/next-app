@@ -1,7 +1,5 @@
 import { getAllBlogs } from "@/APIS/blog.service";
-import { Suspense } from "react";
 import BlogsPage from "../orgnasims/Blogs";
-import GlobalLoader from "../molecules/GlobalLoader";
 
 async function fetchAllBlogs() {
   try {
@@ -15,7 +13,6 @@ async function fetchAllBlogs() {
     return null;
   }
 }
-
 export default async function BlogSection() {
   const blogs = (await fetchAllBlogs()) ?? [];
 

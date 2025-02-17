@@ -79,8 +79,8 @@ export default async function PlacementsPage() {
             <div key={company.id} className="inline-block px-6 sm:px-12 py-4">
               <div className="relative w-24 h-16 sm:w-36 sm:h-24">
                 <Image
-                  src={company.company_logo}
-                  alt={`Logo of ${company.company_name} where our alumni work`}
+                  src={company.logo_url}
+                  alt={`Logo of ${company.name} where our alumni work`}
                   fill
                   className="object-contain"
                   sizes="(max-width: 640px) 100px, 150px"

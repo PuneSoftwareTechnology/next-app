@@ -57,7 +57,9 @@ const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
                   {blog.title}
                 </Typography>
                 <Typography variant="p" as="p" className="text-gray-600 px-4">
-                  {blog.introduction}
+                  {blog.introduction && blog.introduction.length > 70
+                    ? blog.introduction.slice(0, 70) + "..."
+                    : blog.introduction}
                 </Typography>
               </div>
             </Link>
@@ -69,7 +71,7 @@ const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
           aria-label="Read all blogs"
         >
           <Typography variant="h6" className="text-white ">
-            Read All
+            Read All Blo
           </Typography>
         </Link>
       </section>

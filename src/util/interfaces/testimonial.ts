@@ -3,7 +3,8 @@ export interface FetchTestimonialResponse {
   name: string;
   star_ratings: 5;
   testimonial: string;
-  course: string;
+  course_id: string;
+  category_id: string;
   created_at: string;
   deleted: boolean;
   user_email: string;
@@ -17,7 +18,8 @@ export interface ResponseInterFace {
 
 export interface CreateTestimonialInterface {
   name: string;
-  course: string;
+  course_id: string;
+  category_id: string;
   star_ratings: number;
   testimonial: string;
 }
