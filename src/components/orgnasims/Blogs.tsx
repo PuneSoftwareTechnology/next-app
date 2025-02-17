@@ -71,7 +71,7 @@ const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
           aria-label="Read all blogs"
         >
           <Typography variant="h6" className="text-white ">
-            Read All Blo
+            Read All Blogs
           </Typography>
         </Link>
       </section>
