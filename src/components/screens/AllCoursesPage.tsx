@@ -123,7 +123,7 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
                   </Typography>
 
                   <Link
-                    href={`/${course.slug}`}
+                    href={`/course/${course.slug}`}
                     className="bg-blue-600 w-fit my-4 text-white rounded-md px-4 py-2 mx-auto flex justify-center items-center hover:bg-blue-700 transition"
                     aria-label="Read all blogs"
                   >

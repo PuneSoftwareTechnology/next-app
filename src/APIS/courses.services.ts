@@ -5,6 +5,8 @@ import {
   Course,
   Courses,
   CoursesResponse,
+  FullCourseDetailResponse,
+  FullCourseDetails,
 } from "@/util/interfaces/course";
 import { BASE_URL, LOCAL_URL } from "@/util/urls";
 import axios from "axios";
@@ -61,6 +63,28 @@ export const getAllCategoryCourses = async (
     const url = `${LOCAL_URL}/courses/all?category=${id}`;
     const { data } = await axios.get<AllCoursesResponse>(url);
     if (data?.success && Array.isArray(data.data)) {
+      return data.data;
+    } else {
+      console.error("Invalid response structure:", data);
+      return null;
+    }
+  } catch (err) {
+    if (axios.isAxiosError(err)) {
+      console.error("Axios Error:", err.response?.data || err.message);
+    } else {
+      console.error("Unexpected Error:", err);
+    }
+    return null;
+  }
+};
+
+export const getFullCourseDetails = async (
+  slug: string
+): Promise<FullCourseDetails | null> => {
+  try {
+    const url = `${LOCAL_URL}/courses/get-course-details?slug=${slug}`;
+    const { data } = await axios.get<FullCourseDetailResponse>(url);
+    if (data?.success) {
       return data.data;
     } else {
       console.error("Invalid response structure:", data);

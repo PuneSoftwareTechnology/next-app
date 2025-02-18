@@ -1,0 +1,82 @@
+import { FullCourseDetails } from "@/util/interfaces/course";
+import React from "react";
+import Header from "../molecules/Header";
+import Footer from "../molecules/Footer";
+import Typography from "../atoms/Typography";
+import Image from "next/image";
+import TrainingProcedure from "../orgnasims/TrainingProcedure";
+import CourseModules from "../orgnasims/CourseModules";
+import ProgramHighlights from "./ProgramAdvantages";
+import CourseSyllabus from "../orgnasims/CourseSyllabus";
+import CourseProjects from "../orgnasims/CourseProjects";
+import CourseJobs from "../orgnasims/CourseJobs";
+import TestimonialsPage from "./Testomonials";
+import PlacementsPage from "./PlacementsPage";
+import EnquiryForm from "./Enquiryform";
+import RelatedCourses from "../orgnasims/RelatedCourses";
+import Testimonials from "../orgnasims/Testimonial";
+import BlogsPage from "../orgnasims/Blogs";
+
+interface CoursePageProps {
+  courseDetails: FullCourseDetails;
+}
+
+const FullCoursePage: React.FC<CoursePageProps> = ({ courseDetails }) => {
+  return (
+    <>
+      <Header />
+
+      <section className=" mt-20 bg-white  px-6 py-8 md:px-32 ">
+        <div className="flex justify-between items-start gap-x-8 flex-grow">
+          <div className="mt-4 lg:mt-8">
+            <Typography variant="h3" as="h3">
+              {courseDetails?.course?.name}
+            </Typography>
+            <div className="mt-4">
+              {courseDetails?.course?.intro?.map((item, index) => (
+                <Typography variant="p" as="p" key={index}>
+                  ✅ {item}
+                </Typography>
+              ))}
+            </div>
+          </div>
+          <Image
+            src={courseDetails?.course?.featured_image}
+            alt="course-image"
+            height={400}
+            width={600}
+            className="object-cover rounded-xl"
+          />
+        </div>
+        <Typography variant="p" as="p" className="mt-8">
+          {courseDetails?.course?.description}
+        </Typography>
+      </section>
+      {courseDetails?.course?.training_procedure && <TrainingProcedure />}
+      <CourseModules
+        modules={courseDetails?.course?.modules}
+        module_heading={courseDetails?.course?.module_heading}
+      />
+      <ProgramHighlights />
+      <CourseSyllabus
+        category={"Sap"}
+        prerequisites={courseDetails?.course?.prerequisite}
+        syllabus={courseDetails?.syllabus}
+      />
+      <CourseProjects projects={courseDetails?.projects} />
+      <CourseJobs jobs={courseDetails?.jobs} category={"Sap"} />
+      <Testimonials testimonials={courseDetails?.testimonials} />
+      <PlacementsPage />
+      <BlogsPage blogs={courseDetails?.blogs} />
+      {courseDetails?.course?.related_courses?.length > 0 && (
+        <RelatedCourses
+          relatedCourses={courseDetails?.course?.related_courses}
+        />
+      )}
+      <EnquiryForm />
+      <Footer />
+    </>
+  );
+};
+
+export default FullCoursePage;
