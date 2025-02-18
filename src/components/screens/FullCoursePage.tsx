@@ -10,7 +10,6 @@ import ProgramHighlights from "./ProgramAdvantages";
 import CourseSyllabus from "../orgnasims/CourseSyllabus";
 import CourseProjects from "../orgnasims/CourseProjects";
 import CourseJobs from "../orgnasims/CourseJobs";
-import TestimonialsPage from "./Testomonials";
 import PlacementsPage from "./PlacementsPage";
 import EnquiryForm from "./Enquiryform";
 import RelatedCourses from "../orgnasims/RelatedCourses";

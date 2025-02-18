@@ -2,7 +2,7 @@ import Footer from "@/components/molecules/Footer";
 import Header from "@/components/molecules/Header";
 import { IoCall } from "react-icons/io5";
 import { SiWhatsapp } from "react-icons/si";
-import { ReactElement, Suspense } from "react";
+import { ReactElement } from "react";
 import HeroSection from "@/components/screens/HeroSection";
 import ProgramHighlights from "@/components/screens/ProgramAdvantages";
 import WhyChooseUs from "@/components/screens/WhyChooseUs";
@@ -11,7 +11,6 @@ import TestimonialsPage from "@/components/screens/Testomonials";
 import PlacementPage from "@/components/screens/PlacementsPage";
 import EnquiryForm from "@/components/screens/Enquiryform";
 import BlogSection from "@/components/screens/BlogSection";
-import GlobalLoader from "@/components/molecules/GlobalLoader";
 
 type ContactButton = {
   href: string;

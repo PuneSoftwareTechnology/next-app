@@ -1,10 +1,9 @@
 import Head from "next/head";
-import React, { Suspense } from "react";
+import React from "react";
 import Typography from "../atoms/Typography";
 import Image from "next/image";
 import Link from "next/link"; // Import the Link component
 import { Blog } from "@/util/interfaces/blog";
-import GlobalLoader from "../molecules/GlobalLoader";
 
 interface BlogsProps {
   blogs: Blog[];

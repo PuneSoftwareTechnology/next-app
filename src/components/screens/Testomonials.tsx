@@ -1,8 +1,7 @@
-import { Suspense } from "react";
+import React from "react";
 import { fetchAllTestimonials } from "@/APIS/testimonial.service";
 
 import Testimonials from "../orgnasims/Testimonial";
-import GlobalLoader from "../molecules/GlobalLoader";
 
 const fetchData = async () => {
   try {

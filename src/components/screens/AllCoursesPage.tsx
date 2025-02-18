@@ -11,7 +11,6 @@ import FAQPage from "./Faq";
 import BlogSection from "./BlogSection";
 import Footer from "../molecules/Footer";
 import { Courses } from "@/util/interfaces/course";
-import PrimaryButton from "../atoms/PrimaryButton";
 
 interface AllCoursesPageProps {
   courses: Courses[];
