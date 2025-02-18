@@ -8,7 +8,7 @@ import {
   FullCourseDetailResponse,
   FullCourseDetails,
 } from "@/util/interfaces/course";
-import { BASE_URL, LOCAL_URL } from "@/util/urls";
+import { BASE_URL } from "@/util/urls";
 import axios from "axios";
 
 export const getAllCategories = async (): Promise<Category[] | null> => {
@@ -60,7 +60,7 @@ export const getAllCategoryCourses = async (
   id: string
 ): Promise<Courses[] | null> => {
   try {
-    const url = `${LOCAL_URL}/courses/all?category=${id}`;
+    const url = `${BASE_URL}/courses/all?category=${id}`;
     const { data } = await axios.get<AllCoursesResponse>(url);
     if (data?.success && Array.isArray(data.data)) {
       return data.data;
@@ -82,7 +82,7 @@ export const getFullCourseDetails = async (
   slug: string
 ): Promise<FullCourseDetails | null> => {
   try {
-    const url = `${LOCAL_URL}/courses/get-course-details?slug=${slug}`;
+    const url = `${BASE_URL}/courses/get-course-details?slug=${slug}`;
     const { data } = await axios.get<FullCourseDetailResponse>(url);
     if (data?.success) {
       return data.data;
