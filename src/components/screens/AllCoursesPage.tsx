@@ -7,10 +7,10 @@ import Link from "next/link";
 import Header from "../molecules/Header";
 import WhyChooseUs from "./WhyChooseUs";
 import TestimonialsPage from "./Testomonials";
-import FAQPage from "./Faq";
 import BlogSection from "./BlogSection";
 import Footer from "../molecules/Footer";
 import { Courses } from "@/util/interfaces/course";
+import { FAQPage } from "./Faq";
 
 interface AllCoursesPageProps {
   courses: Courses[];
@@ -87,13 +87,13 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
             as="h2"
             className="font-[700] text-center mb-8"
           >
-            Explore {content}
+            {content}
           </Typography>
 
           <Typography
             variant="h3"
             as="h3"
-            className="bg-gray-400 text-white rounded-md py-1 my-4 w-full text-center uppercase"
+            className="bg-gray-400 text-white rounded-md py-3 my-4 w-full text-center uppercase"
           >
             {heading}
           </Typography>

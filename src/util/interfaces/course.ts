@@ -1,4 +1,5 @@
 import { Blog } from "./blog";
+import { FAQ } from "./faq";
 import { FetchTestimonialResponse } from "./testimonial";
 
 export interface Category {
@@ -92,6 +93,7 @@ export interface FullCourseDetails {
   syllabus: Syllabus[];
   jobs: Job[];
   blogs: Blog[];
+  faqs: FAQ[];
   testimonials: FetchTestimonialResponse[];
 }
 

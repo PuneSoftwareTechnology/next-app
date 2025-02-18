@@ -15,12 +15,18 @@ import EnquiryForm from "./Enquiryform";
 import RelatedCourses from "../orgnasims/RelatedCourses";
 import Testimonials from "../orgnasims/Testimonial";
 import BlogsPage from "../orgnasims/Blogs";
+import { categoryIdMap } from "@/util/data/category";
+import FaqSection from "../orgnasims/FaqSection";
 
 interface CoursePageProps {
   courseDetails: FullCourseDetails;
 }
 
 const FullCoursePage: React.FC<CoursePageProps> = ({ courseDetails }) => {
+  const category =
+    categoryIdMap[
+      courseDetails?.course?.user_email as keyof typeof categoryIdMap
+    ];
   return (
     <>
       <Header />
@@ -58,12 +64,13 @@ const FullCoursePage: React.FC<CoursePageProps> = ({ courseDetails }) => {
       />
       <ProgramHighlights />
       <CourseSyllabus
-        category={"Sap"}
+        category={category}
         prerequisites={courseDetails?.course?.prerequisite}
         syllabus={courseDetails?.syllabus}
       />
       <CourseProjects projects={courseDetails?.projects} />
-      <CourseJobs jobs={courseDetails?.jobs} category={"Sap"} />
+      <CourseJobs jobs={courseDetails?.jobs} category={category} />
+      <FaqSection faqs={courseDetails?.faqs} />
       <Testimonials testimonials={courseDetails?.testimonials} />
       <PlacementsPage />
       <BlogsPage blogs={courseDetails?.blogs} />

@@ -21,6 +21,7 @@ export default async function DynamicPage({ params }: { params: Params }) {
     (await getAllCategoryCourses(
       pageIdMap[dynamicPage as keyof typeof pageIdMap]
     )) || [];
+
   const content: Record<string, string> = {
     sap: "Learn about SAP and its applications.",
     cloud: "Discover cloud computing technologies.",
@@ -38,7 +39,7 @@ export default async function DynamicPage({ params }: { params: Params }) {
       courses={coursesData}
       content={content[dynamicPage]}
       heroImage={COURSE_IMAGE}
-      heading=" SAP Functional Modules"
+      heading={`${dynamicPage?.toUpperCase()} Functional Modules`}
     />
   );
 }
