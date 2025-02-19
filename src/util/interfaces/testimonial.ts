@@ -19,7 +19,6 @@ export interface ResponseInterFace {
 export interface CreateTestimonialInterface {
   name: string;
   course_id: string;
-  category_id: string;
   star_rating: number;
   testimonial: string;
 }

@@ -16,14 +16,13 @@ import { useRouter } from "next/navigation";
 import Typography from "@/components/atoms/Typography";
 import InputBox from "@/components/atoms/InputBox";
 import Head from "next/head";
-import { Category, Course } from "@/util/interfaces/course";
+import { Course } from "@/util/interfaces/course";
 
 interface FormData {
   name: string;
   testimonial: string;
   rating: number;
   course: string;
-  category: string;
 }
 
 type FormErrors = {
@@ -34,20 +33,15 @@ type FormErrors = {
 
 interface TestimonialFormProps {
   courses: Course[];
-  categories: Category[];
 }
 
-const TestimonialForm: React.FC<TestimonialFormProps> = ({
-  courses,
-  categories,
-}) => {
+const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
   const router = useRouter();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     testimonial: "",
     rating: 0,
     course: "",
-    category: "",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -84,7 +78,6 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
         const response = await createTestimonial({
           name: formData.name,
           course_id: formData.course,
-          category_id: formData.category,
           star_rating: formData.rating,
           testimonial: formData.testimonial,
         });
@@ -106,7 +99,6 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
           testimonial: "",
           rating: 0,
           course: "",
-          category: "",
         });
       }
     }
@@ -152,25 +144,6 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
               {errors.name && (
                 <p className="text-red-500 text-xs">{errors.name}</p>
               )}
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="category"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Category
-              </label>
-              <Dropdown
-                id="category"
-                name="category"
-                options={categories.map((cat) => ({
-                  label: cat.name,
-                  value: String(cat.id),
-                }))}
-                value={formData.category}
-                onChange={handleChange}
-              />
             </div>
 
             <div className="mb-4">

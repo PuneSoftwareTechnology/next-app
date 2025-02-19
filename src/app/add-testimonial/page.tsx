@@ -4,7 +4,6 @@ import Head from "next/head";
 
 export default async function AddTestimonialPage() {
   const courses = await getAllCourses();
-  const categories = await getAllCategories();
 
   return (
     <>
@@ -18,7 +17,7 @@ export default async function AddTestimonialPage() {
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://yourwebsite.com/add-testimonial" />
       </Head>
-      <TestimonialForm courses={courses || []} categories={categories || []} />
+      <TestimonialForm courses={courses || []} />
     </>
   );
 }
