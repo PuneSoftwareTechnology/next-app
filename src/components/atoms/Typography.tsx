@@ -1,4 +1,5 @@
 // src/components/Typography.tsx
+import Linkify from "linkify-react";
 import React from "react";
 
 type TypographyProps = {
@@ -34,7 +35,14 @@ const Typography: React.FC<TypographyProps> = ({
 
   return (
     <Component className={combinedClassName} role={role} {...rest}>
-      {children}
+      <Linkify
+        options={{
+          target: "_blank",
+          className: "text-blue-700 font-bold underline",
+        }}
+      >
+        {children}
+      </Linkify>
     </Component>
   );
 };

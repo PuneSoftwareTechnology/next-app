@@ -3,7 +3,7 @@ import SAP_IMG from "../../assests/images/sap.jpg";
 import CLOUD_IMG from "../../assests/images/cloud.jpg";
 import DA_IMG from "../../assests/images/da.jpg";
 import AIML_IMG from "../../assests/images/aiml.jpg";
-import CYBER_IMG from "../../assests/images/cyber.avif";
+import CYBER_IMG from "../../assests/images/cyber.webp";
 import Image from "next/image";
 import Link from "next/link";
 
