@@ -101,6 +101,7 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
         hcaptchaRef.current?.resetCaptcha();
       }
     } catch (error) {
+      console.error(error);
       toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);

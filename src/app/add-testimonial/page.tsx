@@ -1,4 +1,4 @@
-import { getAllCategories, getAllCourses } from "@/APIS/courses.services";
+import { getAllCourses } from "@/APIS/courses.services";
 import TestimonialForm from "@/components/screens/TestimonialForm";
 import Head from "next/head";
 
