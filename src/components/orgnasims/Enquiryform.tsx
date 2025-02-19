@@ -9,17 +9,24 @@ import { DemoInterface } from "@/util/interfaces/demo";
 import { sendDemoRequest } from "@/APIS/demo.service";
 import { toast } from "react-toastify";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { Course } from "@/util/interfaces/course";
+import Dropdown from "../atoms/Dropdown";
 
 const phoneRegex = /^[0-9]{10}$/;
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-const EnquiryForm: React.FC = () => {
+interface PageProps {
+  courses: Course[];
+}
+
+const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<DemoInterface>({
     name: "",
     phone: "",
     email: "",
     message: "",
+    course: "", // Add course to formData
   });
 
   const [errors, setErrors] = useState<Partial<DemoInterface>>({});
@@ -27,7 +34,11 @@ const EnquiryForm: React.FC = () => {
   const hcaptchaRef = useRef<HCaptcha | null>(null);
 
   const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    ) => {
       const { name, value } = e.target;
       setFormData((prev) => ({ ...prev, [name]: value }));
 
@@ -63,6 +74,12 @@ const EnquiryForm: React.FC = () => {
     e.preventDefault();
     setLoading(true);
 
+    if (!captchaToken) {
+      toast.error("Please complete the CAPTCHA");
+      setLoading(false);
+      return;
+    }
+
     if (!validateForm()) {
       setLoading(false);
       return;
@@ -73,7 +90,13 @@ const EnquiryForm: React.FC = () => {
 
       if (response?.success) {
         toast.success("Request submitted. We will contact you soon.");
-        setFormData({ name: "", phone: "", email: "", message: "" });
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          message: "",
+          course: "",
+        }); // Reset course
         setCaptchaToken(null);
         hcaptchaRef.current?.resetCaptcha();
       }
@@ -133,6 +156,16 @@ const EnquiryForm: React.FC = () => {
             required
             aria-label="Email Address"
           />
+          <Dropdown
+            id="course"
+            name="course"
+            options={courses.map((course) => ({
+              label: course.name,
+              value: String(course.id),
+            }))}
+            value={formData.course}
+            onChange={handleChange}
+          />
           <textarea
             id="message"
             name="message"
@@ -157,7 +190,7 @@ const EnquiryForm: React.FC = () => {
           <PrimaryButton
             loading={loading}
             type="submit"
-            disabled={loading}
+            disabled={loading || !captchaToken}
             stretch
           >
             Submit
