@@ -12,7 +12,7 @@ import Footer from "../molecules/Footer";
 import { Courses } from "@/util/interfaces/course";
 import { FAQPage } from "./Faq";
 import ContactButtons from "../organisms/ContactButtons";
-
+import ERROR_IMAGE from "../../assests/images/imageError.png";
 interface AllCoursesPageProps {
   courses: Courses[];
   content: string;
@@ -108,14 +108,12 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
               >
                 <div className="border rounded-md overflow-hidden shadow-lg group hover:bg-white transition-all duration-300">
                   <div className="relative h-48 w-full">
-                    {course?.featured_image && (
-                      <Image
-                        alt="course-image"
-                        src={course.featured_image}
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    )}
+                    <Image
+                      alt="course-image"
+                      src={course.featured_image || ERROR_IMAGE}
+                      layout="fill"
+                      objectFit="cover"
+                    />
                   </div>
                   <Typography
                     variant="h6"

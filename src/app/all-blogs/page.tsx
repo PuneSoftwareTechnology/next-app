@@ -8,6 +8,7 @@ import { getAllBlogs } from "@/APIS/blog.service";
 import { Blog } from "@/util/interfaces/blog";
 import { formatText } from "@/util/helperFunctions";
 import ContactButtons from "@/components/organisms/ContactButtons";
+import ERROR_IMG from "../../assests/images/imageError.png";
 
 const categories = [
   "SAP",
@@ -103,31 +104,31 @@ const AllBlogs = async () => {
 };
 
 const BlogCard = ({ blog }: { blog: Blog }) => (
-  <div className="bg-white rounded-lg shadow-md overflow-hidden">
-    <Link href={`/blog/${blog.slug}`}>
-      {blog?.featured_image && (
-        <Image
-          src={blog?.featured_image}
-          alt={`Blog: ${blog.title}`}
-          height={120}
-          width={200}
-          className="rounded-t-lg object-cover w-full h-40"
-        />
-      )}
-      <div className="p-4">
+  <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full">
+    <Link href={`/blog/${blog.slug}`} className="flex flex-col h-full">
+      <Image
+        src={blog?.featured_image || ERROR_IMG}
+        alt={`Blog: ${blog.title}`}
+        height={120}
+        width={200}
+        className="rounded-t-lg object-cover w-full h-40"
+      />
+      <div className="p-4 flex flex-col flex-grow">
         <Typography
-          variant="h5"
-          as="h5"
-          className="m-4 text-left text-gray-800"
+          variant="h6"
+          as="h6"
+          className="m-4 text-left text-gray-800 flex-grow"
         >
           {blog.title}
         </Typography>
-        <Typography variant="p" as="p" className="text-gray-600 px-4">
-          {blog.introduction}
-        </Typography>
-        <Typography variant="h6" className="text-blue-500">
-          Read More
-        </Typography>
+        <div className="mt-auto">
+          <Typography
+            variant="h6"
+            className="text-white px-2 py-1 w-fit bg-blue-600 rounded-md mx-auto flex-1"
+          >
+            Read More
+          </Typography>
+        </div>
       </div>
     </Link>
     <ContactButtons />

@@ -4,6 +4,7 @@ import Typography from "../atoms/Typography";
 import Image from "next/image";
 import Link from "next/link"; // Import the Link component
 import { Blog } from "@/util/interfaces/blog";
+import ERROR_IMAGE from "../../assests/images/imageError.png";
 
 interface BlogsProps {
   blogs: Blog[];
@@ -40,15 +41,13 @@ const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
               className="flex flex-col justify-between items-center text-center bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow pb-4"
               aria-label={`Read more about ${blog.title}`}
             >
-              {blog?.featured_image && (
-                <Image
-                  src={blog?.featured_image}
-                  alt={`Logo for blog titled ${blog.title}`}
-                  height={120}
-                  width={200}
-                  className="rounded-t-lg object-cover w-full h-40"
-                />
-              )}
+              <Image
+                src={blog?.featured_image || ERROR_IMAGE}
+                alt={`Logo for blog titled ${blog.title}`}
+                height={120}
+                width={200}
+                className="rounded-t-lg object-cover w-full h-40"
+              />
               <div className="">
                 <Typography
                   variant="h5"

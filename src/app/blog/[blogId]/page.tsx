@@ -7,6 +7,7 @@ import { getOneBlog } from "@/APIS/blog.service";
 import { notFound } from "next/navigation";
 import Typography from "@/components/atoms/Typography";
 import ContactButtons from "@/components/organisms/ContactButtons";
+import ERROR_IMG from "../../../assests/images/imageError.png";
 
 type Params = Promise<{ blogId: string }>;
 
@@ -90,15 +91,13 @@ const BlogDetail = async ({ params }: { params: Params }) => {
         <Typography variant="h1" className="mb-4 sm:text-2xl">
           {title}
         </Typography>
-        {featured_image && (
-          <Image
-            src={featured_image}
-            alt={title}
-            width={400}
-            height={100}
-            className="rounded-lg h-auto"
-          />
-        )}
+        <Image
+          src={featured_image || ERROR_IMG}
+          alt={title}
+          width={600}
+          height={300}
+          className="rounded-lg  mx-auto border-2 "
+        />
         <Typography variant="h3" as="h3" className="mt-4 sm:text-sm">
           {introduction}
         </Typography>
@@ -125,15 +124,13 @@ const BlogDetail = async ({ params }: { params: Params }) => {
                 <Typography variant="p" className="sm:text-sm">
                   {section.intro}
                 </Typography>
-                {section.image && (
-                  <Image
-                    src={section.image}
-                    alt={section.title}
-                    width={200}
-                    height={50}
-                    className="rounded-lg mt-2 h-auto"
-                  />
-                )}
+                <Image
+                  src={section.image || ERROR_IMG}
+                  alt={section.title}
+                  width={200}
+                  height={50}
+                  className="rounded-lg mt-2 h-auto"
+                />
                 <Typography variant="p" className="mt-2 sm:text-sm">
                   {section.text}
                 </Typography>

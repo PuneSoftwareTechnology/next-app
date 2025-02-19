@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Typography from "../atoms/Typography";
 import { CompanyInterface } from "@/util/interfaces/misc";
 import { BASE_URL } from "@/util/urls";
+import ERROR_IMAGE from "../../assests/images/imageError.png";
 
 interface ResponseInterface {
   success: boolean;
@@ -78,16 +79,14 @@ export default async function PlacementsPage() {
           {companies?.map((company) => (
             <div key={company.id} className="inline-block px-6 sm:px-12 py-4">
               <div className="relative w-24 h-16 sm:w-36 sm:h-24">
-                {company.logo_url && (
-                  <Image
-                    src={company.logo_url}
-                    alt={`Logo of ${company.name} where our alumni work`}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 640px) 100px, 150px"
-                    priority
-                  />
-                )}
+                <Image
+                  src={company.logo_url || ERROR_IMAGE}
+                  alt={`Logo of ${company.name} where our alumni work`}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 640px) 100px, 150px"
+                  priority
+                />
               </div>
             </div>
           ))}

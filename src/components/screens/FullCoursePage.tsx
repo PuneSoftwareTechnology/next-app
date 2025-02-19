@@ -18,6 +18,7 @@ import { categoryIdMap } from "@/util/data/category";
 import FaqSection from "../orgnasims/FaqSection";
 import ContactButtons from "../organisms/ContactButtons";
 import EnquirySection from "./EnquirySection";
+import ERROR_IMAGE from "../../assests/images/imageError.png";
 
 interface CoursePageProps {
   courseDetails: FullCourseDetails;
@@ -46,15 +47,13 @@ const FullCoursePage: React.FC<CoursePageProps> = ({ courseDetails }) => {
               ))}
             </div>
           </div>
-          {courseDetails?.course?.featured_image && (
-            <Image
-              src={courseDetails?.course?.featured_image}
-              alt="course-image"
-              height={400}
-              width={600}
-              className="object-cover rounded-xl"
-            />
-          )}
+          <Image
+            src={courseDetails?.course?.featured_image || ERROR_IMAGE}
+            alt="course-image"
+            height={400}
+            width={600}
+            className="object-cover rounded-xl"
+          />
         </div>
         <Typography variant="p" as="p" className="mt-8">
           {courseDetails?.course?.description}

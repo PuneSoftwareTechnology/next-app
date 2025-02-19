@@ -3,6 +3,7 @@ import React from "react";
 import Typography from "../atoms/Typography";
 import Image from "next/image";
 import Link from "next/link";
+import ERROR_IMAGE from "../../assests/images/imageError.png";
 
 interface Props {
   relatedCourses: RelatedCourse[];
@@ -30,15 +31,13 @@ export default function RelatedCourses({ relatedCourses }: Props) {
               className="text-blue-500 mt-2 inline-block"
             >
               <article className="border-l-4 border-blue-600 p-4 bg-gray-50 shadow-md">
-                {course?.featured_image && (
-                  <Image
-                    src={course.featured_image}
-                    alt={course.name}
-                    className="w-full h-32 object-cover rounded-md"
-                    width={500}
-                    height={300}
-                  />
-                )}
+                <Image
+                  src={course.featured_image || ERROR_IMAGE}
+                  alt={course.name}
+                  className="w-full h-32 object-cover rounded-md"
+                  width={500}
+                  height={300}
+                />
                 <Typography variant="h6" as="h6" className="text-blue-700 mt-4">
                   {course.name}
                 </Typography>
