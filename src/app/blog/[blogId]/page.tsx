@@ -77,7 +77,6 @@ const BlogDetail = async ({ params }: { params: Params }) => {
     tertiary_content_title,
     tertiary_content_points,
     conclusion,
-    author_id = "Pune Software Technologies",
   } = blog;
 
   const parsedTertiaryPoints = tertiary_content_points
@@ -163,12 +162,6 @@ const BlogDetail = async ({ params }: { params: Params }) => {
             </Typography>
           </div>
         )}
-        <Typography
-          variant="p"
-          className="mt-6 text-gray-600 text-sm font-semibold"
-        >
-          By {author_id}
-        </Typography>
       </div>
       <Footer />
       <ContactButtons />

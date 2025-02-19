@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import PrimaryButton from "../atoms/PrimaryButton";
 import InputBox from "../atoms/InputBox";
 import CALL_PERSON from "../../assests/images/Call.png";
@@ -9,8 +9,12 @@ import { DemoInterface } from "@/util/interfaces/demo";
 import { sendDemoRequest } from "@/APIS/demo.service";
 import { toast } from "react-toastify";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+
+const phoneRegex = /^[0-9]{10}$/;
+const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 const EnquiryForm: React.FC = () => {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<DemoInterface>({
     name: "",
     phone: "",
@@ -18,84 +22,66 @@ const EnquiryForm: React.FC = () => {
     message: "",
   });
 
-  const [errors, setErrors] = useState<DemoInterface>({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
-
+  const [errors, setErrors] = useState<Partial<DemoInterface>>({});
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const hcaptchaRef = useRef<HCaptcha | null>(null);
 
-  const phoneRegex = /^[0-9]{10}$/;
-  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({ ...prev, [name]: value }));
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: "", // Clear the error on change
+      }));
+    },
+    []
+  );
+
+  const validateForm = () => {
+    const newErrors: Partial<DemoInterface> = {};
+
+    if (!formData.name) newErrors.name = "Name is required";
+    if (!formData.phone) newErrors.phone = "Phone number is required";
+    else if (!phoneRegex.test(formData.phone))
+      newErrors.phone = "Enter a valid 10-digit phone number";
+
+    if (!formData.email) newErrors.email = "Email is required";
+    else if (!emailRegex.test(formData.email))
+      newErrors.email = "Enter a valid email address";
+
+    if (!formData.message) newErrors.message = "Message is required";
+
+    if (!captchaToken) toast.error("Please complete the CAPTCHA");
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const validationErrors = { name: "", phone: "", email: "", message: "" };
-    let isValid = true;
 
-    if (!formData.name) {
-      validationErrors.name = "Name is required";
-      isValid = false;
+    if (!validateForm()) {
+      setLoading(false);
+      return;
     }
 
-    if (!formData.phone) {
-      validationErrors.phone = "Phone number is required";
-      isValid = false;
-    } else if (!phoneRegex.test(formData.phone)) {
-      validationErrors.phone = "Please enter a valid 10-digit phone number";
-      isValid = false;
-    }
-
-    if (!formData.email) {
-      validationErrors.email = "Email is required";
-      isValid = false;
-    } else if (!emailRegex.test(formData.email)) {
-      validationErrors.email = "Please enter a valid email address";
-      isValid = false;
-    }
-
-    if (!formData.message) {
-      validationErrors.message = "Message is required";
-      isValid = false;
-    }
-
-    if (!captchaToken) {
-      toast.error("Please complete the CAPTCHA");
-      isValid = false;
-    }
-
-    setErrors(validationErrors);
-
-    if (isValid) {
+    try {
       const response = await sendDemoRequest({ ...formData });
+
       if (response?.success) {
         toast.success("Request submitted. We will contact you soon.");
-        setFormData({
-          name: "",
-          phone: "",
-          email: "",
-          message: "",
-        });
+        setFormData({ name: "", phone: "", email: "", message: "" });
         setCaptchaToken(null);
         hcaptchaRef.current?.resetCaptcha();
       }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
@@ -110,7 +96,7 @@ const EnquiryForm: React.FC = () => {
         />
       </div>
       <div className="w-full lg:w-1/2 bg-white p-8 rounded-lg shadow-lg">
-        <Typography className="" variant="h2" as="h2">
+        <Typography variant="h2" as="h2">
           Get in Touch
         </Typography>
         <form onSubmit={handleSubmit} className="mt-4 space-y-4">
@@ -121,8 +107,8 @@ const EnquiryForm: React.FC = () => {
             placeholder="Your Name"
             value={formData.name}
             onChange={handleChange}
-            required
             error={errors.name}
+            required
             aria-label="Full Name"
           />
           <InputBox
@@ -132,8 +118,8 @@ const EnquiryForm: React.FC = () => {
             placeholder="Your Phone Number"
             value={formData.phone}
             onChange={handleChange}
-            required
             error={errors.phone}
+            required
             aria-label="Phone Number"
           />
           <InputBox
@@ -143,8 +129,8 @@ const EnquiryForm: React.FC = () => {
             placeholder="Your Email Address"
             value={formData.email}
             onChange={handleChange}
-            required
             error={errors.email}
+            required
             aria-label="Email Address"
           />
           <textarea
@@ -171,13 +157,7 @@ const EnquiryForm: React.FC = () => {
           <PrimaryButton
             loading={loading}
             type="submit"
-            disabled={
-              !formData.name ||
-              !formData.phone ||
-              !formData.email ||
-              !formData.message ||
-              !captchaToken
-            }
+            disabled={loading}
             stretch
           >
             Submit
