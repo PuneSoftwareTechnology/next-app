@@ -17,6 +17,7 @@ import Testimonials from "../orgnasims/Testimonial";
 import BlogsPage from "../orgnasims/Blogs";
 import { categoryIdMap } from "@/util/data/category";
 import FaqSection from "../orgnasims/FaqSection";
+import ContactButtons from "../organisms/ContactButtons";
 
 interface CoursePageProps {
   courseDetails: FullCourseDetails;
@@ -45,35 +46,51 @@ const FullCoursePage: React.FC<CoursePageProps> = ({ courseDetails }) => {
               ))}
             </div>
           </div>
-          <Image
-            src={courseDetails?.course?.featured_image}
-            alt="course-image"
-            height={400}
-            width={600}
-            className="object-cover rounded-xl"
-          />
+          {courseDetails?.course?.featured_image && (
+            <Image
+              src={courseDetails?.course?.featured_image}
+              alt="course-image"
+              height={400}
+              width={600}
+              className="object-cover rounded-xl"
+            />
+          )}
         </div>
         <Typography variant="p" as="p" className="mt-8">
           {courseDetails?.course?.description}
         </Typography>
       </section>
       {courseDetails?.course?.training_procedure && <TrainingProcedure />}
-      <CourseModules
-        modules={courseDetails?.course?.modules}
-        module_heading={courseDetails?.course?.module_heading}
-      />
+      {courseDetails?.course?.modules?.length > 0 && (
+        <CourseModules
+          modules={courseDetails?.course?.modules}
+          module_heading={courseDetails?.course?.module_heading}
+        />
+      )}
       <ProgramHighlights />
-      <CourseSyllabus
-        category={category}
-        prerequisites={courseDetails?.course?.prerequisite}
-        syllabus={courseDetails?.syllabus}
-      />
-      <CourseProjects projects={courseDetails?.projects} />
-      <CourseJobs jobs={courseDetails?.jobs} category={category} />
-      <FaqSection faqs={courseDetails?.faqs} />
-      <Testimonials testimonials={courseDetails?.testimonials} />
+      {courseDetails?.course?.prerequisite?.length > 0 && (
+        <CourseSyllabus
+          category={category}
+          prerequisites={courseDetails?.course?.prerequisite}
+          syllabus={courseDetails?.syllabus}
+        />
+      )}
+      {courseDetails?.projects?.length > 0 && (
+        <CourseProjects projects={courseDetails?.projects} />
+      )}
+      {courseDetails?.jobs?.length > 0 && (
+        <CourseJobs jobs={courseDetails?.jobs} category={category} />
+      )}
+      {courseDetails?.faqs?.length > 0 && (
+        <FaqSection faqs={courseDetails?.faqs} />
+      )}
+      {courseDetails?.testimonials?.length > 0 && (
+        <Testimonials testimonials={courseDetails?.testimonials} />
+      )}
       <PlacementsPage />
-      <BlogsPage blogs={courseDetails?.blogs} />
+      {courseDetails?.blogs?.length > 0 && (
+        <BlogsPage blogs={courseDetails?.blogs} />
+      )}
       {courseDetails?.course?.related_courses?.length > 0 && (
         <RelatedCourses
           relatedCourses={courseDetails?.course?.related_courses}
@@ -81,6 +98,7 @@ const FullCoursePage: React.FC<CoursePageProps> = ({ courseDetails }) => {
       )}
       <EnquiryForm />
       <Footer />
+      <ContactButtons />
     </>
   );
 };

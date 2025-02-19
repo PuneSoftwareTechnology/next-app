@@ -6,6 +6,7 @@ import { OneBlogResponse } from "@/util/interfaces/blog";
 import { getOneBlog } from "@/APIS/blog.service";
 import { notFound } from "next/navigation";
 import Typography from "@/components/atoms/Typography";
+import ContactButtons from "@/components/organisms/ContactButtons";
 
 type Params = Promise<{ blogId: string }>;
 
@@ -90,13 +91,15 @@ const BlogDetail = async ({ params }: { params: Params }) => {
         <Typography variant="h1" className="mb-4 sm:text-2xl">
           {title}
         </Typography>
-        <Image
-          src={featured_image || "/default-blog-image.jpg"}
-          alt={title}
-          width={400}
-          height={100}
-          className="rounded-lg h-auto"
-        />
+        {featured_image && (
+          <Image
+            src={featured_image}
+            alt={title}
+            width={400}
+            height={100}
+            className="rounded-lg h-auto"
+          />
+        )}
         <Typography variant="h3" as="h3" className="mt-4 sm:text-sm">
           {introduction}
         </Typography>
@@ -168,6 +171,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
         </Typography>
       </div>
       <Footer />
+      <ContactButtons />
     </>
   );
 };

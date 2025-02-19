@@ -7,6 +7,7 @@ import Typography from "@/components/atoms/Typography";
 import { getAllBlogs } from "@/APIS/blog.service";
 import { Blog } from "@/util/interfaces/blog";
 import { formatText } from "@/util/helperFunctions";
+import ContactButtons from "@/components/organisms/ContactButtons";
 
 const categories = [
   "SAP",
@@ -104,13 +105,15 @@ const AllBlogs = async () => {
 const BlogCard = ({ blog }: { blog: Blog }) => (
   <div className="bg-white rounded-lg shadow-md overflow-hidden">
     <Link href={`/blog/${blog.slug}`}>
-      <Image
-        src={blog?.featured_image}
-        alt={`Blog: ${blog.title}`}
-        height={120}
-        width={200}
-        className="rounded-t-lg object-cover w-full h-40"
-      />
+      {blog?.featured_image && (
+        <Image
+          src={blog?.featured_image}
+          alt={`Blog: ${blog.title}`}
+          height={120}
+          width={200}
+          className="rounded-t-lg object-cover w-full h-40"
+        />
+      )}
       <div className="p-4">
         <Typography
           variant="h5"
@@ -127,6 +130,7 @@ const BlogCard = ({ blog }: { blog: Blog }) => (
         </Typography>
       </div>
     </Link>
+    <ContactButtons />
   </div>
 );
 

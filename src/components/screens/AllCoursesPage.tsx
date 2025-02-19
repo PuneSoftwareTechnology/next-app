@@ -11,6 +11,7 @@ import BlogSection from "./BlogSection";
 import Footer from "../molecules/Footer";
 import { Courses } from "@/util/interfaces/course";
 import { FAQPage } from "./Faq";
+import ContactButtons from "../organisms/ContactButtons";
 
 interface AllCoursesPageProps {
   courses: Courses[];
@@ -101,17 +102,20 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
             {courses.map((course, index) => (
               <Link
                 key={index}
-                href={`/course/${course.id}`}
+                href={`/course/${course.slug}`}
                 className="text-blue-500 mt-2 inline-block"
+                aria-label="Read all blogs"
               >
                 <div className="border rounded-md overflow-hidden shadow-lg group hover:bg-white transition-all duration-300">
                   <div className="relative h-48 w-full">
-                    <Image
-                      alt="course-image"
-                      src={course.featured_image}
-                      layout="fill"
-                      objectFit="cover"
-                    />
+                    {course?.featured_image && (
+                      <Image
+                        alt="course-image"
+                        src={course.featured_image}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    )}
                   </div>
                   <Typography
                     variant="h6"
@@ -120,16 +124,6 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
                   >
                     {course.name}
                   </Typography>
-
-                  <Link
-                    href={`/course/${course.slug}`}
-                    className="bg-blue-600 w-fit my-4 text-white rounded-md px-4 py-2 mx-auto flex justify-center items-center hover:bg-blue-700 transition"
-                    aria-label="Read all blogs"
-                  >
-                    <Typography variant="h6" className="text-white ">
-                      Read Full Blog
-                    </Typography>
-                  </Link>
                 </div>
               </Link>
             ))}
@@ -140,6 +134,7 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
           <BlogSection />
         </main>
         <Footer />
+        <ContactButtons />
       </Suspense>
     </>
   );

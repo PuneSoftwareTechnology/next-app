@@ -1,58 +1,74 @@
 import Typography from "../atoms/Typography";
+import SAP_IMG from "../../assests/images/sap.jpg";
+import CLOUD_IMG from "../../assests/images/cloud.jpg";
+import DA_IMG from "../../assests/images/da.jpg";
+import AIML_IMG from "../../assests/images/aiml.jpg";
+import CYBER_IMG from "../../assests/images/cyber.avif";
+import Image from "next/image";
+import Link from "next/link";
 
 const Courses = () => {
   const courses = [
     {
       name: "SAP Training",
-      description: "15 Courses",
-      icon: "🖥️", // Replace with an actual icon or image URL
+      image: SAP_IMG,
+      link: "/course-category/sap",
     },
     {
       name: "Cloud Technologies",
-      description: "10 Courses",
-      icon: "☁️", // Replace with an actual icon or image URL
+      image: CLOUD_IMG,
+      link: "/course-category/cloud",
     },
     {
-      name: "Data Analytics Certification",
-      description: "20 Courses",
-      icon: "📊", // Replace with an actual icon or image URL
+      name: "Data Analytics",
+      image: DA_IMG,
+      link: "/course-category/data-analytics",
     },
     {
-      name: "AI and Machine Learning",
-      description: "8 Courses",
-      icon: "🤖", // Replace with an actual icon or image URL
+      name: "AI & Machine Learning",
+      image: AIML_IMG,
+      link: "/course-category/data-analytics",
     },
     {
       name: "Cyber Security",
-      description: "12 Courses",
-      icon: "🔒", // Replace with an actual icon or image URL
+      image: CYBER_IMG,
+      link: "/course-category/cyber-security",
     },
   ];
 
   return (
     <section
-      className="container mx-auto px-4 py-8 px-6 md:px-32"
+      className="container mx-auto px-4 py-8 md:px-32"
       aria-label="Pune Software Technologies Courses Section"
     >
-      <Typography variant="h2" className="text-center mb-6">
+      <Typography variant="h3" className="text-center mb-6">
         Choose your <span className="text-primary">area of interest</span>
       </Typography>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="flex flex-wrap justify-between items-center gap-6">
         {courses.map((course, index) => (
-          <div
+          <Link
+            href={course.link}
             key={index}
-            className="flex justify-between items-center text-center bg-white border border-gray-200 rounded-lg p-2 shadow-md hover:shadow-lg transition-shadow"
+            aria-label={course.name}
+            className="flex flex-col items-center  bg-blue-100 border border-blue-200 rounded-lg  shadow-md hover:shadow-lg transition-shadow w-full sm:w-1/2 md:w-1/3 lg:w-1/6"
           >
-            <div className="mb-8">
-              <Typography variant="h5" className="mb-2 text-gray-800">
-                {course.name}
-              </Typography>
-              <Typography variant="p" className="text-gray-600">
-                {course.description}
-              </Typography>
+            <div className="mb-4 w-full h-40 relative">
+              <Image
+                src={course.image}
+                layout="fill"
+                objectFit="cover"
+                alt={`${course.name} image`}
+                className="rounded-t-lg"
+              />
             </div>
-            <div className="text-5xl mb-4 mt-8 ">{course.icon}</div>
-          </div>
+            <Typography
+              variant="h6"
+              as="h6"
+              className="text-gray-800 mb-4 px-2"
+            >
+              {course.name}
+            </Typography>
+          </Link>
         ))}
       </div>
     </section>
