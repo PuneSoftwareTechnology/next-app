@@ -11,13 +11,13 @@ import CourseSyllabus from "../orgnasims/CourseSyllabus";
 import CourseProjects from "../orgnasims/CourseProjects";
 import CourseJobs from "../orgnasims/CourseJobs";
 import PlacementsPage from "./PlacementsPage";
-import EnquiryForm from "./Enquiryform";
 import RelatedCourses from "../orgnasims/RelatedCourses";
 import Testimonials from "../orgnasims/Testimonial";
 import BlogsPage from "../orgnasims/Blogs";
 import { categoryIdMap } from "@/util/data/category";
 import FaqSection from "../orgnasims/FaqSection";
 import ContactButtons from "../organisms/ContactButtons";
+import EnquirySection from "./EnquirySection";
 
 interface CoursePageProps {
   courseDetails: FullCourseDetails;
@@ -96,7 +96,7 @@ const FullCoursePage: React.FC<CoursePageProps> = ({ courseDetails }) => {
           relatedCourses={courseDetails?.course?.related_courses}
         />
       )}
-      <EnquiryForm />
+      <EnquirySection />
       <Footer />
       <ContactButtons />
     </>

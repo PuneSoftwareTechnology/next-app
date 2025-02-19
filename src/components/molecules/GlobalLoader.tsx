@@ -35,7 +35,7 @@ const GlobalLoader: React.FC = () => {
         {/* Loader with responsive size */}
         <div className="bg-white p-4 rounded-lg shadow-lg">
           <Loader size="large" className="mx-auto border-gray-800" />
-          <Typography variant="p" as="p" className="mb-6 ">
+          <Typography variant="p" as="p" className="mb-6">
             Loading, please wait...
           </Typography>
         </div>
