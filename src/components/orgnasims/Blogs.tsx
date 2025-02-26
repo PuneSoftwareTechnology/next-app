@@ -12,13 +12,13 @@ interface BlogsProps {
 const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
   return (
     <section
-      className="container mx-auto px-4 py-8 md:px-32"
+      className="container mx-auto px-4 py-8"
       aria-label="Pune Software Technologies Blog Section"
     >
       <Typography variant="h2" as="h2" className="text-center mb-6">
         Know More About Technology
       </Typography>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto my-16">
         {blogs.map((blog: Blog, index: number) => (
           <Link
             href={`/blog/${blog.slug}`}

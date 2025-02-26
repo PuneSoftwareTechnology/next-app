@@ -42,7 +42,7 @@ const WhyChooseUs = () => {
 
   return (
     <section
-      className="container mx-auto px-4 py-8 "
+      className=" lg:px-32 px-4 py-8 bg-gray-200"
       aria-label="Pune Software Technologies Why Choose Us Section"
     >
       <Typography variant="h2" as="h2" className="text-center mb-4">

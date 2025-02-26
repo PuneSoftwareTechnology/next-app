@@ -41,14 +41,18 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 md:px-32">
-      <div className="container mx-auto flex justify-between items-center p-4">
+      <div className="container mx-auto flex justify-between items-center px-4 lg:py-4 py-2">
         {/* Mobile Menu Button */}
         <button
           className="md:hidden text-gray-700"
           onClick={toggleMobileMenu}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
-          {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          {isMobileMenuOpen ? (
+            <FiX size={24} />
+          ) : (
+            <FiMenu size={30} className="font-bold" />
+          )}
         </button>
 
         {/* Logo */}
@@ -68,7 +72,7 @@ const Header = () => {
             <Typography variant="h2" as="h2" className="hidden lg:block">
               Pune Software Technologies
             </Typography>
-            <Typography variant="h4" as="h4" className="lg:hidden">
+            <Typography variant="h3" as="h3" className="lg:hidden">
               Pune Software Technologies
             </Typography>
             <Typography variant="h6" as="h6" className="hidden lg:block">
