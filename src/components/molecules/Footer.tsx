@@ -26,7 +26,7 @@ const Footer = () => {
             <li>
               <a
                 href="/privacy-policy"
-                className="text-sm md:text-base hover:text-gray-400"
+                className="text-sm md:text-base text-blue-400 hover:text-blue-700 underline"
                 title="Privacy Policy"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -37,7 +37,7 @@ const Footer = () => {
             <li>
               <a
                 href="/terms-of-use"
-                className="text-sm md:text-base hover:text-gray-400"
+                className="text-sm md:text-base text-blue-400 hover:text-blue-700 underline"
                 title="Terms of use"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -48,7 +48,7 @@ const Footer = () => {
             <li>
               <a
                 href="/contact-us"
-                className="text-sm md:text-base hover:text-gray-400"
+                className="text-sm md:text-base text-blue-400 hover:text-blue-700 underline"
                 title="Contact Us"
               >
                 Contact Us
@@ -56,6 +56,13 @@ const Footer = () => {
             </li>
           </ul>
         </nav>
+        <Typography
+          variant="p"
+          as="p"
+          className="italic text-center text-white text-sm mt-2"
+        >
+          Pune Software Technologies is not an authorized SAP partner
+        </Typography>
       </div>
     </footer>
   );

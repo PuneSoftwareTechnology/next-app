@@ -161,7 +161,7 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
             id="course"
             name="course"
             options={courses.map((course) => ({
-              label: course.name,
+              label: course?.id === 0 ? "Interested In" : course.name,
               value: String(course.id),
             }))}
             value={formData.course}

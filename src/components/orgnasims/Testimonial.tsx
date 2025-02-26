@@ -90,7 +90,7 @@ const Testimonials: FC<TestimonialsProps> = ({ testimonials }) => {
       {testimonials?.length > 3 && (
         <div className="flex justify-center items-center mt-6">
           <PrimaryButton type="button" onClick={handleLoadMore}>
-            {visibleCount < testimonials.length ? "Load More" : "Show Less"}
+            {visibleCount < testimonials.length ? "Read More" : "Show Less"}
           </PrimaryButton>
         </div>
       )}
