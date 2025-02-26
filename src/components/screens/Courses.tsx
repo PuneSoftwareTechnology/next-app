@@ -38,10 +38,10 @@ const Courses = () => {
 
   return (
     <section
-      className="container mx-auto px-4 py-8 md:px-32"
+      className="container mx-auto py-4"
       aria-label="Pune Software Technologies Courses Section"
     >
-      <Typography variant="h3" className="text-center mb-6">
+      <Typography variant="h2" as="h2" className="text-center my-8">
         Choose your <span className="text-primary">area of interest</span>
       </Typography>
       <div className="flex flex-wrap justify-between items-center gap-6">
@@ -50,7 +50,7 @@ const Courses = () => {
             href={course.link}
             key={index}
             aria-label={course.name}
-            className="flex flex-col items-center  bg-blue-100 border border-blue-200 rounded-lg  shadow-md hover:shadow-lg transition-shadow w-full sm:w-1/2 md:w-1/3 lg:w-1/6"
+            className="flex flex-col items-center hover:scale-105 hover:shadow-xl  bg-blue-100 border border-blue-200 rounded-lg  shadow-md hover:shadow-lg transition-shadow w-full sm:w-1/2 md:w-1/3 lg:w-1/6"
           >
             <div className="mb-4 w-full h-40 relative">
               <Image
@@ -62,8 +62,8 @@ const Courses = () => {
               />
             </div>
             <Typography
-              variant="h6"
-              as="h6"
+              variant="h4"
+              as="h4"
               className="text-gray-800 mb-4 px-2"
             >
               {course.name}

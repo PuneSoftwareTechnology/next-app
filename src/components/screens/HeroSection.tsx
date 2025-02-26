@@ -24,7 +24,11 @@ const HeroSection: React.FC = () => {
         <Typography variant="h1" className="text-blue-900">
           Welcome to Pune Software Technologies
         </Typography>
-        <Typography variant="p" className="mt-4 text-gray-700 leading-relaxed">
+        <Typography
+          variant="h4"
+          as="h4"
+          className="mt-4 text-gray-700 leading-relaxed"
+        >
           Empowering students and professionals with cutting-edge training in
           web development, software engineering, and IT solutions. Join us to
           elevate your career to new heights.

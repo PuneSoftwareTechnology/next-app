@@ -8,23 +8,41 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ title, description, icon }) => {
+  const titleId = `card-title-${title.replace(/\s+/g, "-").toLowerCase()}`;
+  const descId = `card-desc-${title.replace(/\s+/g, "-").toLowerCase()}`;
+
   return (
-    <div
-      className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center"
+    <article
+      className="bg-white shadow-lg border-2 rounded-lg p-6 flex flex-col items-center text-center transition-transform transform hover:scale-105 hover:shadow-xl"
       role="article"
-      aria-labelledby={`card-title-${title.replace(/\s+/g, "-")}`}
-      aria-describedby={`card-desc-${title.replace(/\s+/g, "-")}`}
+      aria-labelledby={titleId}
+      aria-describedby={descId}
     >
+      {/* SEO metadata using JSON-LD */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: title,
+          description: description,
+        })}
+      </script>
+
       <span className="mb-4" aria-hidden="true">
         {icon}
       </span>
-      <Typography variant="h5" className="mb-2 text-gray-900" as="h3">
+      <Typography
+        variant="h5"
+        className="mb-2 text-gray-900"
+        as="h3"
+        key={titleId}
+      >
         {title}
       </Typography>
-      <Typography variant="p" className="text-gray-600">
+      <Typography variant="p" className="text-gray-600" key={descId}>
         {description}
       </Typography>
-    </div>
+    </article>
   );
 };
 

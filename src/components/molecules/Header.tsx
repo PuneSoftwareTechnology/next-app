@@ -55,7 +55,7 @@ const Header = () => {
         <Link
           href="/"
           aria-label="Go to Pune Software Technologies homepage"
-          className="flex justify-center items-center gap-x-4 ml-4 mx-auto"
+          className="flex justify-center items-center gap-x-4 ml-2 mx-auto"
         >
           <Image
             src={PST_LOGO}
