@@ -6,6 +6,7 @@ import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 import Image from "next/image";
 import PST_LOGO from "../../assests/images/Logo.png";
 import Typography from "../atoms/Typography";
+import { usePathname } from "next/navigation";
 
 interface NavItem {
   label: string;
@@ -16,14 +17,11 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: "Home", href: "/" },
   {
-    label: "All Courses",
+    label: "Courses Offered",
     subMenu: [
       { label: "SAP Training", href: "/course-category/sap" },
       { label: "Cloud Technologies", href: "/course-category/cloud" },
-      {
-        label: "Data Analytics",
-        href: "/course-category/data-analytics",
-      },
+      { label: "Data Analytics", href: "/course-category/data-analytics" },
       { label: "Machine Learning & AI", href: "/course-category/ai-ml" },
       { label: "Cyber Security", href: "/course-category/cyber-security" },
     ],
@@ -35,6 +33,7 @@ const navItems: NavItem[] = [
 const Header = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
+  const pathname = usePathname();
 
   const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
   const toggleSubMenu = (label: string) =>
@@ -60,14 +59,19 @@ const Header = () => {
         >
           <Image
             src={PST_LOGO}
-            alt="Pune Software Technologies logo"
+            alt="Pune Software Technologies logo - IT Training Platform"
             width={50}
             height={50}
             priority
           />
-          <span className="text-lg font-bold text-gray-800 md:hidden lg:block ">
-            Pune Software Technologies
-          </span>
+          <div>
+            <Typography variant="h2" as="h2">
+              Pune Software Technologies
+            </Typography>
+            <Typography variant="h6" as="h6">
+              IT Training Platform
+            </Typography>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
@@ -80,19 +84,23 @@ const Header = () => {
                 onMouseEnter={() => setActiveSubMenu(item.label)}
                 onMouseLeave={() => setActiveSubMenu(null)}
               >
-                <div className="flex items-center cursor-pointer">
+                <div className="flex items-center cursor-pointer text-gray-700 hover:text-blue-700">
                   <Typography variant="h6" as="h6">
                     {item.label}
                   </Typography>
-                  <FiChevronDown className="ml-1 text-gray-500" />
+                  <FiChevronDown className="ml-1" />
                 </div>
                 {activeSubMenu === item.label && (
-                  <ul className="absolute left-0 pt-2 bg-gray-200 shadow-lg rounded w-56">
+                  <ul className="absolute left-0 mt-2 bg-white shadow-lg rounded w-56">
                     {item.subMenu.map((subItem) => (
                       <li key={subItem.label}>
                         <Link
                           href={subItem.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rounded-md transition-colors"
+                          className={`block px-4 py-2 transition-colors ${
+                            pathname === subItem.href
+                              ? "text-blue-700 font-semibold underline"
+                              : "text-gray-700 hover:text-blue-700"
+                          }`}
                           aria-label={subItem.label}
                         >
                           <Typography variant="h6" as="h6">
@@ -108,7 +116,11 @@ const Header = () => {
               <Link
                 key={item.label}
                 href={item.href!}
-                className="text-gray-700 hover:text-blue-500 transition-colors"
+                className={`transition-colors ${
+                  pathname === item.href
+                    ? "text-blue-700 font-semibold underline"
+                    : "text-gray-700 hover:text-blue-700"
+                }`}
                 aria-label={item.label}
               >
                 <Typography variant="h6" as="h6">
@@ -122,7 +134,7 @@ const Header = () => {
 
       {/* Mobile Navigation Panel */}
       <div
-        className={`fixed top-0 left-0 h-full w-2/3 bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-full w-full bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -133,12 +145,12 @@ const Header = () => {
         >
           <FiX size={24} />
         </button>
-        <nav className="flex flex-col space-y-4 p-4">
+        <nav className="flex flex-col space-y-4 p-6">
           {navItems.map((item) =>
             item.subMenu ? (
               <div key={item.label} className="flex flex-col">
                 <button
-                  className="flex justify-between items-center text-gray-700 font-bold"
+                  className="flex justify-between items-center font-bold text-gray-700 hover:text-blue-700"
                   onClick={() => toggleSubMenu(item.label)}
                   aria-expanded={activeSubMenu === item.label}
                 >
@@ -156,7 +168,11 @@ const Header = () => {
                         <Link
                           href={subItem.href}
                           onClick={toggleMobileMenu}
-                          className="text-gray-700 hover:text-blue-500"
+                          className={`block transition-colors ${
+                            pathname === subItem.href
+                              ? "text-blue-700 font-semibold underline"
+                              : "text-gray-700 hover:text-blue-700"
+                          }`}
                           aria-label={subItem.label}
                         >
                           {subItem.label}
@@ -171,7 +187,11 @@ const Header = () => {
                 key={item.label}
                 href={item.href!}
                 onClick={toggleMobileMenu}
-                className="text-gray-700 hover:text-blue-500"
+                className={`block transition-colors ${
+                  pathname === item.href
+                    ? "text-blue-700 font-bold underline"
+                    : "text-gray-700 hover:text-blue-700"
+                }`}
                 aria-label={item.label}
               >
                 {item.label}
