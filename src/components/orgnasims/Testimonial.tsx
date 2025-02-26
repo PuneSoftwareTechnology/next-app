@@ -1,5 +1,5 @@
 "use client";
-import Head from "next/head";
+
 import { FC, useState } from "react";
 import { FaStar, FaRegStarHalfStroke } from "react-icons/fa6";
 import Typography from "../atoms/Typography";

@@ -8,7 +8,7 @@ import Typography from "../atoms/Typography";
 import { DemoInterface } from "@/util/interfaces/demo";
 import { sendDemoRequest } from "@/APIS/demo.service";
 import { toast } from "react-toastify";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 import { Course } from "@/util/interfaces/course";
 import Dropdown from "../atoms/Dropdown";
 
@@ -26,12 +26,12 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
     phone: "",
     email: "",
     message: "",
-    course: "", // Add course to formData
+    course: "",
   });
 
   const [errors, setErrors] = useState<Partial<DemoInterface>>({});
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-  const hcaptchaRef = useRef<HCaptcha | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
 
   const handleChange = useCallback(
     (
@@ -96,9 +96,9 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
           email: "",
           message: "",
           course: "",
-        }); // Reset course
+        });
         setCaptchaToken(null);
-        hcaptchaRef.current?.resetCaptcha();
+        recaptchaRef.current?.reset();
       }
     } catch (error) {
       console.error(error);
@@ -181,11 +181,11 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
             <p className="text-red-500 text-sm mt-1">{errors.message}</p>
           )}
 
-          {/* hCaptcha Component */}
-          <HCaptcha
+          {/* Google reCAPTCHA */}
+          <ReCAPTCHA
             sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY!}
-            onVerify={(token) => setCaptchaToken(token)}
-            ref={hcaptchaRef}
+            onChange={(token: string | null) => setCaptchaToken(token)}
+            ref={recaptchaRef}
           />
 
           <PrimaryButton
