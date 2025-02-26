@@ -44,7 +44,7 @@ const Courses = () => {
       <Typography variant="h2" as="h2" className="text-center my-8">
         Choose your <span className="text-primary">area of interest</span>
       </Typography>
-      <div className="flex flex-wrap justify-between items-center gap-6">
+      <div className="flex flex-wrap justify-between items-center gap-6 px-4">
         {courses.map((course, index) => (
           <Link
             href={course.link}

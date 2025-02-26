@@ -65,10 +65,13 @@ const Header = () => {
             priority
           />
           <div>
-            <Typography variant="h2" as="h2">
+            <Typography variant="h2" as="h2" className="hidden lg:block">
               Pune Software Technologies
             </Typography>
-            <Typography variant="h6" as="h6">
+            <Typography variant="h4" as="h4" className="lg:hidden">
+              Pune Software Technologies
+            </Typography>
+            <Typography variant="h6" as="h6" className="hidden lg:block">
               IT Training Platform
             </Typography>
           </div>
@@ -96,7 +99,7 @@ const Header = () => {
                       <li key={subItem.label}>
                         <Link
                           href={subItem.href}
-                          className={`block px-4 py-2 transition-colors ${
+                          className={`block px-4 py-2 transition-colors hover:bg-gray-100 hover:rounded-md ${
                             pathname === subItem.href
                               ? "text-blue-700 font-semibold underline"
                               : "text-gray-700 hover:text-blue-700"

@@ -109,8 +109,8 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
   };
 
   return (
-    <section className="flex flex-col lg:flex-row items-center md:items-start justify-center px-6 md:px-32 py-12 bg-gray-50">
-      <div className="w-full lg:w-1/2 mb-8 flex justify-center items-end">
+    <section className="flex flex-col lg:flex-row items-center md:items-start justify-center px-4 md:px-32 py-12 bg-gray-50">
+      <div className="w-full hidden lg:block lg:w-1/2 mb-8 flex justify-center items-end">
         <Image
           src={CALL_PERSON}
           alt="Contact Us"
@@ -119,7 +119,7 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
           priority
         />
       </div>
-      <div className="w-full lg:w-1/2 bg-white p-8 rounded-lg shadow-lg">
+      <div className="w-full lg:w-1/2 bg-white px-2 py-4 lg:p-8 rounded-lg shadow-lg">
         <Typography variant="h2" as="h2">
           Get in Touch
         </Typography>
@@ -183,7 +183,7 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
 
           {/* hCaptcha Component */}
           <HCaptcha
-            sitekey="6f48d538-9762-4fc6-ae90-6398628a2a16"
+            sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY!}
             onVerify={(token) => setCaptchaToken(token)}
             ref={hcaptchaRef}
           />
