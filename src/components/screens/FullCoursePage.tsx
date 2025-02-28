@@ -5,7 +5,6 @@ import Footer from "../molecules/Footer";
 import Typography from "../atoms/Typography";
 import Image from "next/image";
 import TrainingProcedure from "../orgnasims/TrainingProcedure";
-import CourseModules from "../orgnasims/CourseModules";
 import ProgramHighlights from "./ProgramAdvantages";
 import CourseSyllabus from "../orgnasims/CourseSyllabus";
 import CourseProjects from "../orgnasims/CourseProjects";
