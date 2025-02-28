@@ -23,11 +23,11 @@ export default async function DynamicPage({ params }: { params: Params }) {
     )) || [];
 
   const content: Record<string, string> = {
-    sap: "Learn about SAP and its applications.",
-    cloud: "Discover cloud computing technologies.",
-    "ai-ml": "Explore Artificial Intelligence and Machine Learning.",
+    sap: "Learn SAP courses with practical experience ",
+    cloud: "Discover cloud computing technologies",
+    "ai-ml": "Explore Artificial Intelligence and Machine Learning",
     "data-analytics": "Learn Data analytics",
-    "cyber-security": "Master Cyber Security practices.",
+    "cyber-security": "Master Cyber Security practices",
   };
 
   if (!content[dynamicPage]) {

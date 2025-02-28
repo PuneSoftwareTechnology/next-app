@@ -75,19 +75,20 @@ export default async function PlacementsPage() {
         Our Alumni Placed In
       </Typography>
       <div className="overflow-hidden">
-        <div className="whitespace-nowrap animate-marquee">
+        <div className="flex justify-around lg:justify-start items-centr gap-2 flex-wrap">
           {companies?.map((company) => (
-            <div key={company.id} className="inline-block px-6 sm:px-12 py-4">
-              <div className="relative w-24 h-16 sm:w-36 sm:h-24">
-                <Image
-                  src={company.logo_url || ERROR_IMAGE}
-                  alt={`Logo of ${company.name} where our alumni work`}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 640px) 100px, 150px"
-                  priority
-                />
-              </div>
+            <div
+              key={company.id}
+              className="bg-white p-2 border border-gray-200 rounded-lg shadow-sm flex items-center justify-center "
+            >
+              <Image
+                src={company.logo_url || ERROR_IMAGE}
+                alt={`Logo of ${company.name} where our alumni work`}
+                className="object-contain"
+                width={100}
+                height={50}
+                priority
+              />
             </div>
           ))}
         </div>

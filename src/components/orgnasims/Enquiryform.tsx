@@ -108,8 +108,10 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
     }
   };
 
+  console.log(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
+
   return (
-    <section className="flex flex-col lg:flex-row items-center md:items-start justify-center px-4 md:px-32 py-12 bg-gray-50">
+    <section className="flex flex-col lg:flex-row items-center md:items-start justify-center mb-8 px-2 py-4">
       <div className="w-full hidden lg:block lg:w-1/2 mb-8 flex justify-center items-end">
         <Image
           src={CALL_PERSON}
@@ -183,17 +185,12 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
 
           {/* Google reCAPTCHA */}
           <ReCAPTCHA
-            sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY!}
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
             onChange={(token: string | null) => setCaptchaToken(token)}
             ref={recaptchaRef}
           />
 
-          <PrimaryButton
-            loading={loading}
-            type="submit"
-            disabled={loading || !captchaToken}
-            stretch
-          >
+          <PrimaryButton loading={loading} type="submit" stretch>
             Submit
           </PrimaryButton>
         </form>

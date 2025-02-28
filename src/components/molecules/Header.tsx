@@ -98,7 +98,7 @@ const Header = () => {
                   <FiChevronDown className="ml-1" />
                 </div>
                 {activeSubMenu === item.label && (
-                  <ul className="absolute left-0 mt-2 bg-white shadow-lg rounded w-56">
+                  <ul className="absolute left-0  bg-white shadow-lg rounded w-56">
                     {item.subMenu.map((subItem) => (
                       <li key={subItem.label}>
                         <Link

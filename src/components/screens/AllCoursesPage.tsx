@@ -13,6 +13,8 @@ import { Courses } from "@/util/interfaces/course";
 import { FAQPage } from "./Faq";
 import ContactButtons from "../organisms/ContactButtons";
 import ERROR_IMAGE from "../../assests/images/imageError.png";
+import EnquirySection from "./EnquirySection";
+
 interface AllCoursesPageProps {
   courses: Courses[];
   content: string;
@@ -94,7 +96,7 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
           <Typography
             variant="h3"
             as="h3"
-            className="bg-gray-400 text-white rounded-md py-3 my-4 w-full text-center uppercase"
+            className="bg-blue-900 text-white rounded-md py-3 my-4 w-full text-center uppercase px-4"
           >
             {heading}
           </Typography>
@@ -130,6 +132,7 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
           <TestimonialsPage />
           <FAQPage />
           <BlogSection />
+          <EnquirySection />
         </main>
         <Footer />
         <ContactButtons />
