@@ -48,7 +48,7 @@ const Header = () => {
         <Link
           href="/"
           aria-label="Go to Pune Software Technologies homepage"
-          className="flex justify-center items-center gap-x-2 mx-auto "
+          className="flex justify-center items-center gap-x-2 mx-auto ml-2"
         >
           <Image
             src={PST_LOGO}
@@ -64,7 +64,7 @@ const Header = () => {
             <Typography
               variant="h5"
               as="h5"
-              className="lg:hidden text-xl font-black text-gray-800"
+              className="lg:hidden text-xl font-black "
             >
               Pune Software Technologies
             </Typography>
@@ -81,7 +81,7 @@ const Header = () => {
           {isMobileMenuOpen ? (
             <FiX size={24} />
           ) : (
-            <FiMenu size={30} className="font-bold" />
+            <FiMenu size={24} className="font-bold" />
           )}
         </button>
 
