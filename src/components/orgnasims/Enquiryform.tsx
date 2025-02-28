@@ -108,8 +108,6 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
     }
   };
 
-  console.log(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
-
   return (
     <section className="flex flex-col lg:flex-row items-center md:items-start justify-center mb-8 px-2 py-4">
       <div className="w-full hidden lg:block lg:w-1/2 mb-8 flex justify-center items-end">
@@ -185,7 +183,9 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
 
           {/* Google reCAPTCHA */}
           <ReCAPTCHA
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+            sitekey={
+              process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "Missing-key"
+            }
             onChange={(token: string | null) => setCaptchaToken(token)}
             ref={recaptchaRef}
           />
