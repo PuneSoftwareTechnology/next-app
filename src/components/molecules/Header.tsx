@@ -64,7 +64,7 @@ const Header = () => {
             <Typography
               variant="h5"
               as="h5"
-              className="lg:hidden text-xl font-black "
+              className="lg:hidden text-xl font-black"
             >
               Pune Software Technologies
             </Typography>
