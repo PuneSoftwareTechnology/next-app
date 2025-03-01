@@ -75,11 +75,11 @@ export default async function PlacementsPage() {
         Our Alumni Placed In
       </Typography>
       <div className="overflow-hidden">
-        <div className="flex justify-around lg:justify-start items-centr gap-2 flex-wrap">
+        <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-12 gap-4">
           {companies?.map((company) => (
             <div
               key={company.id}
-              className="bg-white p-2 border border-gray-200 rounded-lg shadow-sm flex items-center justify-center "
+              className="bg-white p-2 border border-gray-200 rounded-lg shadow-sm flex items-center justify-center"
             >
               <Image
                 src={company.logo_url || ERROR_IMAGE}
