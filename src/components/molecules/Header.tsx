@@ -55,8 +55,9 @@ const Header = () => {
             alt="Pune Software Technologies logo - IT Training Platform"
             width={50}
             height={50}
-            priority
+            className="w-10 h-10 md:w-12 md:h-12"
           />
+
           <div>
             <Typography variant="h2" as="h2" className="hidden lg:block">
               Pune Software Technologies

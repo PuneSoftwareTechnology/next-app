@@ -1,12 +1,57 @@
-// src/pages/contact-us.tsx
+"use client";
+
 import Typography from "@/components/atoms/Typography";
 import Header from "@/components/molecules/Header";
 import Footer from "@/components/molecules/Footer";
 import Head from "next/head";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import GlobalLoader from "@/components/molecules/GlobalLoader";
+import InputBox from "@/components/atoms/InputBox";
+
+const benefits = [
+  "We’ll reach out to you between 10 AM and 9 PM",
+  "Unbiased career guidance",
+  "Personalized guidance based on your skills and interests",
+];
+
+type FormField = {
+  label: string;
+  type: string;
+  name: keyof typeof initialFormData;
+  placeholder: string;
+};
+
+const initialFormData = {
+  fullname: "",
+  phone: "",
+  message: "",
+};
+
+const formFields: FormField[] = [
+  {
+    label: "Full Name",
+    type: "text",
+    name: "fullname",
+    placeholder: "Enter your full name",
+  },
+  {
+    label: "Phone Number",
+    type: "tel",
+    name: "phone",
+    placeholder: "1234567890",
+  },
+];
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState(initialFormData);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
   return (
     <>
       <Suspense fallback={<GlobalLoader />}>
@@ -25,97 +70,77 @@ const ContactUs = () => {
         </Head>
         <div className="flex flex-col min-h-screen">
           <Header />
-
-          <main
-            className="flex-grow container mx-auto px-4 md:px-48 py-12 mt-20"
-            aria-label="Contact Us Section"
-          >
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="text-center md:text-left">
-                <Typography variant="h2" className="mb-6 text-2xl md:text-3xl">
+          <main className="flex-grow  mx-auto px-4 sm:px-6 md:px-12 lg:px-32 py-2 lg:py-12 mt-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              <div>
+                <Typography variant="h2" as="h2" className="mb-6 text-left">
                   Get Expert Advice for Free: Register for Your Free
                   Consultation Now!
                 </Typography>
-                <ul className="list-none space-y-2">
-                  <li className="flex items-center">
-                    <span className="text-green-500 text-lg mr-2">✔</span>
-                    <Typography variant="p">
-                      We’ll reach out to you between 10 AM and 9 PM
-                    </Typography>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 text-lg mr-2">✔</span>
-                    <Typography variant="p">
-                      Unbiased career guidance
-                    </Typography>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 text-lg mr-2">✔</span>
-                    <Typography variant="p">
-                      Personalized guidance based on your skills and interests
-                    </Typography>
-                  </li>
-                </ul>
-              </div>
-              <div className="bg-white text-gray-900 rounded-lg shadow-lg p-6">
-                <form>
-                  <div className="mb-4">
-                    <label
-                      className="block mb-1 font-medium"
-                      htmlFor="fullname"
+                <div>
+                  {benefits.map((benefit, index) => (
+                    <span
+                      className="flex justify-start items-start gap-x-2 mb-2"
+                      key={index}
                     >
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      id="fullname"
-                      className="w-full border border-gray-300 rounded-md p-2 text-sm md:text-base"
-                      placeholder="Enter your full name"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label className="block mb-1 font-medium" htmlFor="phone">
-                      Phone Number
-                    </label>
-                    <div className="flex">
-                      <span className="inline-flex items-center px-3 bg-gray-100 border border-gray-300 rounded-l-md text-sm md:text-base">
-                        +91
-                      </span>
-                      <input
-                        type="tel"
-                        id="phone"
-                        className="w-full border border-gray-300 rounded-r-md p-2 text-sm md:text-base"
-                        placeholder="1234567890"
+                      <Typography variant="h6" as="h6">
+                        ✅
+                      </Typography>
+                      <Typography variant="h6" as="h6">
+                        {benefit}
+                      </Typography>
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-white text-gray-900 rounded-lg shadow-lg p-6 w-full max-w-md mx-auto md:max-w-full">
+                <form>
+                  {formFields.map((field, index) => (
+                    <div key={index} className="mb-4">
+                      <label
+                        className="block mb-1 text-lg font-medium"
+                        htmlFor={field.name}
+                      >
+                        {field.label}
+                      </label>
+                      <InputBox
+                        type={field.type}
+                        id={field.name}
+                        name={field.name}
+                        value={formData[field.name]}
+                        onChange={handleInputChange}
+                        placeholder={field.placeholder}
                       />
                     </div>
-                  </div>
+                  ))}
                   <div className="mb-4">
                     <label
-                      className="block mb-1 font-medium"
-                      htmlFor="language"
+                      className="block text-lg  mb-1 font-medium"
+                      htmlFor="message"
                     >
-                      Preferred Language
+                      Short Message
                     </label>
-                    <select
-                      id="language"
-                      className="w-full border border-gray-300 rounded-md p-2 text-sm md:text-base"
-                    >
-                      <option>Malayalam</option>
-                      <option>English</option>
-                      <option>Hindi</option>
-                    </select>
+                    <textarea
+                      id="message"
+                      name="message"
+                      placeholder="Your Message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      className="mt-1 block w-full border-2 border-gray-300 rounded-md p-2 text-gray-900 focus:ring-blue-500 sm:text-sm"
+                      required
+                      aria-label="Message"
+                    />
                   </div>
                   <button
                     type="submit"
                     className="w-full bg-blue-500 text-white rounded-md p-2 font-medium hover:bg-blue-600 transition text-sm md:text-base"
                   >
-                    Register Now
+                    Submit
                   </button>
                 </form>
               </div>
             </div>
           </main>
-
           <Footer />
         </div>
       </Suspense>

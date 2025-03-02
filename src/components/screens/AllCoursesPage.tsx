@@ -73,9 +73,9 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
       </Head>
       <Suspense fallback={<GlobalLoader />}>
         <Header />
-        <main className="mt-24 px-4 md:px-32">
+        <main className="mt-24">
           <div
-            className="relative w-full mb-8"
+            className="relative mx-4 lg:mx-32 mb-8"
             style={{ height: "calc(50vh)" }}
           >
             <Image
@@ -85,49 +85,51 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
               className="object-cover"
             />
           </div>
-          <Typography
-            variant="h2"
-            as="h2"
-            className="font-[700] text-center mb-8"
-          >
-            {content}
-          </Typography>
+          <section className=" px-4 lg:px-32">
+            <Typography
+              variant="h2"
+              as="h2"
+              className="font-[700] text-center mb-8"
+            >
+              {content}
+            </Typography>
 
-          <Typography
-            variant="h3"
-            as="h3"
-            className="bg-blue-900 text-white rounded-md py-3 my-4 w-full text-center uppercase px-4"
-          >
-            {heading}
-          </Typography>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {courses.map((course, index) => (
-              <Link
-                key={index}
-                href={`/course/${course.slug}`}
-                className="text-blue-500 mt-2 inline-block"
-                aria-label="Read all blogs"
-              >
-                <div className="border rounded-md overflow-hidden shadow-lg group hover:bg-white transition-all duration-300">
-                  <div className="relative h-48 w-full">
-                    <Image
-                      alt="course-image"
-                      src={course.featured_image || ERROR_IMAGE}
-                      layout="fill"
-                      objectFit="cover"
-                    />
+            <Typography
+              variant="h3"
+              as="h3"
+              className="bg-blue-900 text-white rounded-md py-3 my-4 w-full text-center uppercase px-4"
+            >
+              {heading}
+            </Typography>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              {courses.map((course, index) => (
+                <Link
+                  key={index}
+                  href={`/course/${course.slug}`}
+                  className="text-blue-500 mt-2 inline-block"
+                  aria-label="Read all blogs"
+                >
+                  <div className="border rounded-md overflow-hidden shadow-lg group shadow-md hover:shadow-lg transition-shadow  hover:scale-105 hover:shadow-xl transition-all duration-300">
+                    <div className="relative h-48 w-full">
+                      <Image
+                        alt="course-image"
+                        src={course.featured_image || ERROR_IMAGE}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </div>
+                    <Typography
+                      variant="h4"
+                      as="h4"
+                      className="text-center py-2 bg-white"
+                    >
+                      {course.name}
+                    </Typography>
                   </div>
-                  <Typography
-                    variant="h6"
-                    as="h6"
-                    className="text-center py-2 bg-white group-hover:bg-gray-100 transition-all duration-300"
-                  >
-                    {course.name}
-                  </Typography>
-                </div>
-              </Link>
-            ))}
-          </div>
+                </Link>
+              ))}
+            </div>
+          </section>
           <WhyChooseUs />
           <TestimonialsPage />
           <FAQPage />

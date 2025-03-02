@@ -24,18 +24,18 @@ const FaqSection: FC<FaqSectionProps> = ({ faqs }) => {
   };
 
   return (
-    <section className="max-w-3xl mx-auto p-4 md:p-8">
-      <Typography variant="h3" className="text-center mb-4">
+    <section className="px-4 lg:px-32 mx-auto">
+      <Typography variant="h2" as="h2" className="text-center mb-4">
         Frequently Asked <span className="text-primary">Questions</span>
       </Typography>
-      <div className="space-y-4">
+      <div className="space-y-2 w-full ">
         {faqs.map((faq, index) => (
-          <div key={faq.id} className="border p-4 rounded-lg bg-white shadow">
+          <div key={faq.id} className="border p-4 rounded-lg bg-white shadow ">
             <div
               className="w-full flex justify-between items-center text-lg font-semibold focus:outline-none cursor-pointer"
               onClick={() => toggleAccordion(index)}
             >
-              <Typography variant="h6" as="h6">
+              <Typography variant="h5" as="h5">
                 {faq.question}
               </Typography>
               {openIndex === index ? (

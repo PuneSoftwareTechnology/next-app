@@ -14,24 +14,14 @@ const WhyChooseUs = () => {
       description:
         "We support any training with more practical classes. So, we always prefer to give hands-on training.",
     },
-    {
-      icon: "⏰",
-      title: "Flexible Timings",
-      description:
-        "We started with 2 trainers; now we are 100+, and it's still increasing. So, we can give the students flexibility.",
-    },
+
     {
       icon: "💰",
       title: "Affordable Fees",
       description:
         "We are dead cheap in fees. Quality training with less price is our goal.",
     },
-    {
-      icon: "🖥️",
-      title: "Lab Support",
-      description:
-        "If you need software assistance, we are here to back you up. Bring your issues, and we’ll help you solve them.",
-    },
+
     {
       icon: "📝",
       title: "Interview Preparation",
@@ -64,7 +54,7 @@ const WhyChooseUs = () => {
         helping you reach your goals and enhance your training experience by
         providing innovative surroundings and facilities.
       </Typography>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 hidden lg:grid ">
+      <div className="grid lg:grid-cols-4 gap-12 hidden lg:grid ">
         {reasons.map((reason, index) => (
           <div
             key={index}
