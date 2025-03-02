@@ -115,7 +115,7 @@ const ContactUs = () => {
         </Head>
         <div className="flex flex-col min-h-screen">
           <Header />
-          <main className="flex-grow mx-auto px-6 md:px-12 lg:px-32 py-2 lg:py-12 mt-20">
+          <main className="flex-grow mx-auto px-4 md:px-12 lg:px-32 py-2 lg:py-12 mt-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
               <div>
                 <Typography variant="h2" as="h2" className="mb-6 text-left">
@@ -135,7 +135,7 @@ const ContactUs = () => {
                   ))}
                 </div>
               </div>
-              <div className="bg-white text-gray-900 rounded-lg shadow-lg p-6 w-full max-w-md mx-auto md:max-w-full mb-12">
+              <div className="bg-white text-gray-900 rounded-lg shadow-lg py-4 px-2 md:p-6 w-full max-w-md mx-auto md:max-w-full mb-12">
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label
