@@ -9,19 +9,19 @@ interface Props {
 
 export default function CourseJobs({ jobs, category }: Props) {
   return (
-    <section className="max-w-5xl mx-auto p-4">
+    <section className="my-8 px-4 lg:px-32 ">
       <header>
-        <Typography variant="h4" as="h4" className="mb-4">
+        <Typography variant="h2" as="h2" className="mb-4 text-center">
           {category} Job Roles
         </Typography>
       </header>
 
       {jobs.length === 0 ? (
-        <Typography variant="h4" as="h4" className="text-gray-600">
+        <Typography variant="h2" as="h2" className="text-gray-600 text-center">
           No jobs available.
         </Typography>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
           {jobs.map((job) => (
             <article
               key={job.id}

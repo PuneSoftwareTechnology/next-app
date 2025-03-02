@@ -11,19 +11,19 @@ interface Props {
 
 export default function RelatedCourses({ relatedCourses }: Props) {
   return (
-    <section className="max-w-5xl mx-auto p-4">
+    <section className="px-4 lg:px-32 my-8">
       <header>
-        <Typography variant="h4" as="h4" className="mb-4">
+        <Typography variant="h2" as="h2" className="mb-4 text-center">
           Related Courses
         </Typography>
       </header>
 
       {relatedCourses.length === 0 ? (
-        <Typography variant="h4" as="h4" className="text-gray-600">
+        <Typography variant="h2" as="h2" className="text-gray-600 text-center">
           No related courses available.
         </Typography>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {relatedCourses.map((course) => (
             <Link
               key={course.id}

@@ -8,8 +8,8 @@ interface Props {
 
 export default function CourseProjects({ projects }: Props) {
   return (
-    <section className="max-w-2xl mx-auto p-4">
-      <Typography variant="h3" as="h3" className="mb-4">
+    <section className="my-8 px-4 lg:px-32">
+      <Typography variant="h2" as="h2" className="mb-4 text-center">
         Learn By Doing Real World Projects
       </Typography>
 
@@ -18,7 +18,7 @@ export default function CourseProjects({ projects }: Props) {
           No projects available.
         </Typography>
       ) : (
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
             <div
               key={project.id}

@@ -37,39 +37,44 @@ export default function CourseSyllabus({
   };
 
   return (
-    <section className="max-w-2xl mx-auto p-4">
-      <div className="flex justify-start items-center gap-x-1 mb-4">
+    <section className="px-4 lg:px-32 p-4">
+      <div className="flex justify-center items-center gap-x-1 mb-4 ">
         <Typography
-          variant="h3"
-          as="h3"
-          className="text-gray-900 underline decoration-yellow-400 decoration-4"
+          variant="h2"
+          as="h2"
+          className="text-gray-900 underline decoration-yellow-400 decoration-4 text-center"
         >
           {category}
         </Typography>
-        <Typography variant="h3" as="h3" className="text-gray-900">
-          Training Course Syllabus
+        <Typography variant="h2" as="h2" className="text-gray-900 text-center">
+          Course Syllabus
         </Typography>
       </div>
 
       {/* Prerequisites Section */}
       <div className="mb-6">
-        <Typography variant="h5" as="h5">
+        <Typography variant="h3" as="h3">
           Prerequisites
         </Typography>
-        {prerequisites.map((item, index) => (
-          <span
-            key={index}
-            className="flex justify-start items-center gap-x-2 text-gray-700"
-          >
-            <ImArrowRight size={12} className="text-green-400 mt-1" />
-            {item}
-          </span>
-        ))}
+        <div className="mt-4">
+          {prerequisites.map((item, index) => (
+            <span
+              key={index}
+              className="flex justify-start items-start gap-x-2 mb-2 text-gray-700"
+            >
+              <ImArrowRight size={12} className="text-green-400 mt-2" />
+
+              <Typography variant="h6" as="h6">
+                {item}
+              </Typography>
+            </span>
+          ))}
+        </div>
       </div>
 
       {/* Course Syllabus Section */}
-      <Typography variant="h3" as="h3" className="mb-4">
-        Course Syllabus
+      <Typography variant="h2" as="h2" className="mb-4 text-center">
+        Syllabus Content
       </Typography>
       <div className="border-2 border-gray-300 rounded-lg">
         {syllabus.map((course) =>

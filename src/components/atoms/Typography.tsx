@@ -12,13 +12,13 @@ type TypographyProps = {
 };
 
 const baseStyles: Record<string, string> = {
-  h1: "text-4xl font-bold text-gray-900",
-  h2: "text-3xl font-semibold text-gray-800",
-  h3: "text-2xl font-semibold text-gray-700",
-  h4: "text-xl font-medium text-gray-700",
-  h5: "text-lg font-medium text-gray-600",
-  h6: "text-base font-medium text-gray-600",
-  p: "text-base text-gray-700",
+  h1: "text-3xl md:text-4xl font-bold text-gray-900",
+  h2: "text-2xl md:text-3xl font-semibold text-gray-800",
+  h3: "text-xl md:text-2xl font-semibold text-gray-700",
+  h4: "text-lg md:text-xl font-medium text-gray-700",
+  h5: "text-base md:text-lg font-medium text-gray-600",
+  h6: "text-sm md:text-base font-medium text-gray-600",
+  p: "text-sm md:text-base text-gray-700",
   span: "text-sm text-gray-600",
 };
 

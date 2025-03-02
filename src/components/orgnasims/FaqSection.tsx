@@ -24,7 +24,7 @@ const FaqSection: FC<FaqSectionProps> = ({ faqs }) => {
   };
 
   return (
-    <section className="px-4 lg:px-32 mx-auto">
+    <section className="px-4 lg:px-32 mx-auto mb-8">
       <Typography variant="h2" as="h2" className="text-center mb-4">
         Frequently Asked <span className="text-primary">Questions</span>
       </Typography>

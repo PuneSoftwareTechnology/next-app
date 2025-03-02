@@ -43,11 +43,11 @@ interface PageProps {
 const TrainingProcedure: FC<PageProps> = ({ courseDesc }) => {
   return (
     <section
-      className="py-8 px-4 bg-gray-100"
+      className="py-8 px-4 lg:px-32 bg-gray-100"
       aria-labelledby="training-procedure"
     >
       <Typography variant="h2" as="h2" className="text-center mb-4">
-        Our Training Procedure
+        Our Training Key Features
       </Typography>
       <Typography
         variant="h5"
@@ -56,11 +56,11 @@ const TrainingProcedure: FC<PageProps> = ({ courseDesc }) => {
       >
         {courseDesc}
       </Typography>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 max-w-8xl mx-6 lg:mx-32">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-8xl">
         {trainingFeatures.map((feature, index) => (
           <div
             key={index}
-            className=" flex flex-col items-center bg-white p-4 rounded-lg"
+            className=" flex flex-col items-center bg-white p-4 rounded-lg  "
           >
             {feature.icon}
             <Typography variant="h5" as="h5" className="text-center mt-2">

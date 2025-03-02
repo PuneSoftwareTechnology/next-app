@@ -32,8 +32,8 @@ const FullCoursePage: React.FC<CoursePageProps> = ({ courseDetails }) => {
     <>
       <Header />
 
-      <section className=" mt-20 bg-white  mx-4 py-8 md:mx-32 ">
-        <div className="flex flex-col sm:flex-row-reverse justify-between items-start gap-x-8 ">
+      <section className=" mt-20 bg-white  px-4 py-8 md:px-32 ">
+        <div className="flex flex-col lg:flex-row-reverse justify-between items-start gap-x-8">
           <Image
             src={courseDetails?.course?.featured_image || ERROR_IMAGE}
             alt="course-image"
