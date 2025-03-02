@@ -12,7 +12,7 @@ interface BlogsProps {
 const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
   return (
     <section
-      className="mx-auto px-6 lg:px-32 py-8"
+      className="mx-auto px-4 lg:px-32 py-8"
       aria-label="Pune Software Technologies Blog Section"
     >
       <Typography variant="h2" as="h2" className="text-center mb-6">

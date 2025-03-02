@@ -38,7 +38,7 @@ const Courses = () => {
 
   return (
     <section
-      className="mx-auto py-4 px-6 lg:px-32 bg-red"
+      className="mx-auto py-4 px-4 lg:px-32 bg-red"
       aria-label="Pune Software Technologies Courses Section"
     >
       <Typography variant="h2" as="h2" className="text-center my-8">

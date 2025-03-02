@@ -32,7 +32,7 @@ const FullCoursePage: React.FC<CoursePageProps> = ({ courseDetails }) => {
     <>
       <Header />
 
-      <section className=" mt-20 bg-white  px-6 py-8 md:px-32 ">
+      <section className=" mt-20 bg-white  mx-4 py-8 md:mx-32 ">
         <div className="flex flex-col sm:flex-row-reverse justify-between items-start gap-x-8 ">
           <Image
             src={courseDetails?.course?.featured_image || ERROR_IMAGE}

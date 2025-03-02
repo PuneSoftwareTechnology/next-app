@@ -6,7 +6,7 @@ import HERO_IMAGE from "../../assests/images/HeroImage.png";
 const HeroSection: React.FC = () => {
   return (
     <section
-      className="flex flex-col sm:flex-row-reverse items-center sm:items-start sm:justify-between px-6 lg:px-32 py-8 sm:py-16 bg-gradient-to-r from-blue-50 to-blue-100 mt-20 "
+      className="flex flex-col sm:flex-row-reverse items-center sm:items-start sm:justify-between px-4 lg:px-32 py-8 sm:py-16 bg-gradient-to-r from-blue-50 to-blue-100 mt-20 "
       aria-label="Pune Software Technologies Hero Section"
     >
       {/* Image Panel */}

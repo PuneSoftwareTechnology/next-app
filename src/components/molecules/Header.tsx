@@ -40,15 +40,12 @@ const Header = () => {
     setActiveSubMenu((prev) => (prev === label ? null : label));
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 md:px-4 lg::px-32">
-      <div className="container mx-auto flex justify-between items-center px-2 lg:py-4 py-2">
-        {/* Mobile Menu Button */}
-
-        {/* Logo */}
+    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 md:px-4 lg:px-32">
+      <div className="container flex justify-between items-center px-2 lg:py-4 py-2">
         <Link
           href="/"
           aria-label="Go to Pune Software Technologies homepage"
-          className="flex justify-center items-center gap-x-2 mx-auto ml-2"
+          className="flex justify-center items-center gap-x-2 ml-2"
         >
           <Image
             src={PST_LOGO}
