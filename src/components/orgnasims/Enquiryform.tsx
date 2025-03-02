@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Course } from "@/util/interfaces/course";
 import Dropdown from "../atoms/Dropdown";
+import { verifyCaptcha } from "@/APIS/serverActions";
 
 const phoneRegex = /^[0-9]{10}$/;
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -186,7 +187,13 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
             sitekey={
               process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "Missing-key"
             }
-            onChange={(token: string | null) => setCaptchaToken(token)}
+            onChange={(token: string | null) =>
+              verifyCaptcha(token)
+                .then(() => {
+                  setCaptchaToken(token);
+                })
+                .catch(console.error)
+            }
             ref={recaptchaRef}
           />
 
