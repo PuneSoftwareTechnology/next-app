@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    serverActions: {
+      bodySizeLimit: undefined,
+      allowedOrigins: undefined,
+    },
+  },
   images: {
     domains: ["imgs.search.brave.com", "upload.wikimedia.org", "i.ibb.co"],
   },

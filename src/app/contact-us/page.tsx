@@ -12,6 +12,7 @@ import GlobalLoader from "@/components/molecules/GlobalLoader";
 import InputBox from "@/components/atoms/InputBox";
 import PrimaryButton from "@/components/atoms/PrimaryButton";
 import { sendConsultationRequest } from "@/APIS/demo.service";
+import { verifyCaptcha } from "@/APIS/serverActions";
 
 const benefits = [
   "We’ll reach out to you between 10 AM and 9 PM",
@@ -193,7 +194,13 @@ const ContactUs = () => {
                       process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ||
                       "Missing-key"
                     }
-                    onChange={(token: string | null) => setCaptchaToken(token)}
+                    onChange={(token: string | null) =>
+                      verifyCaptcha(token)
+                        .then(() => {
+                          setCaptchaToken(token);
+                        })
+                        .catch(console.error)
+                    }
                     ref={recaptchaRef}
                     className="mb-4"
                   />
