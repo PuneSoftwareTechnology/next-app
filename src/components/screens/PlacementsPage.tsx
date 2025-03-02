@@ -69,10 +69,10 @@ export default async function PlacementsPage() {
   return (
     <section
       aria-label="Placement Companies Section"
-      className="py-6 px-6 md:px-32"
+      className="py-6 px-6 lg:px-32"
     >
       <Typography variant="h2" as="h2" className="text-center mb-8">
-        Our Alumni Placed In
+        Our Aluminis Placed In
       </Typography>
       <div className="overflow-hidden">
         <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-12 gap-4">

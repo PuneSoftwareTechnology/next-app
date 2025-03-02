@@ -40,8 +40,8 @@ const Header = () => {
     setActiveSubMenu((prev) => (prev === label ? null : label));
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 md:px-32">
-      <div className="container mx-auto flex justify-between items-center px-2s lg:py-4 py-2">
+    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 md:px-4 lg::px-32">
+      <div className="container mx-auto flex justify-between items-center px-2 lg:py-4 py-2">
         {/* Mobile Menu Button */}
 
         {/* Logo */}
@@ -64,7 +64,7 @@ const Header = () => {
             <Typography
               variant="h5"
               as="h5"
-              className="lg:hidden text-xl font-black"
+              className="lg:hidden text-xl font-black text-gray-900"
             >
               Pune Software Technologies
             </Typography>
@@ -74,19 +74,15 @@ const Header = () => {
           </div>
         </Link>
         <button
-          className="md:hidden text-gray-700"
+          className="lg:hidden text-gray-700"
           onClick={toggleMobileMenu}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
-          {isMobileMenuOpen ? (
-            <FiX size={24} />
-          ) : (
-            <FiMenu size={24} className="font-bold" />
-          )}
+          {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-x-6">
+        <nav className="hidden lg:flex items-center gap-x-6">
           {navItems.map((item) =>
             item.subMenu ? (
               <div
@@ -145,27 +141,32 @@ const Header = () => {
 
       {/* Mobile Navigation Panel */}
       <div
-        className={`fixed top-0 left-0 h-full w-full bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-full w-2/3 md:w-1/2 bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <button
-          className="p-4 text-gray-700"
+        <FiX
+          size={32}
           onClick={toggleMobileMenu}
-          aria-label="Close menu"
-        >
-          <FiX size={24} />
-        </button>
-        <nav className="flex flex-col space-y-4 p-6">
+          className="ml-auto m-4"
+          color="black"
+        />
+
+        <nav className="flex flex-col ">
           {navItems.map((item) =>
             item.subMenu ? (
-              <div key={item.label} className="flex flex-col">
+              <div
+                key={item.label}
+                className="flex flex-col border-b border-gray-400 p-4"
+              >
                 <button
                   className="flex justify-between items-center font-bold text-gray-700 hover:text-blue-700"
                   onClick={() => toggleSubMenu(item.label)}
                   aria-expanded={activeSubMenu === item.label}
                 >
-                  {item.label}
+                  <Typography variant="h4" as="h4">
+                    {item.label}
+                  </Typography>
                   <FiChevronDown
                     className={`ml-1 transform transition-transform ${
                       activeSubMenu === item.label ? "rotate-180" : ""
@@ -186,7 +187,9 @@ const Header = () => {
                           }`}
                           aria-label={subItem.label}
                         >
-                          {subItem.label}
+                          <Typography variant="h5" as="h5">
+                            {subItem.label}
+                          </Typography>
                         </Link>
                       </li>
                     ))}
@@ -198,14 +201,16 @@ const Header = () => {
                 key={item.label}
                 href={item.href!}
                 onClick={toggleMobileMenu}
-                className={`block transition-colors ${
+                className={`block transition-colors border-b border-gray-400 p-4  ${
                   pathname === item.href
                     ? "text-blue-700 font-bold underline"
                     : "text-gray-700 hover:text-blue-700"
                 }`}
                 aria-label={item.label}
               >
-                {item.label}
+                <Typography variant="h4" as="h4">
+                  {item.label}
+                </Typography>
               </Link>
             )
           )}

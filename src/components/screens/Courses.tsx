@@ -38,19 +38,19 @@ const Courses = () => {
 
   return (
     <section
-      className="container mx-auto py-4"
+      className="mx-auto py-4 px-6 lg:px-32 bg-red"
       aria-label="Pune Software Technologies Courses Section"
     >
       <Typography variant="h2" as="h2" className="text-center my-8">
         Choose your <span className="text-primary">area of interest</span>
       </Typography>
-      <div className="flex flex-wrap justify-between items-center gap-6 px-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {courses.map((course, index) => (
           <Link
             href={course.link}
             key={index}
             aria-label={course.name}
-            className="flex flex-col items-center hover:scale-105 hover:shadow-xl  bg-blue-100 border border-blue-200 rounded-lg  shadow-md hover:shadow-lg transition-shadow w-full sm:w-1/2 md:w-1/3 lg:w-1/6"
+            className="flex flex-col items-center hover:scale-105 hover:shadow-xl bg-blue-100 border border-blue-200 rounded-lg shadow-md hover:shadow-lg transition-shadow"
           >
             <div className="mb-4 w-full h-40 relative">
               <Image
@@ -64,7 +64,7 @@ const Courses = () => {
             <Typography
               variant="h4"
               as="h4"
-              className="text-gray-800 mb-4 px-2"
+              className="text-gray-800 mb-4 px-2 text-center"
             >
               {course.name}
             </Typography>

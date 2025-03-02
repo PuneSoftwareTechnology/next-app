@@ -9,6 +9,7 @@ import { Blog } from "@/util/interfaces/blog";
 import { formatText } from "@/util/helperFunctions";
 import ContactButtons from "@/components/organisms/ContactButtons";
 import ERROR_IMG from "../../assests/images/imageError.png";
+import EnquirySection from "@/components/screens/EnquirySection";
 
 const categories = [
   "SAP",
@@ -65,7 +66,7 @@ const AllBlogs = async () => {
   return (
     <>
       <Header />
-      <div className="p-6 bg-white rounded-lg shadow-lg mt-24 mb-8 sm:p-4 mx-6 md:mx-32">
+      <div className="rounded-lg bg-white shadow-lg p-2 md:p-4 mt-28 mb-8  mx-2 md:mx-6 lg:mx-32">
         <Typography variant="h1" className="mb-8 text-center">
           All Blogs
         </Typography>
@@ -74,7 +75,7 @@ const AllBlogs = async () => {
         <Typography variant="h3" as="h3" className="mb-4 text-left">
           Latest Blogs
         </Typography>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {latestBlogs.map((blog) => (
             <BlogCard key={blog.id} blog={blog} />
           ))}
@@ -98,6 +99,7 @@ const AllBlogs = async () => {
             )
         )}
       </div>
+      <EnquirySection />
       <Footer />
     </>
   );

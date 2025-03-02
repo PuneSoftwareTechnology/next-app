@@ -43,7 +43,7 @@ const highlights: Highlight[] = [
 const ProgramHighlights: React.FC = () => {
   return (
     <section
-      className="py-12 px-6 bg-gray-50  px-6 md:px-32"
+      className="py-12 px-6 bg-gray-50  px-6 lg:px-32"
       aria-label="Pune Software Technologies Program Highlights Section"
     >
       <div className="container mx-auto">
