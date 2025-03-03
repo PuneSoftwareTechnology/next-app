@@ -6,18 +6,10 @@ import Footer from "@/components/molecules/Footer";
 import Typography from "@/components/atoms/Typography";
 import { getAllBlogs } from "@/APIS/blog.service";
 import { Blog } from "@/util/interfaces/blog";
-import { formatText } from "@/util/helperFunctions";
 import ContactButtons from "@/components/organisms/ContactButtons";
 import ERROR_IMG from "../../assests/images/imageError.png";
 import EnquirySection from "@/components/screens/EnquirySection";
-
-const categories = [
-  "SAP",
-  "CLOUD_TECHNOLOGIES",
-  "DATA_ANALYTICS",
-  "ML&AI",
-  "CYBER_SECURITY",
-];
+import { categoryIdMap } from "@/util/data/category";
 
 const fetchBlogs = async (): Promise<Blog[]> => {
   try {
@@ -53,51 +45,51 @@ const AllBlogs = async () => {
   const latestBlogs = blogs.slice(0, 4);
   const categorizedBlogs: Record<string, Blog[]> = {};
 
-  categories.forEach((category) => {
-    categorizedBlogs[category] = [];
-  });
-
   blogs.forEach((blog) => {
-    if (categories.includes(blog.category)) {
-      categorizedBlogs[blog.category].push(blog);
+    const categoryName =
+      categoryIdMap[blog.category_id as keyof typeof categoryIdMap] ||
+      "Uncategorized";
+    if (!categorizedBlogs[categoryName]) {
+      categorizedBlogs[categoryName] = [];
     }
+    categorizedBlogs[categoryName].push(blog);
   });
 
   return (
     <>
       <Header />
-      <div className="rounded-lg bg-white shadow-lg p-2 md:p-4 mt-28 mb-8  mx-2 md:mx-6 lg:mx-32">
+      <div className="mt-20  lg:mt-28 mb-8 mx-2 md:mx-4 lg:mx-32">
         <Typography variant="h1" className="mb-8 text-center">
           All Blogs
         </Typography>
 
         {/* Latest Blogs Section */}
-        <Typography variant="h3" as="h3" className="mb-4 text-left">
-          Latest Blogs
-        </Typography>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {latestBlogs.map((blog) => (
-            <BlogCard key={blog.id} blog={blog} />
-          ))}
+        <div className="rounded-lg bg-white shadow-lg p-2 md:p-4 mb-8">
+          <Typography variant="h3" as="h3" className="mb-4 text-left">
+            Latest Blogs
+          </Typography>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {latestBlogs.map((blog) => (
+              <BlogCard key={blog.id} blog={blog} />
+            ))}
+          </div>
         </div>
 
         {/* Categorized Blogs */}
-        {categories.map(
-          (category) =>
-            categorizedBlogs[category] &&
-            categorizedBlogs[category].length > 0 && (
-              <div key={category} className="mb-12">
-                <Typography variant="h3" as="h3" className="mb-4 text-left">
-                  {formatText(category)}
-                </Typography>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                  {categorizedBlogs[category].map((blog) => (
-                    <BlogCard key={blog.id} blog={blog} />
-                  ))}
-                </div>
+        {Object.entries(categorizedBlogs).map(([category, blogs]) => (
+          <div className="rounded-lg bg-white shadow-lg p-2 md:p-4 mb-8">
+            <div key={category} className="mb-12">
+              <Typography variant="h3" as="h3" className="mb-4 text-left">
+                {category}
+              </Typography>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {blogs.map((blog) => (
+                  <BlogCard key={blog.id} blog={blog} />
+                ))}
               </div>
-            )
-        )}
+            </div>
+          </div>
+        ))}
       </div>
       <EnquirySection />
       <Footer />

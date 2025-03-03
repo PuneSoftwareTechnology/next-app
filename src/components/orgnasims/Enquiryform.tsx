@@ -110,7 +110,7 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
   };
 
   return (
-    <section className="flex flex-col lg:flex-row items-center md:items-start justify-center mb-8 px-2 lg:px-32 py-4">
+    <section className="flex flex-col lg:flex-row items-center md:items-start justify-center mb-8 px-2 md:px-4 lg:px-32 py-4">
       <div className="w-full hidden lg:block lg:w-1/2 mb-8 flex justify-center items-end">
         <Image
           src={CALL_PERSON}
@@ -120,7 +120,7 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
           priority
         />
       </div>
-      <div className="w-full lg:w-1/2 bg-white px-2 py-4 lg:p-8 rounded-lg shadow-lg">
+      <div className="w-full lg:w-1/2 bg-white px-2 md:px-4 py-4 lg:p-8 rounded-lg shadow-lg">
         <Typography variant="h2" as="h2">
           Get in Touch
         </Typography>
