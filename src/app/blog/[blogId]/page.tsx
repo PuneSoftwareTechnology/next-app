@@ -30,7 +30,7 @@ export async function generateMetadata({
 }: {
   params: Params;
 }): Promise<Metadata> {
-  const { blogId } = await params; // Await params as per Next.js 15 changes
+  const { blogId } = await params;
   const blog = await fetchBlogData(blogId);
 
   return {
@@ -87,8 +87,8 @@ const BlogDetail = async ({ params }: { params: Params }) => {
   return (
     <>
       <Header />
-      <div className="p-6 bg-white rounded-lg shadow-lg mt-24 mb-8 sm:p-4 mx-6 md:mx-32">
-        <Typography variant="h1" className="mb-4 sm:text-2xl">
+      <div className="bg-white rounded-lg shadow-lg mt-20 lg:mt-24 mb-8 p-4 lg:p-6 mx-4 lg:mx-32">
+        <Typography variant="h2" as="h2" className="mb-4 text-center">
           {title}
         </Typography>
         <Image
@@ -96,9 +96,9 @@ const BlogDetail = async ({ params }: { params: Params }) => {
           alt={title}
           width={600}
           height={300}
-          className="rounded-lg  mx-auto border-2 "
+          className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/3  md:h-1/2 w-full h-1/3"
         />
-        <Typography variant="h3" as="h3" className="mt-4 sm:text-sm">
+        <Typography variant="h4" as="h4" className="mt-4 text-center">
           {introduction}
         </Typography>
         {[
@@ -118,10 +118,10 @@ const BlogDetail = async ({ params }: { params: Params }) => {
           (section, index) =>
             section.title && (
               <div key={index} className="mt-6">
-                <Typography variant="h2" className="sm:text-xl">
+                <Typography variant="h2" as="h2" className="text-center mb-4">
                   {section.title}
                 </Typography>
-                <Typography variant="p" className="sm:text-sm">
+                <Typography variant="h6" as="h6" className="text-center">
                   {section.intro}
                 </Typography>
                 <Image
@@ -131,7 +131,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
                   height={50}
                   className="rounded-lg mt-2 h-auto"
                 />
-                <Typography variant="p" className="mt-2 sm:text-sm">
+                <Typography variant="p" className="mt-2 text-center">
                   {section.text}
                 </Typography>
               </div>
@@ -142,7 +142,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
             <Typography variant="h2" className="sm:text-lg">
               {tertiary_content_title}
             </Typography>
-            <ul className="list-disc pl-6 text-gray-700 sm:text-sm">
+            <ul className="list-disc pl-6 text-gray-700 text-center">
               {parsedTertiaryPoints.map((point: string, index: number) => (
                 <li key={index}>{point}</li>
               ))}
