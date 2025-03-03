@@ -23,7 +23,7 @@ const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
           <Link
             href={`/blog/${blog.slug}`}
             key={index}
-            className="flex flex-col justify-between items-center text-center bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow pb-4"
+            className="flex flex-col justify-between items-center text-center bg-white border border-gray-200 rounded-lg shadow-md hover:scale-105 hover:shadow-xl  transition-shadow pb-4"
             aria-label={`Read more about ${blog.title}`}
           >
             <Image
