@@ -118,10 +118,10 @@ const BlogDetail = async ({ params }: { params: Params }) => {
           (section, index) =>
             section.title && (
               <div key={index} className="mt-6">
-                <Typography variant="h2" as="h2" className="text-center mb-4">
+                <Typography variant="h3" as="h3" className="text-center mb-4">
                   {section.title}
                 </Typography>
-                <Typography variant="h6" as="h6" className="text-center">
+                <Typography variant="h5" as="h5" className="text-center">
                   {section.intro}
                 </Typography>
                 <Image
@@ -131,7 +131,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
                   height={50}
                   className="rounded-lg mt-2 h-auto"
                 />
-                <Typography variant="p" className="mt-2 text-center">
+                <Typography variant="h6" as="h6" className="mt-2 text-center">
                   {section.text}
                 </Typography>
               </div>
@@ -151,7 +151,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
         )}
         {conclusion && (
           <div className="mt-6">
-            <Typography variant="h2" className="sm:text-lg">
+            <Typography variant="h2" as="h2" className="text-center mb-4">
               Conclusion
             </Typography>
             <Typography variant="p" className="sm:text-sm">

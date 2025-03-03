@@ -60,8 +60,8 @@ const Header = () => {
               Pune Software Technologies
             </Typography>
             <Typography
-              variant="h5"
-              as="h5"
+              variant="p"
+              as="p"
               className="lg:hidden text-xl font-black text-gray-900"
             >
               Pune Software Technologies
@@ -76,7 +76,11 @@ const Header = () => {
           onClick={toggleMobileMenu}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
-          {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          {isMobileMenuOpen ? (
+            <FiX size={24} color="black" />
+          ) : (
+            <FiMenu size={24} color="black" />
+          )}
         </button>
 
         {/* Desktop Navigation */}

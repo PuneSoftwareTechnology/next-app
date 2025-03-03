@@ -76,8 +76,11 @@ const AllBlogs = async () => {
         </div>
 
         {/* Categorized Blogs */}
-        {Object.entries(categorizedBlogs).map(([category, blogs]) => (
-          <div className="rounded-lg bg-white shadow-lg p-2 md:p-4 mb-8">
+        {Object.entries(categorizedBlogs).map(([category, blogs], index) => (
+          <div
+            key={index}
+            className="rounded-lg bg-white shadow-lg p-2 md:p-4 mb-8"
+          >
             <div key={category} className="mb-12">
               <Typography variant="h3" as="h3" className="mb-4 text-left">
                 {category}
