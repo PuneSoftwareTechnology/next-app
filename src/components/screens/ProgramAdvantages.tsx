@@ -46,7 +46,7 @@ const ProgramHighlights: React.FC = () => {
       className="py-12 bg-gray-50  px-4 lg:px-32"
       aria-label="Pune Software Technologies Program Highlights Section"
     >
-      <div className="container mx-auto">
+      <div className=" mx-auto">
         <Typography
           variant="h2"
           className="text-center mb-8"
@@ -56,7 +56,7 @@ const ProgramHighlights: React.FC = () => {
         >
           Program Highlights
         </Typography>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {highlights.map((highlight, index) => (
             <Card
               key={index}
