@@ -50,8 +50,8 @@ const TrainingProcedure: FC<PageProps> = ({ courseDesc }) => {
         Our Training Key Features
       </Typography>
       <Typography
-        variant="h5"
-        as="h5"
+        variant="h6"
+        as="h6"
         className="mx-6 lg:mx-32 text-center mb-4 lg:mb-8"
       >
         {courseDesc}
