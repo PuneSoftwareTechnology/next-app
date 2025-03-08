@@ -112,16 +112,16 @@ const BlogCard = ({ blog }: { blog: Blog }) => (
       />
       <div className="p-4 flex flex-col flex-grow">
         <Typography
-          variant="h6"
-          as="h6"
-          className="m-4 text-left text-gray-800 flex-grow"
+          variant="h5"
+          as="h5"
+          className="mb-2 text-left text-gray-800 flex-grow"
         >
           {blog.title}
         </Typography>
         <div className="mt-auto">
           <Typography
-            variant="h6"
-            className="text-white px-2 py-1 w-fit bg-blue-600 rounded-md mx-auto flex-1"
+            variant="h5"
+            className="text-white px-4 py-2 w-fit bg-blue-600 rounded-md mx-auto"
           >
             Read More
           </Typography>

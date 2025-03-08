@@ -23,7 +23,7 @@ export default function RelatedCourses({ relatedCourses }: Props) {
           No related courses available.
         </Typography>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 ">
           {relatedCourses.map((course) => (
             <Link
               key={course.id}
@@ -34,11 +34,11 @@ export default function RelatedCourses({ relatedCourses }: Props) {
                 <Image
                   src={course.featured_image || ERROR_IMAGE}
                   alt={course.name}
-                  className="w-full h-32 object-cover rounded-md"
+                  className="w-full h-30 object-cover rounded-md"
                   width={500}
-                  height={300}
+                  height={400}
                 />
-                <Typography variant="h6" as="h6" className="text-blue-700 mt-4">
+                <Typography variant="h5" as="h5" className="text-blue-700 mt-4">
                   {course.name}
                 </Typography>
               </article>
