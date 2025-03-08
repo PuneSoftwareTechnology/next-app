@@ -22,6 +22,22 @@ const baseStyles: Record<string, string> = {
   span: "text-sm text-gray-600",
 };
 
+// Utility function to replace *text* with <strong>text</strong>
+const formatBoldText = (text: string): React.ReactNode => {
+  const parts = text.split(/(\*[^*]+\*)/g); // Split text by *text* patterns
+  return parts.map((part, index) => {
+    if (part.startsWith("*") && part.endsWith("*")) {
+      // Remove the * and wrap the text in <strong>
+      return (
+        <strong className="text-xl text-gray-900" key={index}>
+          {part.slice(1, -1)}
+        </strong>
+      );
+    }
+    return part;
+  });
+};
+
 const Typography: React.FC<TypographyProps> = ({
   variant,
   className,
@@ -33,6 +49,10 @@ const Typography: React.FC<TypographyProps> = ({
   const Component = as || variant;
   const combinedClassName = `${baseStyles[variant]} ${className || ""}`;
 
+  // Format the children to handle *text* for bold
+  const formattedChildren =
+    typeof children === "string" ? formatBoldText(children) : children;
+
   return (
     <Component className={combinedClassName} role={role} {...rest}>
       <Linkify
@@ -41,7 +61,7 @@ const Typography: React.FC<TypographyProps> = ({
           className: "text-blue-700 font-bold underline",
         }}
       >
-        {children}
+        {formattedChildren}
       </Linkify>
     </Component>
   );
