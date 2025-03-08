@@ -17,6 +17,7 @@ import Typography from "@/components/atoms/Typography";
 import InputBox from "@/components/atoms/InputBox";
 import Head from "next/head";
 import { Course } from "@/util/interfaces/course";
+import ContactButtons from "../organisms/ContactButtons";
 
 interface FormData {
   name: string;
@@ -118,103 +119,97 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
       </Head>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow max-w-lg md:w-2/3 md:mx-auto py-6 mx-2 px-4 bg-white rounded-lg shadow-lg mt-24 mb-8">
-          <Typography variant="h1" as="h1" className="text-center mb-4">
-            Add Your Testimonial
-          </Typography>
+        <div className="flex-grow">
+          <main className=" max-w-lg md:w-2/3 mx-auto py-6  px-2 lg:px-4 bg-white rounded-lg shadow-lg mt-20 md:mt-28 mb-16 lg:mb-8">
+            <Typography variant="h2" as="h2" className="text-center ">
+              Add Your Testimonial
+            </Typography>
 
-          <form onSubmit={handleSubmit}>
-            <div className="my-8">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Name
-              </label>
-              <InputBox
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                error={errors.name}
-              />
-              {errors.name && (
-                <p className="text-red-500 text-xs">{errors.name}</p>
-              )}
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="course"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Course
-              </label>
-              <Dropdown
-                id="course"
-                name="course"
-                options={courses.map((course) => ({
-                  label: course.name,
-                  value: String(course.id),
-                }))}
-                value={formData.course}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="testimonial"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Testimonial
-              </label>
-              <textarea
-                id="testimonial"
-                name="testimonial"
-                value={formData.testimonial}
-                onChange={handleChange}
-                placeholder="Your Testimonial"
-                className="mt-1 block w-full p-2 text-gray-900 rounded-md border-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-              {errors.testimonial && (
-                <p className="text-red-500 text-xs">{errors.testimonial}</p>
-              )}
-            </div>
-
-            <div className="mt-4 mb-8 flex justify-start items-center gap-x-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Ratings
-              </label>
-              <div className="flex space-x-1">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <HiStar
-                    key={star}
-                    size={24}
-                    className={`cursor-pointer ${
-                      formData.rating >= star
-                        ? "text-yellow-500"
-                        : "text-gray-300"
-                    }`}
-                    onClick={() => handleRatingChange(star)}
-                  />
-                ))}
+            <form onSubmit={handleSubmit}>
+              <div className="my-4">
+                <Typography variant="h5" as="h5" className="text-gray-900">
+                  Name
+                </Typography>
+                <InputBox
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  error={errors.name}
+                />
+                {errors.name && (
+                  <p className="text-red-500 text-xs">{errors.name}</p>
+                )}
               </div>
-              {errors.rating && (
-                <p className="text-red-500 text-xs">{errors.rating}</p>
-              )}
-            </div>
 
-            <PrimaryButton stretch loading={loading} type="submit">
-              {loading ? "Submitting..." : "Submit Testimonial"}
-            </PrimaryButton>
-          </form>
-        </main>
+              <div className="mb-4">
+                <Typography variant="h5" as="h5" className="text-gray-900">
+                  Course
+                </Typography>
+                <Dropdown
+                  id="course"
+                  name="course"
+                  options={courses.map((course) => ({
+                    label: course?.id === 0 ? "Interested In" : course.name,
+                    value: String(course.id),
+                  }))}
+                  value={formData.course}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="mb-4">
+                <Typography variant="h5" as="h5" className="text-gray-900">
+                  Testimonial
+                </Typography>
+                <textarea
+                  id="testimonial"
+                  name="testimonial"
+                  value={formData.testimonial}
+                  onChange={handleChange}
+                  placeholder="Your Testimonial"
+                  className="mt-1 block w-full p-2 text-gray-900 rounded-md border-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+                {errors.testimonial && (
+                  <p className="text-red-500 text-xs">{errors.testimonial}</p>
+                )}
+              </div>
+
+              <div className="my-4 flex justify-start items-center gap-x-2">
+                <Typography variant="h5" as="h5" className="text-gray-900">
+                  Ratings
+                </Typography>
+                <div className="flex space-x-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <HiStar
+                      key={star}
+                      size={30}
+                      className={`cursor-pointer ${
+                        formData.rating >= star
+                          ? "text-yellow-500"
+                          : "text-gray-300"
+                      }`}
+                      onClick={() => handleRatingChange(star)}
+                    />
+                  ))}
+                </div>
+                {errors.rating && (
+                  <p className="text-red-500 text-xs">{errors.rating}</p>
+                )}
+              </div>
+
+              <PrimaryButton stretch loading={loading} type="submit">
+                Submit Testimonial
+              </PrimaryButton>
+            </form>
+          </main>
+        </div>
         <Footer />
+        <ContactButtons />
       </div>
     </>
   );
