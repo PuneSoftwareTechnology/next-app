@@ -38,11 +38,13 @@ const FaqSection: FC<FaqSectionProps> = ({ faqs }) => {
               <Typography variant="h5" as="h5">
                 {faq.question}
               </Typography>
-              {openIndex === index ? (
-                <BiChevronUp color="black" size={24} />
-              ) : (
-                <BiChevronDown color="black" size={24} />
-              )}
+              <span>
+                {openIndex === index ? (
+                  <BiChevronUp color="black" size={24} />
+                ) : (
+                  <BiChevronDown color="black" size={24} />
+                )}
+              </span>
             </div>
             {openIndex === index && (
               <Typography

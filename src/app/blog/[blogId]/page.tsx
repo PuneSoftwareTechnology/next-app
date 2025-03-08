@@ -98,7 +98,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
           height={300}
           className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/3  md:h-1/2 w-full h-1/3"
         />
-        <Typography variant="h4" as="h4" className="my-8 text-justify">
+        <Typography variant="h4" as="h4" className="my-8 text-center">
           {introduction}
         </Typography>
         {[
@@ -124,7 +124,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
                 <Typography variant="h3" as="h3" className="text-center mb-4">
                   {section.title}
                 </Typography>
-                <Typography variant="h5" as="h5" className="text-justify mb-4">
+                <Typography variant="h5" as="h5" className="text-center mb-4">
                   {section.intro}
                 </Typography>
                 <Image
@@ -134,7 +134,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
                   height={50}
                   className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/5  md:h-1/2 w-full h-1/5 mb-8"
                 />
-                <Typography variant="h6" as="h6" className="mt-2 text-justify">
+                <Typography variant="h6" as="h6" className="mt-2 text-center">
                   {section.text}
                 </Typography>
               </div>

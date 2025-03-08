@@ -18,7 +18,7 @@ const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
       <Typography variant="h2" as="h2" className="text-center mb-6">
         Know More About Technology
       </Typography>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto my-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto my-8 lg:my-16">
         {blogs.map((blog: Blog, index: number) => (
           <Link
             href={`/blog/${blog.slug}`}
@@ -52,10 +52,10 @@ const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
       </div>
       <Link
         href="/all-blogs"
-        className="bg-blue-600 w-fit my-4 text-white rounded-md px-4 py-2 mx-auto flex justify-center items-center hover:bg-blue-700 transition"
+        className="bg-blue-600 w-fit text-white rounded-md px-4 py-2 mx-auto flex justify-center items-center hover:bg-blue-700 transition"
         aria-label="Read all blogs"
       >
-        <Typography variant="h6" className="text-white ">
+        <Typography variant="h5" as="h5" className="text-white ">
           Read All Blogs
         </Typography>
       </Link>
