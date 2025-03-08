@@ -1,8 +1,10 @@
 import {
+  FaPlayCircle,
   FaChalkboardTeacher,
   FaUserTie,
   FaClipboardList,
   FaBriefcase,
+  FaAward,
 } from "react-icons/fa";
 import Typography from "../atoms/Typography";
 import { FC } from "react";
@@ -17,10 +19,18 @@ const trainingFeatures = [
     label: "Mentorship",
   },
   {
+    icon: <FaPlayCircle className="text-blue-500 text-2xl" />,
+    label: "Recorded Session",
+  },
+  {
     icon: <FaClipboardList className="text-pink-500 text-2xl" />,
-    label: "Hands on Practice",
+    label: "Assessment",
   },
 
+  {
+    icon: <FaAward className="text-orange-500 text-2xl" />,
+    label: "Interview Preparation",
+  },
   {
     icon: <FaBriefcase className="text-gray-500 text-2xl" />,
     label: "Placement Assistance",
@@ -39,10 +49,14 @@ const TrainingProcedure: FC<PageProps> = ({ courseDesc }) => {
       <Typography variant="h2" as="h2" className="text-center mb-4">
         Our Training Key Features
       </Typography>
-      <Typography variant="h5" as="h5" className="text-justify mb-4 lg:mb-8">
+      <Typography
+        variant="h5"
+        as="h5"
+        className="mx-6 lg:mx-32 text-center mb-4 lg:mb-8"
+      >
         {courseDesc}
       </Typography>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-8xl">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-8xl">
         {trainingFeatures.map((feature, index) => (
           <div
             key={index}
