@@ -22,17 +22,18 @@ const baseStyles: Record<string, string> = {
   span: "text-sm text-gray-600",
 };
 
-// Utility function to replace *text* with <strong>text</strong>
-const formatBoldText = (text: string): React.ReactNode => {
-  const parts = text.split(/(\*[^*]+\*)/g); // Split text by *text* patterns
+// Utility function to replace *text* with <strong>text</strong> and \n with <br />
+const formatText = (text: string): React.ReactNode => {
+  // Split text by *text* patterns and newlines
+  const parts = text.split(/(\*[^*]+\*|\n)/g);
+
   return parts.map((part, index) => {
     if (part.startsWith("*") && part.endsWith("*")) {
       // Remove the * and wrap the text in <strong>
-      return (
-        <strong className="text-xl text-gray-900" key={index}>
-          {part.slice(1, -1)}
-        </strong>
-      );
+      return <strong key={index}>{part.slice(1, -1)}</strong>;
+    } else if (part === "\n") {
+      // Replace newline with <br />
+      return <br key={index} />;
     }
     return part;
   });
@@ -49,9 +50,9 @@ const Typography: React.FC<TypographyProps> = ({
   const Component = as || variant;
   const combinedClassName = `${baseStyles[variant]} ${className || ""}`;
 
-  // Format the children to handle *text* for bold
+  // Format the children to handle *text* for bold and \n for newlines
   const formattedChildren =
-    typeof children === "string" ? formatBoldText(children) : children;
+    typeof children === "string" ? formatText(children) : children;
 
   return (
     <Component className={combinedClassName} role={role} {...rest}>
