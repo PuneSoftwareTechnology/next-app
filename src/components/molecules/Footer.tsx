@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Typography from "../atoms/Typography";
 
 const Footer = () => {
@@ -16,14 +15,6 @@ const Footer = () => {
           className="text-sm md:text-base text-center text-white"
         >
           &copy; {currentYear} Pune Software Technologies. All rights reserved.
-          Developed by{" "}
-          <Link
-            target="_blank"
-            href={"https://saurabhsoni.vercel.app/"}
-            className="text-blue-400 underline "
-          >
-            Saurabh Soni
-          </Link>
         </Typography>
 
         {/* Footer Links */}

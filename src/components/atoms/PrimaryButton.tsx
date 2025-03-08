@@ -32,8 +32,8 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       onClick={onClick}
       disabled={isButtonDisabled}
       aria-label={ariaLabel}
-      className={`w-full py-2 px-4 rounded-md text-white ${
-        stretch ? "w-full" : "sm:w-auto"
+      className={`w-fit py-2 px-4 rounded-md text-white ${
+        stretch ? "w-full" : "sm:w-fit"
       } ${
         isButtonDisabled
           ? "bg-gray-400 cursor-not-allowed"

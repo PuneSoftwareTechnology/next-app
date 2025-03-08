@@ -38,7 +38,7 @@ export default function CourseSyllabus({
 
   return (
     <section className="px-4 lg:px-32 p-4">
-      <div className="flex justify-center items-center gap-x-2 mb-4 ">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-x-2  mb-4 ">
         <Typography
           variant="h2"
           as="h2"
@@ -62,8 +62,9 @@ export default function CourseSyllabus({
               key={index}
               className="flex justify-start items-start gap-x-2 mb-2 text-gray-700"
             >
-              <ImArrowRight size={12} className="text-green-400 mt-2" />
-
+              <span>
+                <ImArrowRight size={12} className="text-green-400 mt-1" />
+              </span>
               <Typography variant="h6" as="h6">
                 {item}
               </Typography>
@@ -73,7 +74,7 @@ export default function CourseSyllabus({
       </div>
 
       {/* Course Syllabus Section */}
-      <div className="flex justify-center items-center gap-x-2 mb-4 ">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-x-2 mb-4 ">
         <Typography
           variant="h2"
           as="h2"
