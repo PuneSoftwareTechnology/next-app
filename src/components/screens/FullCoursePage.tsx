@@ -13,7 +13,6 @@ import PlacementsPage from "./PlacementsPage";
 import RelatedCourses from "../orgnasims/RelatedCourses";
 import Testimonials from "../orgnasims/Testimonial";
 import BlogsPage from "../orgnasims/Blogs";
-import { categoryIdMap } from "@/util/data/category";
 import FaqSection from "../orgnasims/FaqSection";
 import ContactButtons from "../organisms/ContactButtons";
 import EnquirySection from "./EnquirySection";
@@ -24,10 +23,8 @@ interface CoursePageProps {
 }
 
 const FullCoursePage: React.FC<CoursePageProps> = ({ courseDetails }) => {
-  const category =
-    categoryIdMap[
-      courseDetails?.course?.user_email as keyof typeof categoryIdMap
-    ];
+  const category = courseDetails?.course?.name?.split("-")[0];
+
   return (
     <>
       <Header />
@@ -46,30 +43,19 @@ const FullCoursePage: React.FC<CoursePageProps> = ({ courseDetails }) => {
               {courseDetails?.course?.name}
             </Typography>
             <div className="mt-4 ">
-              {Array.isArray(courseDetails?.course?.intro)
-                ? courseDetails.course.intro.map((item, index) => (
-                    <span
-                      className="flex justify-start items-start gap-x-2 mb-2"
-                      key={index}
-                    >
-                      <Typography variant="h6" as="h6" className="mt-1 lg:mt-0">
-                        ✅
-                      </Typography>
-                      <Typography variant="h6" as="h6">
-                        {item}
-                      </Typography>
-                    </span>
-                  ))
-                : courseDetails?.course?.intro && (
-                    <span className="flex justify-start items-start gap-x-2 mb-2">
-                      <Typography variant="h6" as="h6" className="mt-1 lg:mt-0">
-                        ✅
-                      </Typography>
-                      <Typography variant="h6" as="h6">
-                        {courseDetails.course.intro}
-                      </Typography>
-                    </span>
-                  )}
+              {courseDetails?.course?.intro?.map((item, index) => (
+                <span
+                  className="flex justify-strsrt items-start gap-x-2 mb-2"
+                  key={index}
+                >
+                  <Typography variant="h6" as="h6" className="mt-1 lg:mt-0">
+                    ✅
+                  </Typography>
+                  <Typography variant="h6" as="h6">
+                    {item}
+                  </Typography>
+                </span>
+              ))}
             </div>
           </div>
         </div>

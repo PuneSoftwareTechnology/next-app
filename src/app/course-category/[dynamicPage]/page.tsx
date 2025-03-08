@@ -39,7 +39,7 @@ export default async function DynamicPage({ params }: { params: Params }) {
       courses={coursesData}
       content={content[dynamicPage]}
       heroImage={COURSE_IMAGE}
-      heading={`${dynamicPage?.toUpperCase()} Functional Modules`}
+      heading={`${dynamicPage?.toUpperCase()} Modules`}
     />
   );
 }

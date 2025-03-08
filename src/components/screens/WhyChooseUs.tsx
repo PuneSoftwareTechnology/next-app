@@ -38,7 +38,11 @@ const WhyChooseUs = () => {
       <Typography variant="h2" as="h2" className="text-center mb-4">
         Why <span className="text-blue-700">Choose Us?</span>
       </Typography>
-      <Typography variant="h5" as="h5" className="lg:hidden text-center block ">
+      <Typography
+        variant="h5"
+        as="h5"
+        className="lg:hidden text-justify block "
+      >
         Choose us for a career-transforming learning experience with expert IT
         trainers, hands-on practical training, flexible timings, and affordable
         fees. We provide comprehensive lab support and interview preparation,

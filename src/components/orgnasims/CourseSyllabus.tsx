@@ -38,7 +38,7 @@ export default function CourseSyllabus({
 
   return (
     <section className="px-4 lg:px-32 p-4">
-      <div className="flex justify-center items-center gap-x-1 mb-4 ">
+      <div className="flex justify-center items-center gap-x-2 mb-4 ">
         <Typography
           variant="h2"
           as="h2"
@@ -73,9 +73,19 @@ export default function CourseSyllabus({
       </div>
 
       {/* Course Syllabus Section */}
-      <Typography variant="h2" as="h2" className="mb-4 text-center">
-        Syllabus Content
-      </Typography>
+      <div className="flex justify-center items-center gap-x-2 mb-4 ">
+        <Typography
+          variant="h2"
+          as="h2"
+          className="text-gray-900 underline decoration-yellow-400 decoration-4 text-center"
+        >
+          {category}
+        </Typography>
+        <Typography variant="h2" as="h2" className="text-gray-900 text-center">
+          Syllabus content
+        </Typography>
+      </div>
+
       <div className="border-2 border-gray-300 rounded-lg">
         {syllabus.map((course) =>
           course.courses_syllabus.map((module, index) => (

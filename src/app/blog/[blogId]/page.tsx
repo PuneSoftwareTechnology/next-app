@@ -98,7 +98,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
           height={300}
           className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/3  md:h-1/2 w-full h-1/3"
         />
-        <Typography variant="h4" as="h4" className="mt-4 text-center">
+        <Typography variant="h4" as="h4" className="my-8 text-justify">
           {introduction}
         </Typography>
         {[
@@ -117,11 +117,14 @@ const BlogDetail = async ({ params }: { params: Params }) => {
         ].map(
           (section, index) =>
             section.title && (
-              <div key={index} className="mt-6">
+              <div
+                key={index}
+                className="mt-6 py-8 px-2 md:px-8 bg-[#C9E4E9] rounded-lg mb-4"
+              >
                 <Typography variant="h3" as="h3" className="text-center mb-4">
                   {section.title}
                 </Typography>
-                <Typography variant="h5" as="h5" className="text-center">
+                <Typography variant="h5" as="h5" className="text-justify mb-4">
                   {section.intro}
                 </Typography>
                 <Image
@@ -129,20 +132,20 @@ const BlogDetail = async ({ params }: { params: Params }) => {
                   alt={section.title}
                   width={200}
                   height={50}
-                  className="rounded-lg mt-2 h-auto"
+                  className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/5  md:h-1/2 w-full h-1/5 mb-8"
                 />
-                <Typography variant="h6" as="h6" className="mt-2 text-center">
+                <Typography variant="h6" as="h6" className="mt-2 text-justify">
                   {section.text}
                 </Typography>
               </div>
             )
         )}
         {tertiary_content_title && (
-          <div className="mt-6">
-            <Typography variant="h2" className="sm:text-lg">
+          <div className="mt-6 py-8 bg-[#C9E4E9] rounded-lg ">
+            <Typography variant="h3" className="sm:text-lg text-center mb-4">
               {tertiary_content_title}
             </Typography>
-            <ul className="list-disc pl-6 text-gray-700 text-center">
+            <ul className="list-disc pl-6 text-gray-700 text-left">
               {parsedTertiaryPoints.map((point: string, index: number) => (
                 <li key={index}>{point}</li>
               ))}
@@ -151,7 +154,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
         )}
         {conclusion && (
           <div className="mt-6">
-            <Typography variant="h2" as="h2" className="text-center mb-4">
+            <Typography variant="h3" as="h3" className="text-center mb-4">
               Conclusion
             </Typography>
             <Typography variant="p" className="sm:text-sm">

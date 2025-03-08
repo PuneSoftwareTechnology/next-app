@@ -17,7 +17,7 @@ const highlights: Highlight[] = [
   {
     title: "Top-Notch Faculty",
     description:
-      "Trainers at ExcelR are passionate about training, and carry 12+ years of industry experience.",
+      "Trainers at Pune Software Technologies are passionate about training, and carry 12+ years of industry experience.",
     icon: <GiTeacher className="w-16 h-16 text-blue-500" />,
   },
   {
@@ -29,13 +29,13 @@ const highlights: Highlight[] = [
   {
     title: "Real-life Projects and Bootcamps",
     description:
-      "Learners will work on real-life test case scenarios from various domains to get application knowledge.",
+      "Learners will work on real time business scenarios to get application knowledge.",
     icon: <VscProject className="w-16 h-16 text-blue-500" />,
   },
   {
-    title: "Guaranteed Job Interviews",
+    title: "100% Job Assistance",
     description:
-      "Participants in the placement pool will get guaranteed job interviews across our 500+ partner companies until they receive the first job offer.",
+      "Enroll in our placement-focused SAP FICO workshop, where you’ll receive expert guidance on professional CV building, interview preparation, mock interviews, and job search strategies to help you secure your dream job in SAP FICO.",
     icon: <MdWork className="w-16 h-16 text-blue-500" />,
   },
 ];
