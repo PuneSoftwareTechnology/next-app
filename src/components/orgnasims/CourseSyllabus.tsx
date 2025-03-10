@@ -39,11 +39,7 @@ export default function CourseSyllabus({
   return (
     <section className="px-4 lg:px-32 p-4">
       <div className="flex flex-col md:flex-row justify-center items-center gap-x-2  mb-4 ">
-        <Typography
-          variant="h2"
-          as="h2"
-          className="text-gray-900 underline decoration-yellow-400 decoration-4 text-center"
-        >
+        <Typography variant="h2" as="h2" className="text-center">
           {category}
         </Typography>
         <Typography variant="h2" as="h2" className="text-gray-900 text-center">
@@ -75,11 +71,7 @@ export default function CourseSyllabus({
 
       {/* Course Syllabus Section */}
       <div className="flex flex-col md:flex-row justify-center items-center gap-x-2 mb-4 ">
-        <Typography
-          variant="h2"
-          as="h2"
-          className="text-gray-900 underline decoration-yellow-400 decoration-4 text-center"
-        >
+        <Typography variant="h2" as="h2" className="text-center">
           {category}
         </Typography>
         <Typography variant="h2" as="h2" className="text-gray-900 text-center">
