@@ -30,6 +30,9 @@ export interface OneBlogResponse {
   secondary_content_image: string;
   secondary_content_text: string;
   tertiary_content_title: string;
+  tertiary_content_intro: string;
+  tertiary_content_image: string;
+  tertiary_content_text: string;
   tertiary_content_points: string;
   conclusion: string;
   author_id: string;

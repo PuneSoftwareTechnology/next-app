@@ -74,6 +74,9 @@ const BlogDetail = async ({ params }: { params: Params }) => {
     secondary_content_title,
     secondary_content_intro,
     secondary_content_image,
+    tertiary_content_intro,
+    tertiary_content_image,
+    tertiary_content_text,
     secondary_content_text,
     tertiary_content_title,
     tertiary_content_points,
@@ -107,12 +110,21 @@ const BlogDetail = async ({ params }: { params: Params }) => {
             intro: primary_content_intro,
             image: primary_content_image,
             text: primary_content_text,
+            type: "PRIMARY",
           },
           {
             title: secondary_content_title,
             intro: secondary_content_intro,
             image: secondary_content_image,
             text: secondary_content_text,
+            type: "SECONDARY",
+          },
+          {
+            title: tertiary_content_title,
+            intro: tertiary_content_intro,
+            image: tertiary_content_image,
+            text: tertiary_content_text,
+            type: "TERTIARY",
           },
         ].map(
           (section, index) =>
@@ -137,21 +149,19 @@ const BlogDetail = async ({ params }: { params: Params }) => {
                 <Typography variant="h6" as="h6" className="mt-2 text-center">
                   {section.text}
                 </Typography>
+                {section?.type === "TERTIARY" && (
+                  <ul className="list-disc pl-6 text-gray-700 text-left">
+                    {parsedTertiaryPoints.map(
+                      (point: string, index: number) => (
+                        <li key={index}>{point}</li>
+                      )
+                    )}
+                  </ul>
+                )}
               </div>
             )
         )}
-        {tertiary_content_title && (
-          <div className="mt-6 py-8 bg-[#C9E4E9] rounded-lg ">
-            <Typography variant="h3" className="sm:text-lg text-center mb-4">
-              {tertiary_content_title}
-            </Typography>
-            <ul className="list-disc pl-6 text-gray-700 text-left">
-              {parsedTertiaryPoints.map((point: string, index: number) => (
-                <li key={index}>{point}</li>
-              ))}
-            </ul>
-          </div>
-        )}
+
         {conclusion && (
           <div className="mt-6">
             <Typography variant="h3" as="h3" className="text-center mb-4">
