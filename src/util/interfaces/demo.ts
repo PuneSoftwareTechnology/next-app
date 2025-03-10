@@ -3,7 +3,7 @@ export interface DemoInterface {
   phone: string;
   email: string;
   message: string;
-  course: string;
+  course_id: string;
 }
 
 export interface DemoResponse {

@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useRef, useCallback } from "react";
+
+import React, { useState, useCallback, useEffect } from "react";
 import PrimaryButton from "../atoms/PrimaryButton";
 import InputBox from "../atoms/InputBox";
 import CALL_PERSON from "../../assests/images/Call.png";
@@ -8,10 +9,13 @@ import Typography from "../atoms/Typography";
 import { DemoInterface } from "@/util/interfaces/demo";
 import { sendDemoRequest } from "@/APIS/demo.service";
 import { toast } from "react-toastify";
-import ReCAPTCHA from "react-google-recaptcha";
 import { Course } from "@/util/interfaces/course";
 import Dropdown from "../atoms/Dropdown";
 import { verifyCaptcha } from "@/APIS/serverActions";
+import {
+  GoogleReCaptchaProvider,
+  useGoogleReCaptcha,
+} from "react-google-recaptcha-v3";
 
 const phoneRegex = /^[0-9]{10}$/;
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -20,19 +24,39 @@ interface PageProps {
   courses: Course[];
 }
 
-const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
+// Custom hook for reCAPTCHA
+const useRecaptcha = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [isRecaptchaLoaded, setIsRecaptchaLoaded] = useState(false);
+
+  useEffect(() => {
+    if (executeRecaptcha) {
+      setIsRecaptchaLoaded(true);
+    }
+  }, [executeRecaptcha]);
+
+  const getRecaptchaToken = async (action: string) => {
+    if (!executeRecaptcha) {
+      throw new Error("reCAPTCHA not loaded");
+    }
+    return await executeRecaptcha(action);
+  };
+
+  return { getRecaptchaToken, isRecaptchaLoaded };
+};
+
+const EnquiryFormContent: React.FC<PageProps> = ({ courses }) => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<DemoInterface>({
     name: "",
     phone: "",
     email: "",
     message: "",
-    course: "",
+    course_id: "", // Updated to course_id
   });
 
   const [errors, setErrors] = useState<Partial<DemoInterface>>({});
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
+  const { getRecaptchaToken, isRecaptchaLoaded } = useRecaptcha();
 
   const handleChange = useCallback(
     (
@@ -65,8 +89,6 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
 
     if (!formData.message) newErrors.message = "Message is required";
 
-    if (!captchaToken) toast.error("Please complete the CAPTCHA");
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -75,19 +97,30 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
     e.preventDefault();
     setLoading(true);
 
-    if (!captchaToken) {
-      toast.error("Please complete the CAPTCHA");
-      setLoading(false);
-      return;
-    }
-
     if (!validateForm()) {
       setLoading(false);
       return;
     }
 
     try {
-      const response = await sendDemoRequest({ ...formData });
+      if (!isRecaptchaLoaded) {
+        throw new Error("reCAPTCHA not loaded");
+      }
+
+      // Generate reCAPTCHA token
+      const token = await getRecaptchaToken("enquiryFormSubmit");
+
+      // Verify the CAPTCHA token
+      await verifyCaptcha(token);
+
+      // Prepare the payload with course_id
+      const payload = {
+        ...formData,
+        course_id: formData.course_id, // Ensure course_id is included
+      };
+
+      // Submit the form data
+      const response = await sendDemoRequest(payload);
 
       if (response?.success) {
         toast.success("Request submitted. We will contact you soon.");
@@ -96,10 +129,8 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
           phone: "",
           email: "",
           message: "",
-          course: "",
+          course_id: "",
         });
-        setCaptchaToken(null);
-        recaptchaRef.current?.reset();
       }
     } catch (error) {
       console.error(error);
@@ -159,13 +190,13 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
             aria-label="Email Address"
           />
           <Dropdown
-            id="course"
-            name="course"
+            id="course_id"
+            name="course_id"
             options={courses.map((course) => ({
               label: course?.id === 0 ? "Interested In" : course.name,
               value: String(course.id),
             }))}
-            value={formData.course}
+            value={formData.course_id}
             onChange={handleChange}
           />
           <textarea
@@ -182,27 +213,28 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
             <p className="text-red-500 text-sm mt-1">{errors.message}</p>
           )}
 
-          {/* Google reCAPTCHA */}
-          <ReCAPTCHA
-            sitekey={
-              process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "Missing-key"
-            }
-            onChange={(token: string | null) =>
-              verifyCaptcha(token)
-                .then(() => {
-                  setCaptchaToken(token);
-                })
-                .catch(console.error)
-            }
-            ref={recaptchaRef}
-          />
-
           <PrimaryButton loading={loading} type="submit" stretch>
             Submit
           </PrimaryButton>
         </form>
       </div>
     </section>
+  );
+};
+
+const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
+  return (
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "Missing-key"}
+      scriptProps={{
+        async: false,
+        defer: true,
+        appendTo: "head",
+        nonce: undefined,
+      }}
+    >
+      <EnquiryFormContent courses={courses} />
+    </GoogleReCaptchaProvider>
   );
 };
 

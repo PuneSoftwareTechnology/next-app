@@ -26,7 +26,7 @@ const contactButtons: ContactButton[] = [
 
 const ContactButtons = () => {
   return (
-    <div className="fixed md:bottom-4 bottom-16 right-4 flex flex-col items-center space-y-2 md:space-y-4">
+    <div className="fixed bottom-20 right-4 flex flex-col items-center space-y-2 md:space-y-4">
       {contactButtons.map((button, index) => (
         <a
           key={index}
