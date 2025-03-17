@@ -31,7 +31,7 @@ const HeroSection: React.FC = () => {
         >
           Empowering students and professionals with cutting-edge training in
           web development, software engineering, and IT solutions. Join us to
-          elevate your career to new heights.
+          elevate your career to new height.
         </Typography>
         <a
           href="/courses"
