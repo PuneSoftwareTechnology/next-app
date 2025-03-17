@@ -147,7 +147,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
                   height={50}
                   className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/5  md:h-1/2 w-full h-1/5 mb-8"
                 />
-                <Typography variant="h6" as="h6" className="mt-2 text-center">
+                <Typography variant="h6" as="h6" className="mt-2 text-left">
                   {section.text}
                 </Typography>
                 {section?.type === "TERTIARY" && (
