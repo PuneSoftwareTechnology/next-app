@@ -1,10 +1,13 @@
 import Typography from "@/components/atoms/Typography";
+import Footer from "@/components/molecules/Footer";
+import Header from "@/components/molecules/Header";
 import { NextPage } from "next";
 
 const TermsOfUse: NextPage = () => {
   return (
     <>
-      <div className="max-w-3xl mx-auto px-4 py-12">
+      <Header />
+      <div className="max-w-3xl mx-auto px-4 py-12 mt-28">
         <Typography variant="h1" className="text-center">
           Terms of Use
         </Typography>
@@ -60,16 +63,17 @@ const TermsOfUse: NextPage = () => {
               If you have any questions or concerns about these Terms of Use,
               please contact us at{" "}
               <a
-                href="mailto:support@punesoftwaretechnologies.com"
+                href="mailto:punesoftwaretechnologies@gmail.com"
                 className="text-blue-500 hover:underline"
               >
-                support@punesoftwaretechnologies.com
+                punesoftwaretechnologies@gmail.com
               </a>
               .
             </Typography>
           </section>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

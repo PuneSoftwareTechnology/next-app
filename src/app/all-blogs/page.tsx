@@ -95,13 +95,14 @@ const AllBlogs = async () => {
         ))}
       </div>
       <EnquirySection />
+      <ContactButtons />
       <Footer />
     </>
   );
 };
 
 const BlogCard = ({ blog }: { blog: Blog }) => (
-  <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full">
+  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:scale-105 hover:shadow-xl flex flex-col h-full">
     <Link href={`/blog/${blog.slug}`} className="flex flex-col h-full">
       <Image
         src={blog?.featured_image || ERROR_IMG}
@@ -115,7 +116,7 @@ const BlogCard = ({ blog }: { blog: Blog }) => (
           variant="h5"
           as="h5"
           className="mb-2 text-left text-gray-800 flex-grow"
-        >
+        >HE
           {blog.title}
         </Typography>
         <div className="mt-auto">
@@ -128,7 +129,6 @@ const BlogCard = ({ blog }: { blog: Blog }) => (
         </div>
       </div>
     </Link>
-    <ContactButtons />
   </div>
 );
 

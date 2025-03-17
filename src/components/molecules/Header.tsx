@@ -107,7 +107,7 @@ const Header = () => {
                           href={subItem.href}
                           className={`block px-4 py-2 transition-colors hover:bg-gray-100 hover:rounded-md ${
                             pathname === subItem.href
-                              ? "text-blue-700 font-semibold underline"
+                              ? "text-blue-700 font-semibold"
                               : "text-gray-700 hover:text-blue-700"
                           }`}
                           aria-label={subItem.label}
@@ -127,7 +127,7 @@ const Header = () => {
                 href={item.href!}
                 className={`transition-colors ${
                   pathname === item.href
-                    ? "text-blue-700 font-semibold underline"
+                    ? "text-blue-700 font-semibold"
                     : "text-gray-700 hover:text-blue-700"
                 }`}
                 aria-label={item.label}
@@ -184,7 +184,7 @@ const Header = () => {
                           onClick={toggleMobileMenu}
                           className={`block transition-colors ${
                             pathname === subItem.href
-                              ? "text-blue-700 font-semibold underline"
+                              ? "text-blue-700 font-semibold "
                               : "text-gray-700 hover:text-blue-700"
                           }`}
                           aria-label={subItem.label}
@@ -205,7 +205,7 @@ const Header = () => {
                 onClick={toggleMobileMenu}
                 className={`block transition-colors border-b border-gray-400 p-4  ${
                   pathname === item.href
-                    ? "text-blue-700 font-bold underline"
+                    ? "text-blue-700 font-bold "
                     : "text-gray-700 hover:text-blue-700"
                 }`}
                 aria-label={item.label}

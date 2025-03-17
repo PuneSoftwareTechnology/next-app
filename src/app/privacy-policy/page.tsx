@@ -1,4 +1,6 @@
 import Typography from "@/components/atoms/Typography";
+import Footer from "@/components/molecules/Footer";
+import Header from "@/components/molecules/Header";
 import Head from "next/head";
 
 const PrivacyPolicy = () => {
@@ -19,7 +21,8 @@ const PrivacyPolicy = () => {
         <meta charSet="UTF-8" />
       </Head>
 
-      <main className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+      <Header />
+      <main className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8 mt-24">
         <Typography variant="h1" className="text-center mb-6">
           Privacy Policy
         </Typography>
@@ -83,15 +86,16 @@ const PrivacyPolicy = () => {
             If you have any questions about this Privacy Policy, please contact
             us at
             <a
-              href="mailto:support@punesoftwaretechnologies.com"
+              href="mailto:punesoftwaretechnologies@gmail.com"
               className="text-blue-500 hover:underline ml-2"
             >
-              support@punesoftwaretechnologies.com
+              punesoftwaretechnologies@gmail.com
             </a>
             .
           </Typography>
         </footer>
       </main>
+      <Footer />
     </>
   );
 };

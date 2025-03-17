@@ -28,7 +28,7 @@ export default function RelatedCourses({ relatedCourses }: Props) {
             <Link
               key={course.id}
               href={`/course/${course.slug}`}
-              className="text-blue-500 mt-2 inline-block"
+              className="text-blue-500 mt-2 inline-block shadow-md hover:scale-105 hover:shadow-xl"
             >
               <article className="border-l-4 border-blue-600 p-4 bg-gray-50 shadow-md">
                 <Image
