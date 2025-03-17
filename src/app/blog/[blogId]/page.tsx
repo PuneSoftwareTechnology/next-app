@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import Typography from "@/components/atoms/Typography";
 import ContactButtons from "@/components/organisms/ContactButtons";
 import ERROR_IMG from "../../../assests/images/imageError.png";
+import EnquirySection from "@/components/screens/EnquirySection";
 
 type Params = Promise<{ blogId: string }>;
 
@@ -173,6 +174,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
           </div>
         )}
       </div>
+      <EnquirySection />
       <Footer />
       <ContactButtons />
     </>
