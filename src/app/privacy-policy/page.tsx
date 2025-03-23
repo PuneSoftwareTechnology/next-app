@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
           name="keywords"
           content="Privacy Policy, Data Protection, Terms"
         />
-        <meta name="author" content="YourWebsite" />
+        <meta name="author" content="punesoftwaretechonologies.com" />
         <meta charSet="UTF-8" />
       </Head>
 
