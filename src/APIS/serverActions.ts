@@ -2,9 +2,28 @@
 
 import axios from "axios";
 
+// export async function verifyCaptcha(token: string | null) {1
+//   const url = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY}&response=${token}`;
+//   const res = await axios.post(url);
+//   console.log("reCAPTCHA response:", res.data); // Debugging
+//   if (res.data.success) {
+//     return "success!";
+//   } else {
+//     throw new Error("Failed Captcha");
+//   }
+// }
+
 export async function verifyCaptcha(token: string | null) {
-  const url = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY}&response=${token}`;
-  const res = await axios.post(url);
+  console.log("Received reCAPTCHA token:", token); // Debugging
+  const url = "https://www.google.com/recaptcha/api/siteverify";
+  const params = new URLSearchParams();
+  params.append("secret", process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY || "");
+  params.append("response", token || "");
+
+  const res = await axios.post(url, params, {
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  });
+
   console.log("reCAPTCHA response:", res.data); // Debugging
   if (res.data.success) {
     return "success!";
