@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import Typography from "@/components/atoms/Typography";
 import Header from "@/components/molecules/Header";
 import Footer from "@/components/molecules/Footer";
-import GlobalLoader from "@/components/molecules/GlobalLoader";
 import InputBox from "@/components/atoms/InputBox";
 import PrimaryButton from "@/components/atoms/PrimaryButton";
 import { sendConsultationRequest } from "@/APIS/demo.service";
