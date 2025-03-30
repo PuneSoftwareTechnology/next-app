@@ -4,18 +4,26 @@ import Link from "next/link";
 import Header from "@/components/molecules/Header";
 import Footer from "@/components/molecules/Footer";
 import Typography from "@/components/atoms/Typography";
-import { getAllBlogs } from "@/APIS/blog.service";
 import { Blog } from "@/util/interfaces/blog";
 import ContactButtons from "@/components/organisms/ContactButtons";
 import ERROR_IMG from "../../assests/images/imageError.png";
 import EnquirySection from "@/components/screens/EnquirySection";
 import { categoryIdMap } from "@/util/data/category";
+import { BASE_URL } from "@/util/urls";
 
 const fetchBlogs = async (): Promise<Blog[]> => {
   try {
-    const response = await getAllBlogs("blog");
-    if (response?.success && Array.isArray(response.data)) {
-      return response.data as Blog[];
+    const response = await fetch(`${BASE_URL}/blog/all?landing_page=blog`, {
+      cache: "no-store", // 🚀 Ensures fresh data on every request
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch blogs: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    if (data?.success && Array.isArray(data.data)) {
+      return data.data as Blog[];
     }
   } catch (error) {
     console.error("Error fetching blogs:", error);
@@ -116,7 +124,8 @@ const BlogCard = ({ blog }: { blog: Blog }) => (
           variant="h5"
           as="h5"
           className="mb-2 text-left text-gray-800 flex-grow"
-        >HE
+        >
+          HE
           {blog.title}
         </Typography>
         <div className="mt-auto">
