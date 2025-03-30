@@ -9,20 +9,18 @@ export const getAllBlogs = async (
   type: string
 ): Promise<FetchBlogResponse | null> => {
   try {
-    const url = `${BASE_URL}/blog/all?landing_page=${type}`; // API endpoint for fetching all blogs
+    const url = `${BASE_URL}/blog/all?landing_page=${type}&_t=${Date.now()}`; // API endpoint for fetching all blogs
 
-    const { data } = await axios.get<FetchBlogResponse>(url, {
-      headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate", // Prevent browser caching
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-    });
+    const { data } = await axios.get<FetchBlogResponse>(url);
 
     return data;
   } catch (err) {
     if (axios.isAxiosError(err)) {
-      console.error("Axios Error:", err.response?.data || err.message);
+      const axiosError = err as AxiosError;
+      console.error(
+        "Axios Error:",
+        axiosError.response?.data || axiosError.message
+      );
       throw new Error("Something went wrong while fetching the blogs.");
     } else {
       console.error("Unexpected Error:", err);
