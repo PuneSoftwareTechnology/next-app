@@ -11,16 +11,18 @@ export const getAllBlogs = async (
   try {
     const url = `${BASE_URL}/blog/all?landing_page=${type}`; // API endpoint for fetching all blogs
 
-    const { data } = await axios.get<FetchBlogResponse>(url);
+    const { data } = await axios.get<FetchBlogResponse>(url, {
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate", // Prevent browser caching
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    });
 
     return data;
   } catch (err) {
     if (axios.isAxiosError(err)) {
-      const axiosError = err as AxiosError;
-      console.error(
-        "Axios Error:",
-        axiosError.response?.data || axiosError.message
-      );
+      console.error("Axios Error:", err.response?.data || err.message);
       throw new Error("Something went wrong while fetching the blogs.");
     } else {
       console.error("Unexpected Error:", err);
