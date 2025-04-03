@@ -16,7 +16,7 @@ const BlogsPage: React.FC<BlogsProps> = ({ blogs }) => {
       aria-label="Pune Software Technologies Blog Section"
     >
       <Typography variant="h2" as="h2" className="text-center mb-6">
-        Know More About Latest Technology
+        Recently Published Articles
       </Typography>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto my-8 lg:my-16">
         {blogs.map((blog: Blog, index: number) => (
