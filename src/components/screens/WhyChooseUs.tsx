@@ -6,7 +6,7 @@ const WhyChooseUs = () => {
       icon: "👨‍💻",
       title: "IT Experts as Trainers",
       description:
-        "Learning a technology with a professional who is well-expertise in that solves 60% of your needs.",
+        "Our trainers are working professionals with 10+ years of experience. They give learners exposure to real business scenarios.",
     },
     {
       icon: "🛠️",
