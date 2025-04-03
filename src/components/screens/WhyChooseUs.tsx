@@ -51,8 +51,7 @@ const WhyChooseUs = () => {
         className="text-center  hidden lg:block mb-8 mx-2 lg:mx-16 text-gray-600"
       >
         A choice that makes a big difference in your career. We are committed to
-        helping you reach your goals and enhance your training experience by
-        providing innovative surroundings and facilities.
+        helping you reach your goals by providing practical training in latest IT technologies.
       </Typography>
       <div className="grid lg:grid-cols-4 gap-12 hidden lg:grid ">
         {reasons.map((reason, index) => (
