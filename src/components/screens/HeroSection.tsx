@@ -30,7 +30,7 @@ const HeroSection: React.FC = () => {
           className="mt-4 text-gray-700 leading-relaxed"
         >
           Empowering students and professionals with cutting-edge training in
-          web development, software engineering, and IT solutions. Join us to
+          SAP S4HANA, Cybersecurity and Artificial Intelligence. Join us to
           elevate your career to new height.
         </Typography>
         <a

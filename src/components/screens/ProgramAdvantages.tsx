@@ -35,7 +35,7 @@ const highlights: Highlight[] = [
   {
     title: "100% Job Assistance",
     description:
-      "Enroll in our placement-focused SAP FICO workshop, where you’ll receive expert guidance on professional CV building, interview preparation, mock interviews, and job search strategies to help you secure your dream job in SAP FICO.",
+      "Enroll in our placement-focused workshops, where you’ll receive expert guidance on professional CV building, interview preparation and job search strategies. You will receive continuous career support, job updates, and mentoring until you get your dream job.",
     icon: <MdWork className="w-16 h-16 text-blue-500" />,
   },
 ];
