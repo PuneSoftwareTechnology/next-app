@@ -30,8 +30,7 @@ const HeroSection: React.FC = () => {
           className="mt-4 text-gray-700 leading-relaxed"
         >
           Empowering students and professionals with practical training in
-          SAP S/4HANA, Cybersecurity, Cloud computing, Data analytics and Artificial intelligence. Join us to
-          elevate your career to new height.
+          latest IT technologies. Join us to elevate your career to new height.
         </Typography>
         <a
           href="/courses"
