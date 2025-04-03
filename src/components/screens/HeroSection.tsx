@@ -29,8 +29,8 @@ const HeroSection: React.FC = () => {
           as="h4"
           className="mt-4 text-gray-700 leading-relaxed"
         >
-          Empowering students and professionals with cutting-edge training in
-          SAP S4HANA, Cybersecurity and Artificial Intelligence. Join us to
+          Empowering students and professionals with practical training in
+          SAP S4HANA, Cybersecurity, Cloud computing and Artificial Intelligence. Join us to
           elevate your career to new height.
         </Typography>
         <a
