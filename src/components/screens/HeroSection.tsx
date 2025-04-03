@@ -38,7 +38,7 @@ const HeroSection: React.FC = () => {
           className="inline-block mt-6 px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-lg transition-all duration-300"
           aria-label="Explore Courses at Pune Software Technologies"
         >
-          Connect with an Industry Expert
+          Book Free Demo
         </a>
       </div>
     </section>
