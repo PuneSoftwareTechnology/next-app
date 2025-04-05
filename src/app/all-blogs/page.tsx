@@ -11,6 +11,8 @@ import EnquirySection from "@/components/screens/EnquirySection";
 import { categoryIdMap } from "@/util/data/category";
 import { BASE_URL } from "@/util/urls";
 
+export const dynamic = "force-dynamic";
+
 const fetchBlogs = async (): Promise<Blog[]> => {
   try {
     const response = await fetch(`${BASE_URL}/blog/all?landing_page=blog`, {

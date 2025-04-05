@@ -4,6 +4,8 @@ import FullCoursePage from "@/components/screens/FullCoursePage";
 import { FullCourseDetails } from "@/util/interfaces/course";
 import { BASE_URL } from "@/util/urls";
 
+type Params = Promise<{ courseId: string }>;
+
 const getFullCourseDetails = async (
   slug: string
 ): Promise<FullCourseDetails | null> => {
@@ -25,12 +27,8 @@ const getFullCourseDetails = async (
   }
 };
 
-export default async function CourseDetail({
-  params,
-}: {
-  params: { courseId: string };
-}) {
-  const { courseId } = params;
+export default async function CourseDetail({ params }: { params: Params }) {
+  const { courseId } = await params;
 
   if (typeof courseId !== "string") {
     notFound();
@@ -45,7 +43,7 @@ export default async function CourseDetail({
   return (
     <>
       <Head>
-        <title>Learn SAP</title>
+        <title> Learn SAP</title>
         <meta
           name="description"
           content={courseDetails.course.description || "Course Description"}

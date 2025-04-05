@@ -10,7 +10,8 @@ import ERROR_IMG from "../../../assests/images/imageError.png";
 import EnquirySection from "@/components/screens/EnquirySection";
 import { BASE_URL } from "@/util/urls";
 
-// ✅ Fetch blog data (No caching, always fresh)
+type Params = Promise<{ blogId: string }>;
+
 const fetchBlogData = async (slug: string): Promise<OneBlogResponse | null> => {
   try {
     const response = await fetch(`${BASE_URL}/blog/?slug=${slug}`, {
@@ -28,14 +29,13 @@ const fetchBlogData = async (slug: string): Promise<OneBlogResponse | null> => {
     return null;
   }
 };
-
-// ✅ Dynamic Metadata Generation
 export async function generateMetadata({
   params,
 }: {
-  params: { blogId: string };
+  params: Params;
 }): Promise<Metadata> {
-  const blog = await fetchBlogData(params.blogId);
+  const { blogId } = await params;
+  const blog = await fetchBlogData(blogId);
 
   return {
     title: blog?.title || "Blog | Pune Software Technologies",
@@ -48,7 +48,7 @@ export async function generateMetadata({
         blog?.introduction ||
         "Read insightful blogs on technology and software development.",
       images: [{ url: blog?.featured_image || "/default-blog-image.jpg" }],
-      url: `https://punesoftwaretechnologies.com/blog/${params.blogId}`,
+      url: `https://punesoftwaretechnologies.com/blog/${blogId}`,
       type: "article",
     },
     twitter: {
@@ -62,54 +62,73 @@ export async function generateMetadata({
   };
 }
 
-// ✅ Blog Detail Component
-const BlogDetail = async ({ params }: { params: { blogId: string } }) => {
+const BlogDetail = async ({ params }: { params: Params }) => {
   "use server";
-
-  const blog = await fetchBlogData(params.blogId);
-
+  const { blogId } = await params; // Await params as per Next.js 15 changes
+  const blog = await fetchBlogData(blogId);
   if (!blog) return notFound();
+  const {
+    title,
+    introduction,
+    featured_image,
+    primary_content_title,
+    primary_content_intro,
+    primary_content_image,
+    primary_content_text,
+    secondary_content_title,
+    secondary_content_intro,
+    secondary_content_image,
+    tertiary_content_intro,
+    tertiary_content_image,
+    tertiary_content_text,
+    secondary_content_text,
+    tertiary_content_title,
+    tertiary_content_points,
+    conclusion,
+  } = blog;
+
+  const parsedTertiaryPoints = tertiary_content_points
+    ? JSON.parse(tertiary_content_points)
+    : [];
 
   return (
     <>
       <Header />
       <div className="bg-white rounded-lg shadow-lg mt-20 lg:mt-24 mb-8 p-4 lg:p-6 mx-4 lg:mx-32">
         <Typography variant="h2" as="h2" className="mb-4 text-center">
-          {blog.title}
+          {title}
         </Typography>
         <Image
-          src={blog.featured_image || ERROR_IMG}
-          alt={blog.title}
+          src={featured_image || ERROR_IMG}
+          alt={title}
           width={600}
           height={300}
-          className="rounded-lg mx-auto border-2 lg:w-2/3 lg:h-1/3 w-full h-1/3"
+          className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/3  md:h-1/2 w-full h-1/3"
         />
         <Typography variant="h4" as="h4" className="my-8 text-center">
-          {blog.introduction}
+          {introduction}
         </Typography>
-
-        {/* ✅ Sections Mapping for Cleaner Code */}
         {[
           {
-            title: blog.primary_content_title,
-            intro: blog.primary_content_intro,
-            image: blog.primary_content_image,
-            text: blog.primary_content_text,
+            title: primary_content_title,
+            intro: primary_content_intro,
+            image: primary_content_image,
+            text: primary_content_text,
+            type: "PRIMARY",
           },
           {
-            title: blog.secondary_content_title,
-            intro: blog.secondary_content_intro,
-            image: blog.secondary_content_image,
-            text: blog.secondary_content_text,
+            title: secondary_content_title,
+            intro: secondary_content_intro,
+            image: secondary_content_image,
+            text: secondary_content_text,
+            type: "SECONDARY",
           },
           {
-            title: blog.tertiary_content_title,
-            intro: blog.tertiary_content_intro,
-            image: blog.tertiary_content_image,
-            text: blog.tertiary_content_text,
-            points: blog.tertiary_content_points
-              ? JSON.parse(blog.tertiary_content_points)
-              : [],
+            title: tertiary_content_title,
+            intro: tertiary_content_intro,
+            image: tertiary_content_image,
+            text: tertiary_content_text,
+            type: "TERTIARY",
           },
         ].map(
           (section, index) =>
@@ -129,35 +148,35 @@ const BlogDetail = async ({ params }: { params: { blogId: string } }) => {
                   alt={section.title}
                   width={200}
                   height={50}
-                  className="rounded-lg mx-auto border-2 lg:w-2/3 lg:h-1/5 w-full h-1/5 mb-8"
+                  className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/5  md:h-1/2 w-full h-1/5 mb-8"
                 />
                 <Typography variant="h6" as="h6" className="mt-2 text-left">
                   {section.text}
                 </Typography>
-                {section.points && (
+                {section?.type === "TERTIARY" && (
                   <ul className="list-disc pl-6 text-gray-700 text-left">
-                    {section.points.map((point: string, i: number) => (
-                      <li key={i}>{point}</li>
-                    ))}
+                    {parsedTertiaryPoints.map(
+                      (point: string, index: number) => (
+                        <li key={index}>{point}</li>
+                      )
+                    )}
                   </ul>
                 )}
               </div>
             )
         )}
 
-        {/* ✅ Conclusion Section */}
-        {blog.conclusion && (
+        {conclusion && (
           <div className="mt-6">
             <Typography variant="h3" as="h3" className="text-center mb-4">
               Conclusion
             </Typography>
             <Typography variant="p" className="sm:text-sm">
-              {blog.conclusion}
+              {conclusion}
             </Typography>
           </div>
         )}
       </div>
-
       <EnquirySection />
       <Footer />
       <ContactButtons />
@@ -166,7 +185,3 @@ const BlogDetail = async ({ params }: { params: { blogId: string } }) => {
 };
 
 export default BlogDetail;
-
-// ✅ Force Dynamic Rendering (Avoid Caching Issues)
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
