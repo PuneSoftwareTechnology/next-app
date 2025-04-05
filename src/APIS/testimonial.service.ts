@@ -1,6 +1,5 @@
 import {
   CreateTestimonialInterface,
-  ResponseInterFace,
   TestimonialResponse,
 } from "@/util/interfaces/testimonial";
 import { BASE_URL } from "@/util/urls";
