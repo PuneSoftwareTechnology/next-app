@@ -3,6 +3,8 @@ import { Course } from "@/util/interfaces/course";
 import { BASE_URL } from "@/util/urls";
 import Head from "next/head";
 
+export const dynamic = "force-dynamic";
+
 const getAllCourses = async (): Promise<Course[]> => {
   try {
     const response = await fetch(`${BASE_URL}/courses/all-course-names`, {
