@@ -153,7 +153,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
                   id="course"
                   name="course"
                   options={courses.map((course) => ({
-                    label: course?.id === 0 ? "Interested In" : course.name,
+                    label: course?.id === 0 ? "Select" : course.name,
                     value: String(course.id),
                   }))}
                   value={formData.course}
