@@ -28,29 +28,3 @@ export const createTestimonial = async (
     }
   }
 };
-
-export const fetchAllTestimonials = async (
-  course?: string
-): Promise<ResponseInterFace | null> => {
-  try {
-    const url = course
-      ? `${BASE_URL}/testimonial/all/?course=${course}`
-      : `${BASE_URL}/testimonial/all`;
-
-    const { data } = await axios.get<ResponseInterFace>(url);
-
-    return data;
-  } catch (err) {
-    if (axios.isAxiosError(err)) {
-      const axiosError = err as AxiosError;
-      console.error(
-        "Axios Error:",
-        axiosError.response?.data || axiosError.message
-      );
-      throw new Error("Something went wrong while fetching the testimonials.");
-    } else {
-      console.error("Unexpected Error:", err);
-      throw new Error("An unexpected error occurred.");
-    }
-  }
-};

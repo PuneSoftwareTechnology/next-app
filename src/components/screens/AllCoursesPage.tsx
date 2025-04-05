@@ -10,10 +10,10 @@ import TestimonialsPage from "./Testomonials";
 import BlogSection from "./BlogSection";
 import Footer from "../molecules/Footer";
 import { Courses } from "@/util/interfaces/course";
-import { FAQPage } from "./Faq";
 import ContactButtons from "../organisms/ContactButtons";
 import ERROR_IMAGE from "../../assests/images/imageError.png";
 import EnquirySection from "./EnquirySection";
+import FAQPage from "./Faq";
 
 interface AllCoursesPageProps {
   courses: Courses[];

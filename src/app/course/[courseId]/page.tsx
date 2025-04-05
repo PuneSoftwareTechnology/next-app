@@ -1,12 +1,36 @@
 import Head from "next/head";
 import { notFound } from "next/navigation";
-import { getFullCourseDetails } from "@/APIS/courses.services";
 import FullCoursePage from "@/components/screens/FullCoursePage";
+import { FullCourseDetails } from "@/util/interfaces/course";
+import { BASE_URL } from "@/util/urls";
 
-type Params = Promise<{ courseId: string }>;
+const getFullCourseDetails = async (
+  slug: string
+): Promise<FullCourseDetails | null> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/courses/get-course-details?slug=${slug}`,
+      { cache: "no-store" }
+    );
 
-export default async function CourseDetail({ params }: { params: Params }) {
-  const { courseId } = await params;
+    if (!response.ok) {
+      throw new Error(`Failed to fetch Course: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data?.success && typeof data.data === "object" ? data.data : null;
+  } catch (err) {
+    console.error("Error fetching Course:", err);
+    return null;
+  }
+};
+
+export default async function CourseDetail({
+  params,
+}: {
+  params: { courseId: string };
+}) {
+  const { courseId } = params;
 
   if (typeof courseId !== "string") {
     notFound();
@@ -21,8 +45,11 @@ export default async function CourseDetail({ params }: { params: Params }) {
   return (
     <>
       <Head>
-        <title> Learn SAP</title>
-        <meta name="description" content={"course.description"} />
+        <title>Learn SAP</title>
+        <meta
+          name="description"
+          content={courseDetails.course.description || "Course Description"}
+        />
         <meta name="robots" content="index, follow" />
       </Head>
 

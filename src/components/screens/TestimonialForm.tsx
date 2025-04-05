@@ -5,10 +5,7 @@ import { HiStar } from "react-icons/hi";
 import Dropdown from "@/components/atoms/Dropdown";
 import Header from "@/components/molecules/Header";
 import Footer from "@/components/molecules/Footer";
-import {
-  createTestimonial,
-  fetchAllTestimonials,
-} from "@/APIS/testimonial.service";
+import { createTestimonial } from "@/APIS/testimonial.service";
 import PrimaryButton from "@/components/atoms/PrimaryButton";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -85,7 +82,6 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
 
         if (response?.success) {
           toast.success("Testimonial submitted successfully!");
-          fetchAllTestimonials();
           router.push("/");
         } else {
           toast.error("Failed to submit testimonial.");
