@@ -2,6 +2,7 @@ import Typography from "@/components/atoms/Typography";
 import Footer from "@/components/molecules/Footer";
 import Header from "@/components/molecules/Header";
 import Head from "next/head";
+import Link from "next/link";
 
 const PrivacyPolicy = () => {
   return (
@@ -85,12 +86,12 @@ const PrivacyPolicy = () => {
           <Typography variant="p">
             If you have any questions about this Privacy Policy, please contact
             us at
-            <a
+            <Link
               href="mailto:punesoftwaretechnologies@gmail.com"
               className="text-blue-500 hover:underline ml-2"
             >
               punesoftwaretechnologies@gmail.com
-            </a>
+            </Link>
             .
           </Typography>
         </footer>

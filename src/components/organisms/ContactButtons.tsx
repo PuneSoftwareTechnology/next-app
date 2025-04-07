@@ -1,6 +1,7 @@
 import { IoCall } from "react-icons/io5";
 import { SiWhatsapp } from "react-icons/si";
 import { ReactElement } from "react";
+import Link from "next/link";
 
 type ContactButton = {
   href: string;
@@ -28,14 +29,14 @@ const ContactButtons = () => {
   return (
     <div className="fixed bottom-20 right-4 flex flex-col items-center space-y-2 md:space-y-4">
       {contactButtons.map((button, index) => (
-        <a
+        <Link
           key={index}
           href={button.href}
           className={`group ${button.bgColor} text-white rounded-full p-3 shadow-lg transition-transform transform hover:scale-110 hover:opacity-80 relative`}
           aria-label={button.ariaLabel}
         >
           {button.icon}
-        </a>
+        </Link>
       ))}
     </div>
   );

@@ -2,6 +2,7 @@ import Typography from "@/components/atoms/Typography";
 import Footer from "@/components/molecules/Footer";
 import Header from "@/components/molecules/Header";
 import { NextPage } from "next";
+import Link from "next/link";
 
 const TermsOfUse: NextPage = () => {
   return (
@@ -62,12 +63,12 @@ const TermsOfUse: NextPage = () => {
             <Typography variant="p">
               If you have any questions or concerns about these Terms of Use,
               please contact us at{" "}
-              <a
+              <Link
                 href="mailto:punesoftwaretechnologies@gmail.com"
                 className="text-blue-500 hover:underline"
               >
                 punesoftwaretechnologies@gmail.com
-              </a>
+              </Link>
               .
             </Typography>
           </section>

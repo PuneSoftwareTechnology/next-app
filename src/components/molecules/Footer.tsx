@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Typography from "../atoms/Typography";
 
 const Footer = () => {
@@ -24,7 +25,7 @@ const Footer = () => {
         >
           <ul className="flex flex-col sm:flex-row justify-center items-center gap-y-2 sm:gap-x-6 text-center">
             <li>
-              <a
+              <Link
                 href="/privacy-policy"
                 className="text-sm md:text-base text-blue-400 hover:text-blue-700 underline"
                 title="Privacy Policy"
@@ -32,10 +33,10 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 Privacy Policy
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/terms-of-use"
                 className="text-sm md:text-base text-blue-400 hover:text-blue-700 underline"
                 title="Terms of use"
@@ -43,16 +44,16 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 Terms of Use
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/contact-us"
                 className="text-sm md:text-base text-blue-400 hover:text-blue-700 underline"
                 title="Contact Us"
               >
                 Contact Us
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
