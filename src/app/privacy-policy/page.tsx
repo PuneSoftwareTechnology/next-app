@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
   return (
     <>
       <Head>
-        <title>Privacy Policy | YourWebsite</title>
+        <title>Privacy Policy | punesoftwaretechnologies</title>
         <meta
           name="description"
           content="Read our privacy policy to understand how we handle your data."

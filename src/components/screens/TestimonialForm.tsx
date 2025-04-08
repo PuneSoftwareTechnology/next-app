@@ -111,7 +111,10 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
           content="testimonial, feedback, course, category"
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://yourwebsite.com/add-testimonial" />
+        <link
+          rel="canonical"
+          href="https://punesoftwaretechnologies.com/add-testimonial"
+        />
       </Head>
       <div className="flex flex-col min-h-screen">
         <Header />

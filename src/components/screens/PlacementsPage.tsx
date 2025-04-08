@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     description:
       "Discover top companies where our alumni have secured placements.",
     type: "website",
-    url: "https://yourwebsite.com/placements",
+    url: "https://punesoftwaretechnologies.com/placements",
     images: [
       {
-        url: "https://yourwebsite.com/assets/placements-banner.jpg",
+        url: "https://punesoftwaretechnologies.com/assets/placements-banner.jpg",
         width: 1200,
         height: 630,
         alt: "Placements Banner",
@@ -54,11 +54,13 @@ export const metadata: Metadata = {
     title: "Placements - Pune Software Technologies",
     description:
       "Discover top companies where our alumni have secured placements.",
-    images: ["https://yourwebsite.com/assets/placements-banner.jpg"],
+    images: [
+      "https://punesoftwaretechnologies.com/assets/placements-banner.jpg",
+    ],
   },
   robots: "index, follow",
   alternates: {
-    canonical: "https://yourwebsite.com/placements",
+    canonical: "https://punesoftwaretechnologies.com/placements",
   },
 };
 

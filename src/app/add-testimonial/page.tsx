@@ -36,7 +36,10 @@ export default async function AddTestimonialPage() {
           content="testimonial, feedback, course, category"
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://yourwebsite.com/add-testimonial" />
+        <link
+          rel="canonical"
+          href="https://punesoftwaretechnologies.com/add-testimonial"
+        />
       </Head>
       <TestimonialForm courses={courses || []} />
     </>

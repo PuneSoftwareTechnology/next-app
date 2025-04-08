@@ -138,7 +138,10 @@ const ContactUsContent = () => {
           name="keywords"
           content="contact us, free consultation, expert advice, career guidance"
         />
-        <link rel="canonical" href="https://yourwebsite.com/contact-us" />
+        <link
+          rel="canonical"
+          href="https://punesoftwaretechnologies.com/contact-us"
+        />
       </Head>
       <div className="flex flex-col min-h-screen">
         <Header />

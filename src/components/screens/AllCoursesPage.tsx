@@ -50,10 +50,10 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
           content="Explore a wide range of courses including SAP, Cloud, AI/ML, and more to advance your career."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yourwebsite.com/all-courses" />
+        <meta property="og:url" content="https://punesoftwaretechnologies.com/all-courses" />
         <meta
           property="og:image"
-          content="https://yourwebsite.com/assets/courses-banner.jpg"
+          content="https://punesoftwaretechnologies.com/assets/courses-banner.jpg"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -66,10 +66,10 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
         />
         <meta
           name="twitter:image"
-          content="https://yourwebsite.com/assets/courses-banner.jpg"
+          content="https://punesoftwaretechnologies.com/assets/courses-banner.jpg"
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://yourwebsite.com/all-courses" />
+        <link rel="canonical" href="https://punesoftwaretechnologies.com/all-courses" />
       </Head>
       <Suspense fallback={<GlobalLoader />}>
         <Header />
