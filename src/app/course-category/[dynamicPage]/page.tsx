@@ -59,7 +59,7 @@ export default async function DynamicPage({ params }: { params: Params }) {
     <AllCoursesPage
       courses={coursesData}
       content={content[dynamicPage]}
-      heroImage={COURSE_IMAGE}
+      heroImage={"https://i.ibb.co/TxphCWx5/SAP-FUNCTIONAL-MODULE.jpg"}
       heading={`${dynamicPage?.toUpperCase()} Modules`}
     />
   );
