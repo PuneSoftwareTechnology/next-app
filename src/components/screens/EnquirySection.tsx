@@ -3,6 +3,9 @@ import EnquiryForm from "../orgnasims/Enquiryform";
 import { BASE_URL } from "@/util/urls";
 import { Course } from "@/util/interfaces/course";
 
+export const dynamic = "force-dynamic";
+
+// Fetch course data from API
 const getAllCourses = async (): Promise<Course[]> => {
   try {
     const response = await fetch(`${BASE_URL}/courses/all-course-names`, {
@@ -21,12 +24,19 @@ const getAllCourses = async (): Promise<Course[]> => {
   }
 };
 
-export default async function EnquirySection() {
-  const coursesData = (await getAllCourses()) || [];
+// Define props interface
+interface EnquirySectionProps {
+  showModal?: boolean;
+}
 
-  if (!coursesData) {
+export default async function EnquirySection({
+  showModal,
+}: EnquirySectionProps) {
+  const coursesData = await getAllCourses();
+
+  if (!coursesData || coursesData.length === 0) {
     notFound();
   }
 
-  return <EnquiryForm courses={coursesData} />;
+  return <EnquiryForm courses={coursesData} showModal={showModal || false} />;
 }

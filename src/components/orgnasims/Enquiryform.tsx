@@ -16,12 +16,16 @@ import {
   GoogleReCaptchaProvider,
   useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
+import { FiX } from "react-icons/fi";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 
 const phoneRegex = /^[0-9]{10}$/;
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 interface PageProps {
   courses: Course[];
+  showModal: boolean;
 }
 
 // Custom hook for reCAPTCHA
@@ -45,7 +49,7 @@ const useRecaptcha = () => {
   return { getRecaptchaToken, isRecaptchaLoaded };
 };
 
-const EnquiryFormContent: React.FC<PageProps> = ({ courses }) => {
+const EnquiryFormContent: React.FC<PageProps> = ({ courses, showModal }) => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<DemoInterface>({
     name: "",
@@ -136,22 +140,42 @@ const EnquiryFormContent: React.FC<PageProps> = ({ courses }) => {
       console.error(error);
       toast.error("Something went wrong. Please try again.");
     } finally {
+      if (!showModal) {
+        redirect("/");
+      }
       setLoading(false);
     }
   };
 
   return (
     <section className="flex flex-col lg:flex-row items-center md:items-start justify-center mb-8 px-2 md:px-4 lg:px-32 py-4">
-      <div className="w-full hidden lg:block lg:w-1/2 mb-8 flex justify-center items-end">
-        <Image
-          src={CALL_PERSON}
-          alt="Contact Us"
-          width={600}
-          height={600}
-          priority
-        />
-      </div>
-      <div className="w-full lg:w-1/2 bg-white px-2 md:px-4 py-4 lg:p-8 rounded-lg shadow-lg">
+      {!showModal && (
+        <div className="w-full hidden lg:block lg:w-1/2 mb-8 flex justify-center items-end">
+          <Image
+            src={CALL_PERSON}
+            alt="Contact Us"
+            width={600}
+            height={600}
+            priority
+          />
+        </div>
+      )}
+      <div
+        className={`w-full relative ${
+          showModal ? "lg:w-full" : "lg:w-1/2"
+        } bg-white px-2 md:px-4 py-4 lg:p-8 rounded-lg shadow-lg`}
+      >
+        {showModal && (
+          <Link href="/">
+            <FiX
+              onClick={() => {}}
+              color="#000"
+              size={30}
+              className="right-5 top-3 absolute"
+            />
+          </Link>
+        )}
+
         <Typography variant="h2" as="h2">
           Get in Touch
         </Typography>
@@ -222,7 +246,7 @@ const EnquiryFormContent: React.FC<PageProps> = ({ courses }) => {
   );
 };
 
-const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
+const EnquiryForm: React.FC<PageProps> = ({ courses, showModal }) => {
   return (
     <GoogleReCaptchaProvider
       reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "Missing-key"}
@@ -233,7 +257,7 @@ const EnquiryForm: React.FC<PageProps> = ({ courses }) => {
         nonce: undefined,
       }}
     >
-      <EnquiryFormContent courses={courses} />
+      <EnquiryFormContent courses={courses} showModal={showModal} />
     </GoogleReCaptchaProvider>
   );
 };
