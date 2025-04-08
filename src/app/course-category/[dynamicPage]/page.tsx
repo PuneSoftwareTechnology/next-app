@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import COURSE_IMAGE from "../../../assests/images/swe.webp";
 import AllCoursesPage from "@/components/screens/AllCoursesPage";
 import { pageIdMap } from "@/util/data/category";
 import { Courses } from "@/util/interfaces/course";
