@@ -147,9 +147,15 @@ const EnquiryFormContent: React.FC<PageProps> = ({ courses, showModal }) => {
     }
   };
 
-  console.log("RECAPTCHA_SITE_KEY", process.env.RECAPTCHA_SECRET_KEY);
+  console.log(
+    "RECAPTCHA_SITE_KEY",
+    process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY
+  );
 
-  console.log("RECAPTCHA_SITE_KEY", process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
+  console.log(
+    "NEXT_PUBLIC_RECAPTCHA_SITE_KEY",
+    process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+  );
 
   return (
     <section className="flex flex-col lg:flex-row items-center md:items-start justify-center mb-8 px-2 md:px-4 lg:px-32 py-4">

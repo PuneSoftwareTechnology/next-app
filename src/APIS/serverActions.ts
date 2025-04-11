@@ -6,7 +6,7 @@ export async function verifyCaptcha(token: string | null) {
   console.log("Received reCAPTCHA token:", token); // Debugging
   const url = "https://www.google.com/recaptcha/api/siteverify";
   const params = new URLSearchParams();
-  params.append("secret", process.env.RECAPTCHA_SECRET_KEY || "");
+  params.append("secret", process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY || "");
   params.append("response", token || "");
 
   const res = await axios.post(url, params, {
