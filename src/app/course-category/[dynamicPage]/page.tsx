@@ -24,7 +24,7 @@ export default async function DynamicPage({ params }: { params: Params }) {
           pageIdMap[dynamicPage as keyof typeof pageIdMap]
         }`,
         {
-          cache: "no-store", 
+          cache: "no-store",
         }
       );
 
@@ -43,7 +43,7 @@ export default async function DynamicPage({ params }: { params: Params }) {
   const coursesData = (await getAllCategoryCourses()) || [];
 
   const content: Record<string, string> = {
-    sap: "Learn SAP courses with practical experience ",
+    sap: "Learn SAP courses with practical experience",
     cloud: "Discover cloud computing technologies",
     "ai-ml": "Explore Artificial Intelligence and Machine Learning",
     "data-analytics": "Learn Data analytics",
