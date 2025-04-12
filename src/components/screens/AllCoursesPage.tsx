@@ -20,6 +20,7 @@ interface AllCoursesPageProps {
   content: string;
   heroImage: string | StaticImageData;
   heading: string;
+  category?: string;
 }
 
 const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
@@ -27,6 +28,7 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
   content,
   heroImage,
   heading,
+  category
 }) => {
   return (
     <>
@@ -132,7 +134,7 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
           </section>
           <WhyChooseUs />
           <TestimonialsPage />
-          <FAQPage />
+          <FAQPage category={category}/>
           <BlogSection />
           <EnquirySection />
         </main>

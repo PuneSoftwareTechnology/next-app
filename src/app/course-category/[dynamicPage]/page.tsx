@@ -60,6 +60,7 @@ export default async function DynamicPage({ params }: { params: Params }) {
       content={content[dynamicPage]}
       heroImage={"https://i.ibb.co/TxphCWx5/SAP-FUNCTIONAL-MODULE.jpg"}
       heading={`${dynamicPage?.toUpperCase()} Modules`}
+      category={pageIdMap[dynamicPage as keyof typeof pageIdMap]}
     />
   );
 }

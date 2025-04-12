@@ -2,11 +2,15 @@ import { FAQ } from "@/util/interfaces/faq";
 import { BASE_URL } from "@/util/urls";
 import FaqSection from "../orgnasims/FaqSection";
 
-const getFaqs = async (): Promise<FAQ[]> => {
+const getFaqs = async (category: string): Promise<FAQ[]> => {
   try {
-    const response = await fetch(`${BASE_URL}/faq/all`, {
-      cache: "no-store", // 🚀 Ensures fresh data on every request
-    });
+  console.log (`${BASE_URL}/faq/all?category_id=${category}`)
+    const response = await fetch(
+      `${BASE_URL}/faq/all?category_id=${category}`,
+      {
+        next: { revalidate: 60 }, // Cache for 60 seconds
+      }
+    );
 
     if (!response.ok) {
       throw new Error(`Failed to fetch FAQs: ${response.statusText}`);
@@ -20,7 +24,11 @@ const getFaqs = async (): Promise<FAQ[]> => {
   }
 };
 
-export default async function FAQPage() {
- const faqs = (await getFaqs()) ?? [];
+interface PageProps {
+  category?: string;
+}
+
+export default async function FAQPage({ category }: PageProps) {
+  const faqs = (await getFaqs(category || "")) ?? [];
   return <FaqSection faqs={faqs} />;
 }

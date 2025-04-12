@@ -120,7 +120,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
         <Header />
         <div className="flex-grow">
           <main className=" max-w-lg md:w-2/3 mx-auto py-6  px-2 lg:px-4 bg-white rounded-lg shadow-lg mt-20 md:mt-28 mb-16 lg:mb-8">
-            <Typography variant="h2" as="h2" className="text-center ">
+            <Typography variant="h2" as="h1" className="text-center ">
               Add Your Testimonial
             </Typography>
 
