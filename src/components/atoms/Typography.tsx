@@ -8,6 +8,7 @@ type TypographyProps = {
   children: React.ReactNode;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
   role?: string;
+  id?: string; // Add id for SEO-friendly headings
   rest?: React.HTMLProps<HTMLElement>; // Accept any other HTML props
 };
 
@@ -45,6 +46,7 @@ const Typography: React.FC<TypographyProps> = ({
   children,
   as,
   role,
+  id, // Destructure id
   ...rest
 }) => {
   const Component = as || variant;
@@ -55,7 +57,7 @@ const Typography: React.FC<TypographyProps> = ({
     typeof children === "string" ? formatText(children) : children;
 
   return (
-    <Component className={combinedClassName} role={role} {...rest}>
+    <Component className={combinedClassName} role={role} id={id} {...rest}>
       <Linkify
         options={{
           target: "_blank",

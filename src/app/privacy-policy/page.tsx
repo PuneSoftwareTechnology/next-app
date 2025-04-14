@@ -20,11 +20,43 @@ const PrivacyPolicy = () => {
         />
         <meta name="author" content="punesoftwaretechonologies.com" />
         <meta charSet="UTF-8" />
+        {/* Open Graph Meta Tags */}
+        <meta
+          property="og:title"
+          content="Privacy Policy | punesoftwaretechnologies"
+        />
+        <meta
+          property="og:description"
+          content="Read our privacy policy to understand how we handle your data."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://punesoftwaretechnologies.com/privacy-policy"
+        />
+        <meta
+          property="og:image"
+          content="https://punesoftwaretechnologies.com/images/privacy-policy-og-image.jpg"
+        />
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Privacy Policy | punesoftwaretechnologies"
+        />
+        <meta
+          name="twitter:description"
+          content="Read our privacy policy to understand how we handle your data."
+        />
+        <meta
+          name="twitter:image"
+          content="https://punesoftwaretechnologies.com/images/privacy-policy-og-image.jpg"
+        />
       </Head>
 
       <Header />
       <main className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8 mt-24">
-        <Typography variant="h1" className="text-center mb-6">
+        <Typography variant="h1" as="h1" className="text-center mb-6">
           Privacy Policy
         </Typography>
         <Typography variant="p" className="mb-4">

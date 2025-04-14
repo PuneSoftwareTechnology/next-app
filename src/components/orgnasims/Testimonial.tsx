@@ -29,6 +29,8 @@ const Testimonials: FC<TestimonialsProps> = ({ testimonials }) => {
     >
       <Typography
         variant="h2"
+        as="h2"
+        id="testimonials-heading"
         className="text-center text-3xl font-bold text-gray-900"
       >
         Testimonials
@@ -44,6 +46,8 @@ const Testimonials: FC<TestimonialsProps> = ({ testimonials }) => {
               >
                 <Typography
                   variant="h3"
+                  as="h3"
+                  id={`testimonial-name-${index}`}
                   className="text-lg font-semibold text-gray-800"
                 >
                   {testimonial.name}
@@ -60,7 +64,12 @@ const Testimonials: FC<TestimonialsProps> = ({ testimonials }) => {
                     )
                   )}
                 </div>
-                <Typography variant="p" className="text-gray-600 mt-2">
+                <Typography
+                  variant="p"
+                  as="p"
+                  id={`testimonial-text-${index}`}
+                  className="text-gray-600 mt-2"
+                >
                   {expanded[testimonial.id]
                     ? testimonial.testimonial
                     : `${testimonial.testimonial.slice(0, 70)}...`}

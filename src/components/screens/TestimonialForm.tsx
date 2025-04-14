@@ -12,7 +12,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import Typography from "@/components/atoms/Typography";
 import InputBox from "@/components/atoms/InputBox";
-import Head from "next/head";
 import { Course } from "@/util/interfaces/course";
 import ContactButtons from "../organisms/ContactButtons";
 
@@ -103,30 +102,27 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
 
   return (
     <>
-      <Head>
-        <title>Add Testimonial</title>
-        <meta name="description" content="Add your testimonial" />
-        <meta
-          name="keywords"
-          content="testimonial, feedback, course, category"
-        />
-        <meta name="robots" content="index, follow" />
-        <link
-          rel="canonical"
-          href="https://punesoftwaretechnologies.com/add-testimonial"
-        />
-      </Head>
       <div className="flex flex-col min-h-screen">
         <Header />
         <div className="flex-grow">
           <main className=" max-w-lg md:w-2/3 mx-auto py-6  px-2 lg:px-4 bg-white rounded-lg shadow-lg mt-20 md:mt-28 mb-16 lg:mb-8">
-            <Typography variant="h2" as="h1" className="text-center ">
+            <Typography
+              variant="h2"
+              as="h1"
+              id="add-testimonial-heading"
+              className="text-center"
+            >
               Add Your Testimonial
             </Typography>
 
             <form onSubmit={handleSubmit}>
               <div className="my-4">
-                <Typography variant="h5" as="h5" className="text-gray-900">
+                <Typography
+                  variant="h5"
+                  as="h5"
+                  id="name-label"
+                  className="text-gray-900"
+                >
                   Name
                 </Typography>
                 <InputBox
@@ -145,7 +141,12 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
               </div>
 
               <div className="mb-4">
-                <Typography variant="h5" as="h5" className="text-gray-900">
+                <Typography
+                  variant="h5"
+                  as="h5"
+                  id="course-label"
+                  className="text-gray-900"
+                >
                   Course
                 </Typography>
                 <Dropdown
@@ -161,7 +162,12 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
               </div>
 
               <div className="mb-4">
-                <Typography variant="h5" as="h5" className="text-gray-900">
+                <Typography
+                  variant="h5"
+                  as="h5"
+                  id="testimonial-label"
+                  className="text-gray-900"
+                >
                   Testimonial
                 </Typography>
                 <textarea
@@ -179,7 +185,12 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
               </div>
 
               <div className="my-4 flex justify-start items-center gap-x-2">
-                <Typography variant="h5" as="h5" className="text-gray-900">
+                <Typography
+                  variant="h5"
+                  as="h5"
+                  id="ratings-label"
+                  className="text-gray-900"
+                >
                   Ratings
                 </Typography>
                 <div className="flex space-x-1">

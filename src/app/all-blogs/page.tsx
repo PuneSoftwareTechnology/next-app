@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/molecules/Header";
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "All Blogs | Pune Software Technologies",
     description: "Explore all the blogs related to AI, ML, SAP, and more.",
-    url: "https://punesoftwaretechnologies.com/blogs",
+    url: "https://punesoftwaretechnologies.com/all-blogs",
     type: "website",
   },
   twitter: {
@@ -65,11 +66,36 @@ const AllBlogs = async () => {
     categorizedBlogs[categoryName].push(blog);
   });
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "All Blogs | Pune Software Technologies",
+    description: "Explore all the blogs related to AI, ML, SAP, and more.",
+    url: "https://punesoftwaretechnologies.com/all-blogs",
+    blogPost: blogs.map((blog) => ({
+      "@type": "BlogPosting",
+      headline: blog.title,
+      image: blog.featured_image || ERROR_IMG,
+      url: `https://punesoftwaretechnologies.com/blog/${blog.slug}`,
+      datePublished: blog.created_at,
+      author: {
+        "@type": "Person",
+        name: blog.author_id || "Unknown",
+      },
+    })),
+  };
+
   return (
     <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </Head>
       <Header />
       <div className="mt-20  lg:mt-28 mb-8 mx-2 md:mx-4 lg:mx-32">
-        <Typography variant="h1" className="mb-8 text-center">
+        <Typography variant="h1" as="h1" className="mb-8 text-center">
           All Blogs
         </Typography>
 
@@ -112,11 +138,15 @@ const AllBlogs = async () => {
 };
 
 const BlogCard = ({ blog }: { blog: Blog }) => (
-  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:scale-105 hover:shadow-xl flex flex-col h-full">
+  <div
+    className="bg-white rounded-lg shadow-md overflow-hidden hover:scale-105 hover:shadow-xl flex flex-col h-full"
+    role="article"
+    aria-labelledby={`blog-title-${blog.id}`}
+  >
     <Link href={`/blog/${blog.slug}`} className="flex flex-col h-full">
       <Image
         src={blog?.featured_image || ERROR_IMG}
-        alt={`Blog: ${blog.title}`}
+        alt={`Featured image for blog: ${blog.title}`}
         height={120}
         width={200}
         className="rounded-t-lg object-cover w-full h-40"
@@ -125,14 +155,16 @@ const BlogCard = ({ blog }: { blog: Blog }) => (
         <Typography
           variant="h5"
           as="h5"
+          id={`blog-title-${blog.id}`}
           className="mb-2 text-left text-gray-800 flex-grow"
         >
-          HE
           {blog.title}
         </Typography>
         <div className="mt-auto">
           <Typography
             variant="h5"
+            id={`blog-category-${blog.id}`}
+            as="h5"
             className="text-white px-4 py-2 w-fit bg-blue-600 rounded-md mx-auto"
           >
             Read More

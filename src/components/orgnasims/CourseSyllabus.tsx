@@ -74,8 +74,13 @@ export default function CourseSyllabus({
         <Typography variant="h2" as="h2" className="text-center">
           {category}
         </Typography>
-        <Typography variant="h2" as="h2" className="text-gray-900 text-center">
-          Syllabus content
+        <Typography
+          variant="h2"
+          as="h2"
+          id="syllabus-heading"
+          className="text-gray-900 text-center"
+        >
+          Syllabus Content
         </Typography>
       </div>
 
@@ -87,7 +92,7 @@ export default function CourseSyllabus({
                 className="w-full p-3 flex justify-between items-center bg-blue-100 text-left cursor-pointer"
                 onClick={() => toggleModule(index)}
               >
-                <Typography variant="h6" as="h6">
+                <Typography variant="h6" as="h6" id={`module-name-${index}`}>
                   {module.module_name}
                 </Typography>
                 <span className="text-gray-500">

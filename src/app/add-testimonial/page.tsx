@@ -40,6 +40,32 @@ export default async function AddTestimonialPage() {
           rel="canonical"
           href="https://punesoftwaretechnologies.com/add-testimonial"
         />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Add Testimonial" />
+        <meta
+          property="og:description"
+          content="Share your feedback and testimonial for our courses."
+        />
+        <meta
+          property="og:url"
+          content="https://punesoftwaretechnologies.com/add-testimonial"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://punesoftwaretechnologies.com/images/placeholder-banner.jpg"
+        />
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Add Testimonial" />
+        <meta
+          name="twitter:description"
+          content="Share your feedback and testimonial for our courses."
+        />
+        <meta
+          name="twitter:image"
+          content="https://punesoftwaretechnologies.com/images/placeholder-banner.jpg"
+        />
       </Head>
       <TestimonialForm courses={courses || []} />
     </>

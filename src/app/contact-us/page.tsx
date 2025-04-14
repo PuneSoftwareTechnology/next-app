@@ -131,16 +131,44 @@ const ContactUsContent = () => {
         <title>Contact Us | Get Expert Guidance</title>
         <meta
           name="description"
-          content="Register now for expert advice and free consultation. Get personalized guidance on courses, career paths, and skills enhancement."
+          content="Contact us for expert advice and free consultation. Get personalized guidance on courses, career paths, and skills enhancement tailored to your needs."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
-          content="contact us, free consultation, expert advice, career guidance"
+          content="contact us, free consultation, expert advice, career guidance, skills enhancement, career paths"
         />
         <link
           rel="canonical"
           href="https://punesoftwaretechnologies.com/contact-us"
+        />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Contact Us | Get Expert Guidance" />
+        <meta
+          property="og:description"
+          content="Contact us for expert advice and free consultation. Get personalized guidance on courses, career paths, and skills enhancement tailored to your needs."
+        />
+        <meta
+          property="og:url"
+          content="https://punesoftwaretechnologies.com/contact-us"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://punesoftwaretechnologies.com/images/placeholder-banner.jpg"
+        />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Us | Get Expert Guidance" />
+        <meta
+          name="twitter:description"
+          content="Contact us for expert advice and free consultation. Get personalized guidance on courses, career paths, and skills enhancement tailored to your needs."
+        />
+        <meta
+          name="twitter:image"
+          content="https://punesoftwaretechnologies.com/images/placeholder-banner.jpg"
         />
       </Head>
       <div className="flex flex-col min-h-screen">
@@ -148,7 +176,7 @@ const ContactUsContent = () => {
         <main className="flex-grow mx-auto px-4 md:px-12 lg:px-32 py-2 lg:py-12 mt-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <div>
-              <Typography variant="h2" as="h2" className="mb-6 text-left">
+              <Typography variant="h2" as="h1" className="mb-6 text-left">
                 Get Expert Advice for Free: Register for Your Free Consultation
                 Now!
               </Typography>

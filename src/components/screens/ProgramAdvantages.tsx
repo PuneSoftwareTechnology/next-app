@@ -49,10 +49,9 @@ const ProgramHighlights: React.FC = () => {
       <div className=" mx-auto">
         <Typography
           variant="h2"
-          className="text-center mb-8"
           as="h2"
-          role="heading"
-          aria-level={2}
+          id="program-highlights-heading"
+          className="text-center mb-8"
         >
           Program Highlights
         </Typography>

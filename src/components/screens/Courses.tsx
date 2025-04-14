@@ -64,6 +64,7 @@ const Courses = () => {
             <Typography
               variant="h4"
               as="h4"
+              id={`course-name-${index}`}
               className="text-gray-800 mb-4 px-2 text-center"
             >
               {course.name}

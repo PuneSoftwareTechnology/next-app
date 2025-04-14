@@ -26,17 +26,23 @@ const HeroSection = ({ showModal }: HeroSectionProps) => {
 
       {/* Text */}
       <div className="sm:w-1/2 text-center sm:text-left">
-        <Typography variant="h1" className="text-blue-900">
+        <Typography
+          variant="h1"
+          as="h1"
+          id="hero-heading"
+          className="text-blue-900"
+        >
           Welcome to Pune Software Technologies
         </Typography>
         <Typography
           variant="h4"
           as="h4"
+          id="hero-subheading"
           className="mt-4 text-gray-700 leading-relaxed"
         >
           Empowering students and professionals with practical training in SAP
-          S/4HANA, Cybersecurity, Cloud computing, Data analytics and Artificial
-          intelligence. Join us to elevate your career to new height.
+          S/4HANA, Cybersecurity, Cloud computing, Data analytics, and
+          Artificial Intelligence.
         </Typography>
 
         <Link

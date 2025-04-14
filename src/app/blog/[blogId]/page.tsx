@@ -42,6 +42,7 @@ export async function generateMetadata({
     description:
       blog?.introduction ||
       "Read insightful blogs on technology and software development.",
+    keywords: `{${blog?.title, blog?.primary_content_intro, blog?.secondary_content_intro}}`|| "technology, software development, blogs",
     openGraph: {
       title: blog?.title || "Blog | Pune Software Technologies",
       description:
@@ -58,6 +59,9 @@ export async function generateMetadata({
         "Read insightful blogs on technology and software development.",
       images: [{ url: blog?.featured_image || "/default-blog-image.jpg" }],
       card: "summary_large_image",
+    },
+    alternates: {
+      canonical: `https://punesoftwaretechnologies.com/blog/${blogId}`,
     },
   };
 }
@@ -95,7 +99,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
     <>
       <Header />
       <div className="bg-white rounded-lg shadow-lg mt-20 lg:mt-24 mb-8 p-4 lg:p-6 mx-4 lg:mx-32">
-        <Typography variant="h2" as="h2" className="mb-4 text-center">
+        <Typography variant="h2" as="h1" className="mb-4 text-center">
           {title}
         </Typography>
         <Image
