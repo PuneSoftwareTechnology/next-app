@@ -23,7 +23,10 @@ const Testimonials: FC<TestimonialsProps> = ({ testimonials }) => {
   };
 
   return (
-    <section className="px-4 lg:px-32 mx-auto mb-8 py-8 bg-gray-200">
+    <section
+      className="px-4 lg:px-32 mx-auto mb-8 py-8 bg-gray-200"
+      aria-label="Testimonials Section"
+    >
       <Typography
         variant="h2"
         className="text-center text-3xl font-bold text-gray-900"

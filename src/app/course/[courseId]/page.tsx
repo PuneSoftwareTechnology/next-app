@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import FullCoursePage from "@/components/screens/FullCoursePage";
 import { FullCourseDetails } from "@/util/interfaces/course";
 import { BASE_URL } from "@/util/urls";
+import { Metadata } from "next";
 
 type Params = Promise<{ courseId: string }>;
 
@@ -26,6 +27,38 @@ const getFullCourseDetails = async (
     return null;
   }
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const { courseId } = await params;
+  const courseDetails = await getFullCourseDetails(courseId);
+
+  if (!courseDetails) {
+    return {
+      title: "Course Not Found",
+      description: "The requested course could not be found.",
+    };
+  }
+
+  return {
+    title: `${courseDetails.course.name} | Pune Software Technologies`,
+    description:
+      courseDetails.course.description || "Learn more about this course.",
+    openGraph: {
+      title: courseDetails.course.name,
+      description: courseDetails.course.description,
+      images: [{ url: courseDetails.course.featured_image }],
+    },
+    twitter: {
+      title: courseDetails.course.name,
+      description: courseDetails.course.description,
+      images: [{ url: courseDetails.course.featured_image }],
+    },
+  };
+}
 
 export default async function CourseDetail({ params }: { params: Params }) {
   const { courseId } = await params;
