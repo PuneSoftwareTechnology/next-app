@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Typography from "../atoms/Typography";
+import { FaFacebook, FaTwitter, FaInstagram, FaGoogle } from "react-icons/fa";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -57,6 +58,39 @@ const Footer = () => {
             </li>
           </ul>
         </nav>
+
+        {/* Social Media Links */}
+        <div
+          className="mt-6 flex justify-center items-center gap-x-4"
+          aria-label="Social Media Links"
+        >
+          <Link href="#" title="Facebook" aria-label="Facebook">
+            <FaFacebook
+              size={24}
+              className="text-blue-600 hover:text-blue-800"
+            />
+          </Link>
+          <Link href="#" title="Twitter" aria-label="Twitter">
+            <FaTwitter
+              size={24}
+              className="text-blue-400 hover:text-blue-600"
+            />
+          </Link>
+          <Link href="#" title="Instagram" aria-label="Instagram">
+            <FaInstagram
+              size={24}
+              className="text-pink-500 hover:text-pink-700"
+            />
+          </Link>
+          <Link
+            href="#"
+            title="Google Business Profile"
+            aria-label="Google Business Profile"
+          >
+            <FaGoogle size={24} className="text-blue-500 hover:text-blue-700" />
+          </Link>
+        </div>
+
         <Typography
           variant="p"
           as="p"
