@@ -90,11 +90,12 @@ const Footer = () => {
             <FaGoogle size={24} className="text-blue-500 hover:text-blue-700" />
           </Link>
         </div>
-
+      </div>
+      <div className="mx-20 lg:mx-2">
         <Typography
           variant="p"
           as="p"
-          className="italic text-center text-white text-sm mt-2"
+          className="italic text-center text-white mt-2"
         >
           Pune Software Technologies is not an authorized SAP partner
         </Typography>
