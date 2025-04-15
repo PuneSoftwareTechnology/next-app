@@ -2,11 +2,14 @@ import React from "react";
 import Testimonials from "../orgnasims/Testimonial";
 import { BASE_URL } from "@/util/urls";
 
-const fetchData = async () => {
+const fetchData = async (categoryId?: string) => {
   try {
-    const response = await fetch(`${BASE_URL}/testimonial/all`, {
-      cache: "no-store", // 🚀 Ensures fresh data on every request
-    });
+    const url = categoryId
+      ? `${BASE_URL}/testimonial/all?category_id=${categoryId}`
+      : `${BASE_URL}/testimonial/all`;
+
+    const response = await fetch(url, { cache: "no-store" });
+    console.log("Response URL:", url);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch testimonials: ${response.statusText}`);
@@ -20,7 +23,11 @@ const fetchData = async () => {
   }
 };
 
-export default async function TestimonialsPage() {
-  const testimonials = await fetchData();
+export default async function TestimonialsPage({
+  categoryId,
+}: {
+  categoryId?: string;
+}) {
+  const testimonials = await fetchData(categoryId);
   return <Testimonials testimonials={testimonials} />;
 }

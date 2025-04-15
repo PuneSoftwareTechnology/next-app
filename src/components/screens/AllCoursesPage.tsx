@@ -28,7 +28,7 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
   content,
   heroImage,
   heading,
-  category
+  category,
 }) => {
   return (
     <>
@@ -52,7 +52,10 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
           content="Explore a wide range of courses including SAP, Cloud, AI/ML, and more to advance your career."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://punesoftwaretechnologies.com/all-courses" />
+        <meta
+          property="og:url"
+          content="https://punesoftwaretechnologies.com/all-courses"
+        />
         <meta
           property="og:image"
           content="https://punesoftwaretechnologies.com/assets/courses-banner.jpg"
@@ -71,7 +74,10 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
           content="https://punesoftwaretechnologies.com/assets/courses-banner.jpg"
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://punesoftwaretechnologies.com/all-courses" />
+        <link
+          rel="canonical"
+          href="https://punesoftwaretechnologies.com/all-courses"
+        />
       </Head>
       <Suspense fallback={<GlobalLoader />}>
         <Header />
@@ -133,8 +139,10 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
             </div>
           </section>
           <WhyChooseUs />
-          <TestimonialsPage />
-          <FAQPage category={category}/>
+          <TestimonialsPage categoryId={category} />{" "}
+          {/* Updated to use mandatory categoryId */}
+          <FAQPage category={category} />{" "}
+          {/* Updated to use mandatory categoryId */}
           <BlogSection />
           <EnquirySection />
         </main>
