@@ -72,12 +72,20 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
     } else {
       try {
         setLoading(true);
-        const response = await createTestimonial({
+        const selectedCourse = courses.find(
+          (course) => course.id === formData.course
+        );
+        const payload = {
           name: formData.name,
           course_id: formData.course,
+          category_id: selectedCourse?.category_id
+            ? String(selectedCourse.category_id)
+            : "",
           star_rating: formData.rating,
           testimonial: formData.testimonial,
-        });
+        };
+
+        const response = await createTestimonial(payload);
 
         if (response?.success) {
           toast.success("Testimonial submitted successfully!");
