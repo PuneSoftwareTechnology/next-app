@@ -2,11 +2,18 @@ import { Blog } from "@/util/interfaces/blog";
 import BlogsPage from "../orgnasims/Blogs";
 import { BASE_URL } from "@/util/urls";
 
-const fetchAllBlogs = async (): Promise<Blog[]> => {
+const fetchAllBlogs = async (category: string): Promise<Blog[]> => {
   try {
-    const response = await fetch(`${BASE_URL}/blog/all?landing_page=main`, {
-      cache: "no-store", // 🚀 Ensures fresh data on every request
-    });
+    const url = category
+      ? `${BASE_URL}/blog/all?landing_page=main&category_id=${category}`
+      : `${BASE_URL}/blog/all?landing_page=main`;
+    const response = await fetch(
+      url,
+
+      {
+        cache: "no-store", // 🚀 Ensures fresh data on every request
+      }
+    );
 
     if (!response.ok) {
       throw new Error(`Failed to fetch blogs: ${response.statusText}`);
@@ -22,8 +29,12 @@ const fetchAllBlogs = async (): Promise<Blog[]> => {
   return [];
 };
 
-export default async function BlogSection() {
-  const blogs = (await fetchAllBlogs()) ?? [];
+interface PageProps {
+  category?: string;
+}
+
+export default async function BlogSection({ category }: PageProps) {
+  const blogs = (await fetchAllBlogs(category || "")) ?? [];
 
   return (
     <>

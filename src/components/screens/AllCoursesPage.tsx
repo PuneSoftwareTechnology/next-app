@@ -139,11 +139,11 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
             </div>
           </section>
           <WhyChooseUs />
-          <TestimonialsPage categoryId={category} />{" "}
+          <TestimonialsPage categoryId={category} />
           {/* Updated to use mandatory categoryId */}
-          <FAQPage category={category} />{" "}
+          <FAQPage category={category} />
           {/* Updated to use mandatory categoryId */}
-          <BlogSection />
+          <BlogSection category={category} />
           <EnquirySection />
         </main>
         <Footer />
