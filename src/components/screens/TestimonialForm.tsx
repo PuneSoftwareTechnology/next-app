@@ -37,7 +37,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     testimonial: "",
-    rating: 0,
+    rating: 5,
     course: "",
   });
 
@@ -161,7 +161,8 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ courses }) => {
                   id="course"
                   name="course"
                   options={courses.map((course) => ({
-                    label: course?.id === 0 ? "Select" : course.name,
+                    label:
+                      course?.id === 0 ? "Select" : course.name.split("-")[0],
                     value: String(course.id),
                   }))}
                   value={formData.course}

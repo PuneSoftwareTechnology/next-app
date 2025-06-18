@@ -140,7 +140,7 @@ const EnquiryFormContent: React.FC<PageProps> = ({ courses, showModal }) => {
       console.error(error);
       toast.error("Something went wrong. Please try again.");
     } finally {
-      if (!showModal) {
+      if (showModal) {
         redirect("/");
       }
       setLoading(false);
@@ -179,7 +179,12 @@ const EnquiryFormContent: React.FC<PageProps> = ({ courses, showModal }) => {
         <Typography variant="h2" as="h2">
           Get in Touch
         </Typography>
-        <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className={`mt-4 space-y-4 ${
+            showModal ? "w-full lg:w-[30vw] p-2" : "w-full"
+          }`}
+        >
           <InputBox
             id="name"
             name="name"
@@ -217,8 +222,9 @@ const EnquiryFormContent: React.FC<PageProps> = ({ courses, showModal }) => {
             id="course_id"
             name="course_id"
             options={courses.map((course) => ({
-              label: course?.id === 0 ? "Interested In" : course.name,
-              value: String(course.id),
+              label:
+                course?.id === 0 ? "Interested In" : course.name.split("-")[0],
+              value: String(course.id), // Ensure value is a string
             }))}
             value={formData.course_id}
             onChange={handleChange}
