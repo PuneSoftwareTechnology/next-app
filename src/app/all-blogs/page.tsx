@@ -11,6 +11,8 @@ import ERROR_IMG from "../../assests/images/imageError.png";
 import EnquirySection from "@/components/screens/EnquirySection";
 import { categoryIdMap } from "@/util/data/category";
 import { BASE_URL } from "@/util/urls";
+import { Suspense } from "react";
+import GlobalLoader from "@/components/molecules/GlobalLoader";
 
 export const dynamic = "force-dynamic";
 
@@ -86,7 +88,7 @@ const AllBlogs = async () => {
   };
 
   return (
-    <>
+    <Suspense fallback={<GlobalLoader />}>
       <Head>
         <script
           type="application/ld+json"
@@ -133,7 +135,7 @@ const AllBlogs = async () => {
       <EnquirySection />
       <ContactButtons />
       <Footer />
-    </>
+    </Suspense>
   );
 };
 

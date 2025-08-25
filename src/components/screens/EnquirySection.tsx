@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import EnquiryForm from "../orgnasims/Enquiryform";
 import { BASE_URL } from "@/util/urls";
 import { Course } from "@/util/interfaces/course";
+import { Suspense } from "react";
+import Loader from "../atoms/Loader";
 
 export const dynamic = "force-dynamic";
 
@@ -38,5 +40,11 @@ export default async function EnquirySection({
     notFound();
   }
 
-  return <EnquiryForm courses={coursesData} showModal={showModal || false} />;
+  return (
+    <Suspense
+      fallback={<Loader size="large" className="mx-auto border-gray-800" />}
+    >
+      <EnquiryForm courses={coursesData} showModal={showModal || false} />;
+    </Suspense>
+  );
 }

@@ -4,6 +4,8 @@ import Typography from "../atoms/Typography";
 import { CompanyInterface } from "@/util/interfaces/misc";
 import { BASE_URL } from "@/util/urls";
 import ERROR_IMAGE from "../../assests/images/imageError.png";
+import { Suspense } from "react";
+import Loader from "../atoms/Loader";
 
 interface ResponseInterface {
   success: boolean;
@@ -73,28 +75,32 @@ export default async function PlacementsPage() {
       aria-label="Placement Companies Section"
       className="pb-4 lg:pb-8 px-4 lg:px-32"
     >
-      <Typography variant="h2" as="h2" className="text-center mb-8">
-        Our Aluminis Placed In
-      </Typography>
-      <div className="overflow-hidden">
-        <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-12 gap-4">
-          {companies?.map((company) => (
-            <div
-              key={company.id}
-              className="bg-white p-2 border border-gray-200 rounded-lg shadow-sm flex items-center justify-center"
-            >
-              <Image
-                src={company.logo_url || ERROR_IMAGE}
-                alt={`Logo of ${company.name} where our alumni work`}
-                className="object-contain"
-                width={100}
-                height={50}
-                priority
-              />
-            </div>
-          ))}
+      <Suspense
+        fallback={<Loader size="large" className="mx-auto border-gray-800" />}
+      >
+        <Typography variant="h2" as="h2" className="text-center mb-8">
+          Our Aluminis Placed In
+        </Typography>
+        <div className="overflow-hidden">
+          <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-12 gap-4">
+            {companies?.map((company) => (
+              <div
+                key={company.id}
+                className="bg-white p-2 border border-gray-200 rounded-lg shadow-sm flex items-center justify-center"
+              >
+                <Image
+                  src={company.logo_url || ERROR_IMAGE}
+                  alt={`Logo of ${company.name} where our alumni work`}
+                  className="object-contain"
+                  width={100}
+                  height={50}
+                  priority
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </Suspense>
     </section>
   );
 }

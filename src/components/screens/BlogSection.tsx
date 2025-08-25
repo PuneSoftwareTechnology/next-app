@@ -1,6 +1,8 @@
 import { Blog } from "@/util/interfaces/blog";
 import BlogsPage from "../orgnasims/Blogs";
 import { BASE_URL } from "@/util/urls";
+import { Suspense } from "react";
+import Loader from "../atoms/Loader";
 
 const fetchAllBlogs = async (category: string): Promise<Blog[]> => {
   try {
@@ -37,8 +39,10 @@ export default async function BlogSection({ category }: PageProps) {
   const blogs = (await fetchAllBlogs(category || "")) ?? [];
 
   return (
-    <>
+    <Suspense
+      fallback={<Loader size="large" className="mx-auto border-gray-800" />}
+    >
       <BlogsPage blogs={blogs} />
-    </>
+    </Suspense>
   );
 }

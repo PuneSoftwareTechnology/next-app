@@ -9,6 +9,8 @@ import ContactButtons from "@/components/organisms/ContactButtons";
 import ERROR_IMG from "../../../assests/images/imageError.png";
 import EnquirySection from "@/components/screens/EnquirySection";
 import { BASE_URL } from "@/util/urls";
+import { Suspense } from "react";
+import GlobalLoader from "@/components/molecules/GlobalLoader";
 
 type Params = Promise<{ blogId: string }>;
 
@@ -42,7 +44,12 @@ export async function generateMetadata({
     description:
       blog?.introduction ||
       "Read insightful blogs on technology and software development.",
-    keywords: `{${blog?.title, blog?.primary_content_intro, blog?.secondary_content_intro}}`|| "technology, software development, blogs",
+    keywords:
+      `{${
+        (blog?.title,
+        blog?.primary_content_intro,
+        blog?.secondary_content_intro)
+      }}` || "technology, software development, blogs",
     openGraph: {
       title: blog?.title || "Blog | Pune Software Technologies",
       description:
@@ -96,19 +103,21 @@ const BlogDetail = async ({ params }: { params: Params }) => {
     : [];
 
   return (
-    <>
+    <Suspense fallback={<GlobalLoader />}>
       <Header />
       <div className="bg-white rounded-lg shadow-lg mt-20 lg:mt-24 mb-8 p-4 lg:p-6 mx-4 lg:mx-32">
-        <Typography variant="h2" as="h1" className="mb-4 text-center">
+        <Typography variant="h1" as="h1" className="mb-4 text-center">
           {title}
         </Typography>
-        <Image
-          src={featured_image || ERROR_IMG}
-          alt={title}
-          width={600}
-          height={300}
-          className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/3  md:h-1/2 w-full h-1/3"
-        />
+        {featured_image && (
+          <Image
+            src={featured_image || ERROR_IMG}
+            alt={title}
+            width={600}
+            height={300}
+            className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/3  md:h-1/2 w-full h-1/3"
+          />
+        )}
         <Typography variant="h4" as="h4" className="my-8 text-center">
           {introduction}
         </Typography>
@@ -147,13 +156,15 @@ const BlogDetail = async ({ params }: { params: Params }) => {
                 <Typography variant="h5" as="h5" className="text-center mb-4">
                   {section.intro}
                 </Typography>
-                <Image
-                  src={section.image || ERROR_IMG}
-                  alt={section.title}
-                  width={200}
-                  height={50}
-                  className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/5  md:h-1/2 w-full h-1/5 mb-8"
-                />
+                {section?.image && (
+                  <Image
+                    src={section.image || ERROR_IMG}
+                    alt={section.title}
+                    width={200}
+                    height={50}
+                    className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/5  md:h-1/2 w-full h-1/5 mb-8"
+                  />
+                )}
                 <Typography variant="h6" as="h6" className="mt-2 text-left">
                   {section.text}
                 </Typography>
@@ -184,7 +195,7 @@ const BlogDetail = async ({ params }: { params: Params }) => {
       <EnquirySection />
       <Footer />
       <ContactButtons />
-    </>
+    </Suspense>
   );
 };
 

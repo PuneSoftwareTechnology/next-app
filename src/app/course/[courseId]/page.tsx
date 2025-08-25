@@ -1,9 +1,9 @@
-import Head from "next/head";
 import { notFound } from "next/navigation";
 import FullCoursePage from "@/components/screens/FullCoursePage";
 import { FullCourseDetails } from "@/util/interfaces/course";
-import { BASE_URL } from "@/util/urls";
 import { Metadata } from "next";
+import { Suspense } from "react";
+import GlobalLoader from "@/components/molecules/GlobalLoader";
 
 type Params = Promise<{ courseId: string }>;
 
@@ -12,7 +12,7 @@ const getFullCourseDetails = async (
 ): Promise<FullCourseDetails | null> => {
   try {
     const response = await fetch(
-      `${BASE_URL}/courses/get-course-details?slug=${slug}`,
+      `https://punesoftwaretechnologies.com/courses/get-course-details?slug=${slug}`,
       { cache: "no-store" }
     );
 
@@ -44,18 +44,28 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${courseDetails.course.name} | Pune Software Technologies`,
-    description:
-      courseDetails.course.description || "Learn more about this course.",
+    title: `${courseDetails?.course?.name} | Pune Software Technologies`,
+    description: courseDetails?.course?.description,
+    alternates: {
+      canonical: `https://punesoftwaretechnologies.com/courses/${courseId}`,
+    },
     openGraph: {
-      title: courseDetails.course.name,
-      description: courseDetails.course.description,
-      images: [{ url: courseDetails.course.featured_image }],
+      title: courseDetails?.course?.name,
+      description: courseDetails?.course?.description,
+      url: `https://punesoftwaretechnologies.com/courses/${courseId}`,
+      type: "website",
+      images: [
+        {
+          url: courseDetails?.course?.featured_image || "/default-course.png",
+          alt: courseDetails?.course?.name,
+        },
+      ],
     },
     twitter: {
-      title: courseDetails.course.name,
-      description: courseDetails.course.description,
-      images: [{ url: courseDetails.course.featured_image }],
+      card: "summary_large_image",
+      title: courseDetails?.course?.name,
+      description: courseDetails?.course?.description,
+      images: [courseDetails?.course?.featured_image || "/default-course.png"],
     },
   };
 }
@@ -73,18 +83,36 @@ export default async function CourseDetail({ params }: { params: Params }) {
     notFound();
   }
 
-  return (
-    <>
-      <Head>
-        <title> Learn SAP</title>
-        <meta
-          name="description"
-          content={courseDetails.course.description || "Course Description"}
-        />
-        <meta name="robots" content="index, follow" />
-      </Head>
+  const { course } = courseDetails;
 
+  // ✅ JSON-LD with expanded fields
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: course.name,
+    description: course.description,
+    url: `https://punesoftwaretechnologies.com/courses/${courseId}`,
+    courseCode: courseId,
+    provider: {
+      "@type": "Organization",
+      name: "Pune Software Technologies",
+      sameAs: "https://punesoftwaretechnologies.com",
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "INR",
+      availability: "https://schema.org/InStock",
+      url: `https://punesoftwaretechnologies.com/courses/${courseId}`,
+    },
+  };
+
+  return (
+    <Suspense fallback={<GlobalLoader />}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <FullCoursePage courseDetails={courseDetails} />
-    </>
+    </Suspense>
   );
 }

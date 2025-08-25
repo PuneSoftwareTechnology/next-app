@@ -24,9 +24,10 @@ export const metadata: Metadata = {
   description:
     "Join Pune Software Technologies for expert-led IT courses and hands-on training in Pune. Unlock your potential in web development, AI, and more.",
   openGraph: {
-    title: "Pune Software Technologies - IT Training Platform",
+    title:
+      "Pune Software Technologies | IT Training, Courses & Placements in Pune",
     description:
-      "Join Pune Software Technologies for expert-led IT courses and hands-on training in Pune.",
+      "Expert IT courses, hands-on training, and placement support in Pune. Advance your career with Pune Software Technologies.",
     url: "https://punesoftwaretechnologies.com",
     images: [
       {
@@ -36,13 +37,31 @@ export const metadata: Metadata = {
         alt: "Pune Software Technologies Logo",
       },
     ],
+    siteName: "Pune Software Technologies",
+    type: "website",
+    locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pune Software Technologies - IT Training Platform",
+    title:
+      "Pune Software Technologies | IT Training, Courses & Placements in Pune",
     description:
-      "Join Pune Software Technologies for expert-led IT courses and hands-on training in Pune.",
+      "Expert IT courses, hands-on training, and placement support in Pune. Advance your career with Pune Software Technologies.",
     images: ["/og-image.jpg"],
+    site: "@PuneSoftwareTechnologies",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
 };
 

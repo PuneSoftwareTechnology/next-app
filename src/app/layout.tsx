@@ -18,9 +18,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.punesoftwaretechnologies.com/"),
   title: "Pune Software Technologies - Empowering IT Careers",
   description:
-    "Join Pune Software Technologies for expert-led IT courses and hands-on training in Pune. Unlock your potential in web development, AI, and more.",
-  keywords:
-    "IT training, Pune courses, web development, software training, career growth",
+    "Join Pune Software Technologies for expert-led IT courses and hands-on training in Pune. Unlock your potential in  AI, and more.",
+  keywords: "IT training, Pune courses, software training, career growth",
   authors: [
     {
       name: "Pune Software Technologies",

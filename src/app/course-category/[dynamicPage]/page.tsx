@@ -4,6 +4,8 @@ import AllCoursesPage from "@/components/screens/AllCoursesPage";
 import { pageIdMap } from "@/util/data/category";
 import { Courses } from "@/util/interfaces/course";
 import { BASE_URL } from "@/util/urls";
+import { Suspense } from "react";
+import GlobalLoader from "@/components/molecules/GlobalLoader";
 
 export const metadata: Metadata = {
   title: "Courses | Learn and Master Your Skills",
@@ -55,12 +57,14 @@ export default async function DynamicPage({ params }: { params: Params }) {
   }
 
   return (
-    <AllCoursesPage
-      courses={coursesData}
-      content={content[dynamicPage]}
-      heroImage={"https://i.ibb.co/TxphCWx5/SAP-FUNCTIONAL-MODULE.jpg"}
-      heading={`${dynamicPage?.toUpperCase()} Modules`}
-      category={pageIdMap[dynamicPage as keyof typeof pageIdMap]}
-    />
+    <Suspense fallback={<GlobalLoader />}>
+      <AllCoursesPage
+        courses={coursesData}
+        content={content[dynamicPage]}
+        heroImage={"https://i.ibb.co/TxphCWx5/SAP-FUNCTIONAL-MODULE.jpg"}
+        heading={`${dynamicPage?.toUpperCase()} Modules`}
+        category={pageIdMap[dynamicPage as keyof typeof pageIdMap]}
+      />
+    </Suspense>
   );
 }

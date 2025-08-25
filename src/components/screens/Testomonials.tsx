@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Testimonials from "../orgnasims/Testimonial";
 import { BASE_URL } from "@/util/urls";
+import Loader from "../atoms/Loader";
 
 const fetchData = async (categoryId?: string) => {
   try {
@@ -29,5 +30,11 @@ export default async function TestimonialsPage({
   categoryId?: string;
 }) {
   const testimonials = await fetchData(categoryId);
-  return <Testimonials testimonials={testimonials} />;
+  return (
+    <Suspense
+      fallback={<Loader size="large" className="mx-auto border-gray-800" />}
+    >
+      <Testimonials testimonials={testimonials} />;
+    </Suspense>
+  );
 }

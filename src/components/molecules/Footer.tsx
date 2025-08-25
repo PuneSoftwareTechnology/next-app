@@ -1,6 +1,57 @@
 import Link from "next/link";
 import Typography from "../atoms/Typography";
-import { FaFacebook, FaTwitter, FaInstagram, FaGoogle } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaGoogle, FaYoutube } from "react-icons/fa";
+
+// Footer links config
+const footerLinks = [
+  {
+    href: "/privacy-policy",
+    label: "Privacy Policy",
+    title: "Privacy Policy",
+    rel: "noopener noreferrer",
+    target: "_blank",
+  },
+  {
+    href: "/terms-of-use",
+    label: "Terms of Use",
+    title: "Terms of Use",
+    rel: "noopener noreferrer",
+    target: "_blank",
+  },
+  {
+    href: "/contact-us",
+    label: "Contact Us",
+    title: "Contact Us",
+  },
+];
+
+// Social links config
+const socialLinks = [
+  {
+    href: "https://www.facebook.com/profile.php?id=61579635066915",
+    label: "Facebook",
+    icon: FaFacebook,
+    color: "#1877F3", // Facebook blue
+  },
+  {
+    href: "https://www.youtube.com/@PuneSoftwareTechnologies",
+    label: "Youtube",
+    icon: FaYoutube,
+    color: "#FF0000", // YouTube red
+  },
+  {
+    href: "https://www.instagram.com/pune_software_technologies/",
+    label: "Instagram",
+    icon: FaInstagram,
+    color: "#E4405F", // Instagram pink
+  },
+  {
+    href: "https://g.co/kgs/8j6Qw7p",
+    label: "Google Business Profile",
+    icon: FaGoogle,
+    color: "#4285F4", // Google blue
+  },
+];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,6 +60,7 @@ const Footer = () => {
     <footer
       className="bg-gray-800 text-white mx-auto py-6 w-full"
       role="contentinfo"
+      aria-label="Site Footer"
     >
       <div className="container mx-auto px-6">
         {/* Footer text */}
@@ -25,37 +77,20 @@ const Footer = () => {
           className="mt-4 flex flex-col sm:flex-row justify-center items-center gap-y-2 sm:gap-x-6 text-center"
         >
           <ul className="flex flex-col sm:flex-row justify-center items-center gap-y-2 sm:gap-x-6 text-center">
-            <li>
-              <Link
-                href="/privacy-policy"
-                className="text-sm md:text-base text-blue-400 hover:text-blue-700 underline"
-                title="Privacy Policy"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/terms-of-use"
-                className="text-sm md:text-base text-blue-400 hover:text-blue-700 underline"
-                title="Terms of use"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Terms of Use
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact-us"
-                className="text-sm md:text-base text-blue-400 hover:text-blue-700 underline"
-                title="Contact Us"
-              >
-                Contact Us
-              </Link>
-            </li>
+            {footerLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-sm md:text-base text-blue-400 hover:text-blue-700 underline"
+                  title={link.title}
+                  target={link.target}
+                  rel={link.rel}
+                  aria-label={link.label}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
@@ -64,31 +99,18 @@ const Footer = () => {
           className="mt-6 flex justify-center items-center gap-x-4"
           aria-label="Social Media Links"
         >
-          <Link href="#" title="Facebook" aria-label="Facebook">
-            <FaFacebook
-              size={24}
-              className="text-blue-600 hover:text-blue-800"
-            />
-          </Link>
-          <Link href="#" title="Twitter" aria-label="Twitter">
-            <FaTwitter
-              size={24}
-              className="text-blue-400 hover:text-blue-600"
-            />
-          </Link>
-          <Link href="#" title="Instagram" aria-label="Instagram">
-            <FaInstagram
-              size={24}
-              className="text-pink-500 hover:text-pink-700"
-            />
-          </Link>
-          <Link
-            href="#"
-            title="Google Business Profile"
-            aria-label="Google Business Profile"
-          >
-            <FaGoogle size={24} className="text-blue-500 hover:text-blue-700" />
-          </Link>
+          {socialLinks.map(({ href, label, icon: Icon, color }) => (
+            <Link
+              key={label}
+              href={href}
+              title={label}
+              aria-label={label}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon size={24} style={{ color }} />
+            </Link>
+          ))}
         </div>
       </div>
       <div className="mx-20 lg:mx-2">
