@@ -4,6 +4,7 @@ import { FullCourseDetails } from "@/util/interfaces/course";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import GlobalLoader from "@/components/molecules/GlobalLoader";
+import { BASE_URL } from "@/util/urls";
 
 type Params = Promise<{ courseId: string }>;
 
@@ -12,7 +13,7 @@ const getFullCourseDetails = async (
 ): Promise<FullCourseDetails | null> => {
   try {
     const response = await fetch(
-      `https://punesoftwaretechnologies.com/courses/get-course-details?slug=${slug}`,
+      `${BASE_URL}/courses/get-course-details?slug=${slug}`,
       { cache: "no-store" }
     );
 
