@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.punesoftwaretechnologies.com/"),
   title: "Pune Software Technologies - Empowering IT Careers",
   description:
-    "Join Pune Software Technologies for expert-led IT courses and hands-on training in Pune. Unlock your potential in  AI, and more.",
+    "Join Pune Software Technologies for expert-led IT courses and hands-on training in Pune. Unlock your potential in SAp, Cloud Computong,  AI&ML, Data-analytics  and Cyber-Security.",
   keywords: "IT training, Pune courses, software training, career growth",
   authors: [
     {
@@ -91,6 +92,18 @@ export default function RootLayout({
           }}
         />
       </head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-36X2FRJ5W4"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-36X2FRJ5W4');
+        `}
+      </Script>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

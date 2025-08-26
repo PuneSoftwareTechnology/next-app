@@ -49,7 +49,7 @@ const Header = () => {
         >
           <Image
             src={PST_LOGO}
-            alt="Pune Software Technologies logo - IT Training Platform"
+            alt="Pune Software Technologies logo - IT Training Institute"
             width={50}
             height={50}
             className="w-10 h-10 md:w-12 md:h-12"
@@ -67,7 +67,7 @@ const Header = () => {
               Pune Software Technologies
             </Typography>
             <Typography variant="h6" as="h6">
-              IT Training Platform
+              IT Training Institute
             </Typography>
           </div>
         </Link>

@@ -39,6 +39,7 @@ export interface OneBlogResponse {
   status: string;
   category: string;
   deleted: boolean;
+  meta_desc: string;
 }
 
 export interface FetchOneBlogResponse {

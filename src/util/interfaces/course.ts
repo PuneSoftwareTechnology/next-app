@@ -56,6 +56,7 @@ export interface CourseDetail {
   deleted: boolean;
   category_id: string;
   related_courses: RelatedCourse[];
+  meta_desc: string;
 }
 
 export interface RelatedCourse {

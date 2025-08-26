@@ -11,6 +11,7 @@ import EnquirySection from "@/components/screens/EnquirySection";
 import { BASE_URL } from "@/util/urls";
 import { Suspense } from "react";
 import GlobalLoader from "@/components/molecules/GlobalLoader";
+import Script from "next/script";
 
 type Params = Promise<{ blogId: string }>;
 
@@ -42,7 +43,7 @@ export async function generateMetadata({
   return {
     title: blog?.title || "Blog | Pune Software Technologies",
     description:
-      blog?.introduction ||
+      blog?.meta_desc ||
       "Read insightful blogs on technology and software development.",
     keywords:
       `{${
@@ -53,7 +54,7 @@ export async function generateMetadata({
     openGraph: {
       title: blog?.title || "Blog | Pune Software Technologies",
       description:
-        blog?.introduction ||
+        blog?.meta_desc ||
         "Read insightful blogs on technology and software development.",
       images: [{ url: blog?.featured_image || "/default-blog-image.jpg" }],
       url: `https://punesoftwaretechnologies.com/blog/${blogId}`,
@@ -62,7 +63,7 @@ export async function generateMetadata({
     twitter: {
       title: blog?.title || "Blog | Pune Software Technologies",
       description:
-        blog?.introduction ||
+        blog?.meta_desc ||
         "Read insightful blogs on technology and software development.",
       images: [{ url: blog?.featured_image || "/default-blog-image.jpg" }],
       card: "summary_large_image",
@@ -104,6 +105,18 @@ const BlogDetail = async ({ params }: { params: Params }) => {
 
   return (
     <Suspense fallback={<GlobalLoader />}>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-36X2FRJ5W4"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-36X2FRJ5W4');
+        `}
+      </Script>
       <Header />
       <div className="bg-white rounded-lg shadow-lg mt-20 lg:mt-24 mb-8 p-4 lg:p-6 mx-4 lg:mx-32">
         <Typography variant="h1" as="h1" className="mb-4 text-center">

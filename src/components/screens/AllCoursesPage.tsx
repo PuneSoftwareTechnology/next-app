@@ -14,6 +14,7 @@ import ContactButtons from "../organisms/ContactButtons";
 import ERROR_IMAGE from "../../assests/images/imageError.png";
 import EnquirySection from "./EnquirySection";
 import FAQPage from "./Faq";
+import Script from "next/script";
 
 interface AllCoursesPageProps {
   courses: Courses[];
@@ -21,6 +22,12 @@ interface AllCoursesPageProps {
   heroImage: string | StaticImageData;
   heading: string;
   category?: string;
+  meta: {
+    title: string;
+    description: string;
+    keywords: string[];
+    heroImage: string;
+  };
 }
 
 const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
@@ -29,56 +36,45 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
   heroImage,
   heading,
   category,
+  meta,
 }) => {
   return (
     <>
       <Head>
-        <title>All Courses | Pune Software Technologies</title>
-        <meta
-          name="description"
-          content="Explore a wide range of courses including SAP, Cloud, AI/ML, and more to advance your career."
-        />
-        <meta
-          name="keywords"
-          content="Courses, Learning, SAP Training, AI-ML, Cloud Computing"
-        />
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <meta name="keywords" content={meta.keywords.join(", ")} />
         <meta name="author" content="Pune Software Technologies" />
-        <meta
-          property="og:title"
-          content="All Courses | Pune Software Technologies"
-        />
-        <meta
-          property="og:description"
-          content="Explore a wide range of courses including SAP, Cloud, AI/ML, and more to advance your career."
-        />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://punesoftwaretechnologies.com/all-courses"
+          content={`https://punesoftwaretechnologies.com/course-category/${category}`}
         />
-        <meta
-          property="og:image"
-          content="https://punesoftwaretechnologies.com/assets/courses-banner.jpg"
-        />
+        <meta property="og:image" content={meta.heroImage} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="All Courses | Pune Software Technologies"
-        />
-        <meta
-          name="twitter:description"
-          content="Explore a wide range of courses including SAP, Cloud, AI/ML, and more to advance your career."
-        />
-        <meta
-          name="twitter:image"
-          content="https://punesoftwaretechnologies.com/assets/courses-banner.jpg"
-        />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content={meta.heroImage} />
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href="https://punesoftwaretechnologies.com/all-courses"
+          href={`https://punesoftwaretechnologies.com/course-category/${category}`}
         />
       </Head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-36X2FRJ5W4"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-36X2FRJ5W4');
+        `}
+      </Script>
       <Suspense fallback={<GlobalLoader />}>
         <Header />
         <main className="mt-24">

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Typography from "../atoms/Typography";
-import { FaFacebook, FaInstagram, FaGoogle, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 // Footer links config
 const footerLinks = [

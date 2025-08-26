@@ -1,3 +1,4 @@
+import Script from "next/script";
 import Footer from "@/components/molecules/Footer";
 import Header from "@/components/molecules/Header";
 import HeroSection from "@/components/screens/HeroSection";
@@ -70,19 +71,31 @@ export default async function HomePage({ searchParams }: PageProps) {
 
   return (
     <div className="relative min-h-screen bg-gray-50">
+      {/* Google Analytics Scripts */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-36X2FRJ5W4"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-36X2FRJ5W4');
+        `}
+      </Script>
+
       {/* Main Content */}
-      <div>
-        <Header />
-        <HeroSection showModal={showModal} />
-        <Courses />
-        <ProgramHighlights />
-        <WhyChooseUs />
-        <BlogSection />
-        <TestimonialsPage />
-        <PlacementPage />
-        <EnquirySection />
-        <Footer />
-      </div>
+      <Header />
+      <HeroSection showModal={showModal} />
+      <Courses />
+      <ProgramHighlights />
+      <WhyChooseUs />
+      <BlogSection />
+      <TestimonialsPage />
+      <PlacementPage />
+      <EnquirySection />
+      <Footer />
       <ContactButtons />
     </div>
   );

@@ -13,6 +13,7 @@ import { categoryIdMap } from "@/util/data/category";
 import { BASE_URL } from "@/util/urls";
 import { Suspense } from "react";
 import GlobalLoader from "@/components/molecules/GlobalLoader";
+import Script from "next/script";
 
 export const dynamic = "force-dynamic";
 
@@ -78,7 +79,7 @@ const AllBlogs = async () => {
       "@type": "BlogPosting",
       headline: blog.title,
       image: blog.featured_image || ERROR_IMG,
-      url: `https://punesoftwaretechnologies.com/blog/${blog.slug}`,
+      url: `https://punesoftwaretechnologies.com/all-blogs`,
       datePublished: blog.created_at,
       author: {
         "@type": "Person",
@@ -95,6 +96,18 @@ const AllBlogs = async () => {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-36X2FRJ5W4"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-36X2FRJ5W4');
+        `}
+      </Script>
       <Header />
       <div className="mt-20  lg:mt-28 mb-8 mx-2 md:mx-4 lg:mx-32">
         <Typography variant="h1" as="h1" className="mb-8 text-center">
