@@ -24,27 +24,27 @@ const categoryMeta: Record<
     description:
       "Discover cloud computing technologies and cloud certifications.",
     keywords: ["Cloud", "AWS", "Azure", "GCP", "Cloud Courses"],
-    heroImage: "https://i.ibb.co/cloud-banner.jpg",
+    heroImage: "https://i.ibb.co/TxphCWx5/SAP-FUNCTIONAL-MODULE.jpg",
   },
   "ai-ml": {
     title: "AI & ML Courses | Become an AI Expert",
     description:
       "Explore Artificial Intelligence and Machine Learning with practical projects.",
     keywords: ["AI", "ML", "Artificial Intelligence", "Machine Learning"],
-    heroImage: "https://i.ibb.co/ai-ml-banner.jpg",
+    heroImage: "https://i.ibb.co/TxphCWx5/SAP-FUNCTIONAL-MODULE.jpg",
   },
   "data-analytics": {
     title: "Data Analytics Courses | Learn Data Science",
     description:
       "Master Data Analytics and Data Science with hands-on projects.",
     keywords: ["Data Analytics", "Data Science", "Power BI", "Tableau"],
-    heroImage: "https://i.ibb.co/data-analytics-banner.jpg",
+    heroImage: "https://i.ibb.co/TxphCWx5/SAP-FUNCTIONAL-MODULE.jpg",
   },
   "cyber-security": {
     title: "Cyber Security Courses | Become a Security Expert",
     description: "Learn Cyber Security practices and ethical hacking.",
     keywords: ["Cyber Security", "Ethical Hacking", "Network Security"],
-    heroImage: "https://i.ibb.co/cyber-security-banner.jpg",
+    heroImage: "https://i.ibb.co/TxphCWx5/SAP-FUNCTIONAL-MODULE.jpg",
   },
 };
 
