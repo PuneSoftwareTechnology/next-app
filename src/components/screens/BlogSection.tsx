@@ -42,7 +42,7 @@ export default async function BlogSection({ category }: PageProps) {
     <Suspense
       fallback={<Loader size="large" className="mx-auto border-gray-800" />}
     >
-      <BlogsPage blogs={blogs} />
+      {blogs?.length > 0 && <BlogsPage blogs={blogs} />}
     </Suspense>
   );
 }

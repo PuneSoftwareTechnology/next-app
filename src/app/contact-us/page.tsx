@@ -14,6 +14,8 @@ import {
   GoogleReCaptchaProvider,
   useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
+import Script from "next/script";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
 const benefits = [
   "We’ll reach out to you between 10 AM and 9 PM",
@@ -171,11 +173,23 @@ const ContactUsContent = () => {
           content="https://punesoftwaretechnologies.com/images/placeholder-banner.jpg"
         />
       </Head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-36X2FRJ5W4"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-36X2FRJ5W4');
+        `}
+      </Script>
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow mx-auto px-4 md:px-12 lg:px-32 py-2 lg:py-12 mt-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            <div>
+            <section>
               <Typography variant="h2" as="h1" className="mb-6 text-left">
                 Get Expert Advice for Free: Register for Your Free Consultation
                 Now!
@@ -192,8 +206,65 @@ const ContactUsContent = () => {
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="bg-white text-gray-900 rounded-lg shadow-lg py-4 px-2 md:p-6 w-full max-w-md mx-auto md:max-w-full mb-12">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6 lg:max-w-2xl mr-auto">
+                {/* WhatsApp Card */}
+                <a
+                  href="https://wa.me/919175599880"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Chat with us on WhatsApp at +91 9175599880"
+                  className="flex items-center p-4 sm:p-6 rounded-2xl shadow-md 
+               bg-gradient-to-r from-green-400 to-green-200 
+               hover:from-green-500 hover:to-green-300 
+               transition-all duration-300 hover:shadow-xl group w-full"
+                >
+                  <FaWhatsapp
+                    className="text-green-800 mr-3 sm:mr-4 flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+                    size={36} // smaller for mobile
+                  />
+                  <div>
+                    <Typography
+                      variant="h6"
+                      as="h2"
+                      className="font-semibold text-gray-900 group-hover:text-gray-900 transition-colors text-base sm:text-lg"
+                    >
+                      Chat with us on WhatsApp
+                    </Typography>
+                    <p className="text-blue-600 underline text-sm sm:text-base mt-1">
+                      +91 9175599880
+                    </p>
+                  </div>
+                </a>
+
+                {/* Call Card */}
+                <a
+                  href="tel:+919175599880"
+                  aria-label="Call us at +91 9175599880 for assistance"
+                  className="flex items-center p-4 sm:p-6 rounded-2xl shadow-md 
+               bg-gradient-to-r from-blue-200 to-white 
+               hover:from-blue-100 hover:to-white 
+               transition-all duration-300 hover:shadow-xl group w-full"
+                >
+                  <FaPhoneAlt
+                    className="text-blue-600 mr-3 sm:mr-4 flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+                    size={32} // smaller for mobile
+                  />
+                  <div>
+                    <Typography
+                      variant="h6"
+                      as="h2"
+                      className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors text-base sm:text-lg"
+                    >
+                      Call us directly
+                    </Typography>
+                    <p className="text-blue-600 underline text-sm sm:text-base mt-1">
+                      +91 9175599880
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </section>
+            <section className="bg-white text-gray-900 rounded-lg shadow-lg py-4 px-2 md:p-6 w-full max-w-md mx-auto md:max-w-full mb-12">
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                   <label
@@ -263,7 +334,7 @@ const ContactUsContent = () => {
                   Submit
                 </PrimaryButton>
               </form>
-            </div>
+            </section>
           </div>
         </main>
         <Footer />

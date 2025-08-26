@@ -45,12 +45,6 @@ const socialLinks = [
     icon: FaInstagram,
     color: "#E4405F", // Instagram pink
   },
-  {
-    href: "https://g.co/kgs/8j6Qw7p",
-    label: "Google Business Profile",
-    icon: FaGoogle,
-    color: "#4285F4", // Google blue
-  },
 ];
 
 const Footer = () => {
