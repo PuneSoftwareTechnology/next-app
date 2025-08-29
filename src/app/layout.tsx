@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     url: "https://punesoftwaretechnologies.com",
     title: "Pune Software Technologies - IT Training Institute",
     description:
-      "Expert IT courses in Pune with hands-on training and real-world projects. Join now!",
+      "Expert IT courses in Pune with hands-on training and real-world projects. Join Pune Software Technologies now!",
     images: [
       {
         url: "/og-image.jpg",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     site: "@PuneSoftwareTech",
     title: "Pune Software Technologies - IT Training Institute",
     description:
-      "Expert IT courses in Pune with hands-on training and real-world projects. Join now!",
+      "Expert IT courses in Pune with hands-on training and real-world projects. Join Pune Software Technologies now!",
     images: ["/og-image.jpg"],
   },
   robots: { index: true, follow: true },
@@ -81,6 +81,7 @@ export default function RootLayout({
               name: "Pune Software Technologies",
               url: "https://punesoftwaretechnologies.com",
               description: "Expert IT courses in Pune with hands-on training.",
+              logo: "https://punesoftwaretechnologies.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FLogo.a02dd24f.png&w=64&q=75",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Pune",
@@ -88,11 +89,17 @@ export default function RootLayout({
                 postalCode: "411001",
                 addressCountry: "IN",
               },
-              logo: "/logo.png",
+              sameAs: [
+                "https://www.facebook.com/profile.php?id=61579635066915",
+                "https://www.youtube.com/@PuneSoftwareTechnologies",
+                "https://www.instagram.com/pune_software_technologies/",
+              ],
             }),
           }}
         />
       </head>
+
+      {/* Google Analytics */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-36X2FRJ5W4"
         strategy="afterInteractive"

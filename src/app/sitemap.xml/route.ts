@@ -51,7 +51,10 @@ async function getBlogUrls() {
   const blogUrls: { url: string; changefreq: string; priority: number }[] = [];
 
   try {
-    const res = await fetch(`${BASE_URL}/blog/all?landing_page=main`);
+    const res = await fetch(`${BASE_URL}/blog/all?landing_page=main`, {
+      cache: "no-store", // disables caching, ensures fresh data
+    });
+
     const data = res.ok ? await res.json() : { data: [] };
 
     if (data?.success && Array.isArray(data.data)) {
