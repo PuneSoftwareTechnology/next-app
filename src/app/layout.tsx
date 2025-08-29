@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
+import "react-toastify/dist/ReactToastify.css";
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -16,11 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.punesoftwaretechnologies.com/"),
-  title: "Pune Software Technologies - Empowering IT Careers",
+  metadataBase: new URL("https://punesoftwaretechnologies.com/"),
+  title: "Pune Software Technologies - IT Training Institute",
   description:
-    "Join Pune Software Technologies for expert-led IT courses and hands-on training in Pune. Unlock your potential in SAp, Cloud Computong,  AI&ML, Data-analytics  and Cyber-Security.",
-  keywords: "IT training, Pune courses, software training, career growth",
+    "Join Pune Software Technologies for expert-led IT courses and hands-on training in Pune. Unlock your potential in SAP, Cloud Computing, AI & ML, Data Analytics, and Cyber Security.",
+  keywords:
+    "IT training, Pune courses, software training, SAP, Cloud Computing, AI, ML, Data Analytics, Cyber Security, career growth",
   authors: [
     {
       name: "Pune Software Technologies",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://punesoftwaretechnologies.com",
-    title: "Pune Software Technologies - Empowering IT Careers",
+    title: "Pune Software Technologies - IT Training Institute",
     description:
       "Expert IT courses in Pune with hands-on training and real-world projects. Join now!",
     images: [
@@ -46,26 +47,22 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@PuneSoftwareTech",
-    title: "Pune Software Technologies - Empowering IT Careers",
+    title: "Pune Software Technologies - IT Training Institute",
     description:
       "Expert IT courses in Pune with hands-on training and real-world projects. Join now!",
     images: ["/og-image.jpg"],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
-        {/* Additional metadata */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="google-site-verification"
@@ -111,20 +108,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <>
-          {children}
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-        </>
+        {children}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </body>
     </html>
   );

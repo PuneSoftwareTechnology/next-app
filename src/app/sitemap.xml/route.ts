@@ -24,9 +24,10 @@ async function getCoursesByCategory() {
       const res = await fetch(
         `${BASE_URL}/courses/all?category=${
           pageIdMap[cat as keyof typeof pageIdMap]
-        }`
+        }`,
+        { cache: "no-store" } // important!
       );
-      const data = res.ok ? await res.json() : { data: [] };
+      const data = await res.json();
 
       if (data?.success && Array.isArray(data.data)) {
         for (const course of data.data as Courses[]) {

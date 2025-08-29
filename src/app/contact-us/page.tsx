@@ -135,7 +135,6 @@ const ContactUsContent = () => {
           name="description"
           content="Contact us for expert advice and free consultation. Get personalized guidance on courses, career paths, and skills enhancement tailored to your needs."
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
           content="contact us, free consultation, expert advice, career guidance, skills enhancement, career paths"

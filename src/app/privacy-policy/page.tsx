@@ -13,7 +13,6 @@ const PrivacyPolicy = () => {
           name="description"
           content="Read our privacy policy to understand how we handle your data."
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="keywords"
           content="Privacy Policy, Data Protection, Terms"
