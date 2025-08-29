@@ -32,7 +32,7 @@ const HeroSection = ({ showModal }: HeroSectionProps) => {
           id="hero-heading"
           className="text-blue-900"
         >
-          Welcome to Pune Software Technologies
+          Learn IT with Pune Software Technologies
         </Typography>
         <Typography
           variant="h4"
