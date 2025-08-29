@@ -10,7 +10,7 @@ const COURSE_CATEGORIES = [
   "sap",
   "cloud",
   "data-analytics",
-  "ai-ml",
+  "artificial-intelligence",
   "cyber-security",
 ];
 
@@ -79,11 +79,15 @@ export async function GET() {
     { url: "/course-category/sap", changefreq: "weekly", priority: 0.9 },
     { url: "/course-category/cloud", changefreq: "weekly", priority: 0.9 },
     {
-      url: "/course-category/sapdata-analytics",
+      url: "/course-category/data-analytics",
       changefreq: "weekly",
       priority: 0.9,
     },
-    { url: "/course-category/ai-ml", changefreq: "weekly", priority: 0.9 },
+    {
+      url: "/course-category/artificial-intelligence",
+      changefreq: "weekly",
+      priority: 0.9,
+    },
     {
       url: "/course-category/cyber-security",
       changefreq: "weekly",
@@ -99,7 +103,7 @@ export async function GET() {
       changefreq: "yearly",
       priority: 0.3,
     },
-    { url: "/add-testimonial", changefreq: "yearly", priority: 0.3 },
+    { url: "/testimonial", changefreq: "yearly", priority: 0.3 },
   ];
 
   // 2️⃣ Dynamic pages

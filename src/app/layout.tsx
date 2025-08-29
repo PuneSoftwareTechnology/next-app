@@ -67,6 +67,10 @@ export default function RootLayout({
       <head>
         {/* Additional metadata */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="google-site-verification"
+          content="69QQqzCTxMZ8bBs5Crfmadn0y4YUZQsFn09JWhHnMqs"
+        />
         <link rel="canonical" href="https://punesoftwaretechnologies.com" />
         <link rel="icon" href="/favicon.ico" />
 

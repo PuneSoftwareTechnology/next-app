@@ -31,19 +31,19 @@ const socialLinks = [
     href: "https://www.facebook.com/profile.php?id=61579635066915",
     label: "Facebook",
     icon: FaFacebook,
-    color: "#1877F3", // Facebook blue
+    color: "text-blue-600", // Facebook blue
   },
   {
     href: "https://www.youtube.com/@PuneSoftwareTechnologies",
     label: "Youtube",
     icon: FaYoutube,
-    color: "#FF0000", // YouTube red
+    color: "text-red-600", // YouTube red
   },
   {
     href: "https://www.instagram.com/pune_software_technologies/",
     label: "Instagram",
     icon: FaInstagram,
-    color: "#E4405F", // Instagram pink
+    color: "text-pink-500", // Instagram pink
   },
 ];
 
@@ -102,7 +102,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Icon size={24} style={{ color }} />
+              <Icon size={24} className={color} />
             </Link>
           ))}
         </div>

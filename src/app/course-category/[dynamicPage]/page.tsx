@@ -26,11 +26,11 @@ const categoryMeta: Record<
     keywords: ["Cloud", "AWS", "Azure", "GCP", "Cloud Courses"],
     heroImage: "https://i.ibb.co/TxphCWx5/SAP-FUNCTIONAL-MODULE.jpg",
   },
-  "ai-ml": {
+  "artificial-intelligence": {
     title: "AI & ML Courses | Become an AI Expert",
     description:
-      "Explore Artificial Intelligence and Machine Learning with practical projects.",
-    keywords: ["AI", "ML", "Artificial Intelligence", "Machine Learning"],
+      "Explore artificial-intelligence and Machine Learning with practical projects.",
+    keywords: ["AI", "ML", "artificial-intelligence", "Machine Learning"],
     heroImage: "https://i.ibb.co/TxphCWx5/SAP-FUNCTIONAL-MODULE.jpg",
   },
   "data-analytics": {
@@ -81,7 +81,8 @@ export default async function DynamicPage({ params }: { params: Params }) {
   const content: Record<string, string> = {
     sap: "Learn SAP courses with practical experience",
     cloud: "Discover cloud computing technologies",
-    "ai-ml": "Explore Artificial Intelligence and Machine Learning",
+    "artificial-intelligence":
+      "Explore artificial-intelligence and Machine Learning",
     "data-analytics": "Learn Data analytics",
     "cyber-security": "Master Cyber Security practices",
   };

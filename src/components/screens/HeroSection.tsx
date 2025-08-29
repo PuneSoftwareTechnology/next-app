@@ -42,7 +42,7 @@ const HeroSection = ({ showModal }: HeroSectionProps) => {
         >
           Empowering students and professionals with practical training in SAP
           S/4HANA, Cybersecurity, Cloud computing, Data analytics, and
-          Artificial Intelligence.
+          artificial-intelligence.
         </Typography>
 
         <Link

@@ -22,7 +22,10 @@ const navItems: NavItem[] = [
       { label: "SAP Training", href: "/course-category/sap" },
       { label: "Cloud Technologies", href: "/course-category/cloud" },
       { label: "Data Analytics", href: "/course-category/data-analytics" },
-      { label: "Machine Learning & AI", href: "/course-category/ai-ml" },
+      {
+        label: "Machine Learning & AI",
+        href: "/course-category/artificial-intelligence",
+      },
       { label: "Cyber Security", href: "/course-category/cyber-security" },
     ],
   },

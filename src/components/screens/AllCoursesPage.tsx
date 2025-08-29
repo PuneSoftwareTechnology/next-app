@@ -78,10 +78,7 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
       <Suspense fallback={<GlobalLoader />}>
         <Header />
         <main className="mt-24">
-          <div
-            className="relative mx-4 lg:mx-32 mb-8"
-            style={{ height: "calc(50vh)" }}
-          >
+          <div className="relative mx-4 lg:mx-32 mb-8 h-[50vh] rounded-md overflow-hidden shadow-lg">
             <Image
               src={heroImage}
               alt="course-image"
