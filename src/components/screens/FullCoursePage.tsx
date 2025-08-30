@@ -23,9 +23,7 @@ interface CoursePageProps {
 }
 
 const FullCoursePage: React.FC<CoursePageProps> = ({ courseDetails }) => {
-  const category = courseDetails?.course?.name
-    ?.toLowerCase()
-    ?.split("course")[0];
+  const category = courseDetails?.course?.name?.split("Course")[0];
 
   return (
     <>
