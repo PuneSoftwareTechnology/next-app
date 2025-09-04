@@ -29,11 +29,11 @@ const TermsOfUse: NextPage = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://yourwebsite.com/terms-of-use"
+          content="https://punesoftwaretechnologies.com/terms-of-use"
         />
         <meta
           property="og:image"
-          content="https://yourwebsite.com/og-image.jpg"
+          content="https://punesoftwaretechnologies.com/og-image.jpg"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -46,7 +46,7 @@ const TermsOfUse: NextPage = () => {
         />
         <meta
           name="twitter:image"
-          content="https://yourwebsite.com/og-image.jpg"
+          content="https://punesoftwaretechnologies.com/og-image.jpg"
         />
       </Head>
       <Header />
