@@ -30,6 +30,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
+    siteName: "Pune Software Technologies",
     locale: "en_US",
     url: "https://punesoftwaretechnologies.com",
     title: "Pune Software Technologies - IT Training Institute",
@@ -67,6 +68,15 @@ export default function RootLayout({
         <meta
           name="google-site-verification"
           content="69QQqzCTxMZ8bBs5Crfmadn0y4YUZQsFn09JWhHnMqs"
+        />
+        <meta property="og:site_name" content="Pune Software Technologies" />
+        <meta
+          property="og:title"
+          content="Pune Software Technologies - IT Training Institute"
+        />
+        <meta
+          property="og:url"
+          content="https://punesoftwaretechnologies.com"
         />
         <link rel="canonical" href="https://punesoftwaretechnologies.com" />
         <link rel="icon" href="/favicon.ico" />
