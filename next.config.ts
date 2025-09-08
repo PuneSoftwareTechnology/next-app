@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/:path*", // match all paths
-        destination: "https://punesoftwaretechnologies.com/:path*", // redirect to non-www
+        destination: "https://www.punesoftwaretechnologies.com/:path*", // redirect to non-www
         permanent: true, // 301 redirect
         has: [
           {

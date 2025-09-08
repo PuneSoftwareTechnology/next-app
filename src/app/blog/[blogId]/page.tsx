@@ -57,7 +57,7 @@ export async function generateMetadata({
         blog?.meta_desc ||
         "Read insightful blogs on technology and software development.",
       images: [{ url: blog?.featured_image || "/default-blog-image.jpg" }],
-      url: `https://punesoftwaretechnologies.com/blog/${blogId}`,
+      url: `https://www.punesoftwaretechnologies.com/blog/${blogId}`,
       type: "article",
     },
     twitter: {
@@ -69,7 +69,7 @@ export async function generateMetadata({
       card: "summary_large_image",
     },
     alternates: {
-      canonical: `https://punesoftwaretechnologies.com/blog/${blogId}`,
+      canonical: `https://www.punesoftwaretechnologies.com/blog/${blogId}`,
     },
   };
 }

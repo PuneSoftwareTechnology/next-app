@@ -141,7 +141,7 @@ const ContactUsContent = () => {
         />
         <link
           rel="canonical"
-          href="https://punesoftwaretechnologies.com/contact-us"
+          href="https://www.punesoftwaretechnologies.com/contact-us"
         />
 
         {/* Open Graph Meta Tags */}
@@ -152,12 +152,12 @@ const ContactUsContent = () => {
         />
         <meta
           property="og:url"
-          content="https://punesoftwaretechnologies.com/contact-us"
+          content="https://www.punesoftwaretechnologies.com/contact-us"
         />
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://punesoftwaretechnologies.com/images/placeholder-banner.jpg"
+          content="https://www.punesoftwaretechnologies.com/images/placeholder-banner.jpg"
         />
 
         {/* Twitter Card Meta Tags */}
@@ -169,7 +169,7 @@ const ContactUsContent = () => {
         />
         <meta
           name="twitter:image"
-          content="https://punesoftwaretechnologies.com/images/placeholder-banner.jpg"
+          content="https://www.punesoftwaretechnologies.com/images/placeholder-banner.jpg"
         />
       </Head>
       <Script

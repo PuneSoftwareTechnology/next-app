@@ -48,12 +48,12 @@ export async function generateMetadata({
     title: `${courseDetails?.course?.name} | Pune Software Technologies`,
     description: courseDetails?.course?.meta_desc,
     alternates: {
-      canonical: `https://punesoftwaretechnologies.com/course/${courseId}`,
+      canonical: `https://www.punesoftwaretechnologies.com/course/${courseId}`,
     },
     openGraph: {
       title: courseDetails?.course?.name,
       description: courseDetails?.course?.meta_desc,
-      url: `https://punesoftwaretechnologies.com/course/${courseId}`,
+      url: `https://www.punesoftwaretechnologies.com/course/${courseId}`,
       type: "website",
       images: [
         {
@@ -92,18 +92,18 @@ export default async function CourseDetail({ params }: { params: Params }) {
     "@type": "Course",
     name: course.name,
     description: course.description,
-    url: `https://punesoftwaretechnologies.com/course/${courseId}`,
+    url: `https://www.punesoftwaretechnologies.com/course/${courseId}`,
     courseCode: courseId,
     provider: {
       "@type": "Organization",
       name: "Pune Software Technologies",
-      sameAs: "https://punesoftwaretechnologies.com",
+      sameAs: "https://www.punesoftwaretechnologies.com",
     },
     offers: {
       "@type": "Offer",
       priceCurrency: "INR",
       availability: "https://schema.org/InStock",
-      url: `https://punesoftwaretechnologies.com/course/${courseId}`,
+      url: `https://www.punesoftwaretechnologies.com/course/${courseId}`,
     },
   };
 

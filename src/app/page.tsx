@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       "Pune Software Technologies | IT Training, Courses & Placements in Pune",
     description:
       "Expert IT courses, hands-on training, and placement support in Pune. Advance your career with Pune Software Technologies.",
-    url: "https://punesoftwaretechnologies.com",
+    url: "https://www.punesoftwaretechnologies.com",
     images: [
       {
         url: "/og-image.jpg",

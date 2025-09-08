@@ -50,7 +50,7 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content={`https://punesoftwaretechnologies.com/course-category/${category}`}
+          content={`https://www.punesoftwaretechnologies.com/course-category/${category}`}
         />
         <meta property="og:image" content={meta.heroImage} />
         <meta name="twitter:card" content="summary_large_image" />
@@ -60,7 +60,7 @@ const AllCoursesPage: React.FC<AllCoursesPageProps> = ({
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href={`https://punesoftwaretechnologies.com/course-category/${category}`}
+          href={`https://www.punesoftwaretechnologies.com/course-category/${category}`}
         />
       </Head>
       <Script

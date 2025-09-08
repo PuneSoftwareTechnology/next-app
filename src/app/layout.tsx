@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://punesoftwaretechnologies.com/"),
+  metadataBase: new URL("https://www.punesoftwaretechnologies.com/"),
   title: "Pune Software Technologies - IT Training Institute",
   description:
     "Join Pune Software Technologies for expert-led IT courses and hands-on training in Pune. Unlock your potential in SAP, Cloud Computing, AI & ML, Data Analytics, and Cyber Security.",
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Pune Software Technologies",
-      url: "https://punesoftwaretechnologies.com",
+      url: "https://www.punesoftwaretechnologies.com",
     },
   ],
   openGraph: {
     type: "website",
     siteName: "Pune Software Technologies",
     locale: "en_US",
-    url: "https://punesoftwaretechnologies.com",
+    url: "https://www.punesoftwaretechnologies.com",
     title: "Pune Software Technologies - IT Training Institute",
     description:
       "Expert IT courses in Pune with hands-on training and real-world projects. Join Pune Software Technologies now!",
@@ -76,9 +76,9 @@ export default function RootLayout({
         />
         <meta
           property="og:url"
-          content="https://punesoftwaretechnologies.com"
+          content="https://www.punesoftwaretechnologies.com"
         />
-        <link rel="canonical" href="https://punesoftwaretechnologies.com" />
+        <link rel="canonical" href="https://www.punesoftwaretechnologies.com" />
         <link rel="icon" href="/favicon.ico" />
 
         {/* JSON-LD Structured Data */}
@@ -89,9 +89,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "EducationalOrganization",
               name: "Pune Software Technologies",
-              url: "https://punesoftwaretechnologies.com",
+              url: "https://www.punesoftwaretechnologies.com",
               description: "Expert IT courses in Pune with hands-on training.",
-              logo: "https://punesoftwaretechnologies.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FLogo.a02dd24f.png&w=64&q=75",
+              logo: "https://www.punesoftwaretechnologies.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FLogo.a02dd24f.png&w=64&q=75",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Pune",

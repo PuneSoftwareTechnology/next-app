@@ -31,11 +31,11 @@ const PrivacyPolicy = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://punesoftwaretechnologies.com/privacy-policy"
+          content="https://www.punesoftwaretechnologies.com/privacy-policy"
         />
         <meta
           property="og:image"
-          content="https://punesoftwaretechnologies.com/images/privacy-policy-og-image.jpg"
+          content="https://www.punesoftwaretechnologies.com/images/privacy-policy-og-image.jpg"
         />
         {/* Twitter Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -49,7 +49,7 @@ const PrivacyPolicy = () => {
         />
         <meta
           name="twitter:image"
-          content="https://punesoftwaretechnologies.com/images/privacy-policy-og-image.jpg"
+          content="https://www.punesoftwaretechnologies.com/images/privacy-policy-og-image.jpg"
         />
       </Head>
 

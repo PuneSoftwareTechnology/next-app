@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "All Blogs | Pune Software Technologies",
     description: "Explore all the blogs related to AI, ML, SAP, and more.",
-    url: "https://punesoftwaretechnologies.com/all-blogs",
+    url: "https://www.punesoftwaretechnologies.com/all-blogs",
     type: "website",
   },
   twitter: {
@@ -74,12 +74,12 @@ const AllBlogs = async () => {
     "@type": "Blog",
     name: "All Blogs | Pune Software Technologies",
     description: "Explore all the blogs related to AI, ML, SAP, and more.",
-    url: "https://punesoftwaretechnologies.com/all-blogs",
+    url: "https://www.punesoftwaretechnologies.com/all-blogs",
     blogPost: blogs.map((blog) => ({
       "@type": "BlogPosting",
       headline: blog.title,
       image: blog.featured_image || ERROR_IMG,
-      url: `https://punesoftwaretechnologies.com/all-blogs`,
+      url: `https://www.punesoftwaretechnologies.com/all-blogs`,
       datePublished: blog.created_at,
       author: {
         "@type": "Person",
