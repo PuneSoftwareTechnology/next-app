@@ -13,15 +13,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/:path*", // match all paths
-        destination: "https://www.punesoftwaretechnologies.com/:path*", // redirect to non-www
-        permanent: true, // 301 redirect
+        // Redirect non-www to www
+        source: "/:path*",
         has: [
           {
             type: "host",
-            value: "www.punesoftwaretechnologies.com", // only if host is www
+            value: "punesoftwaretechnologies.com", // match non-www
           },
         ],
+        destination: "https://www.punesoftwaretechnologies.com/:path*",
+        permanent: true,
       },
     ];
   },
