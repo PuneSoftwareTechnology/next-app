@@ -91,6 +91,10 @@ const AllBlogs = async () => {
   return (
     <Suspense fallback={<GlobalLoader />}>
       <Head>
+        <link
+          rel="canonical"
+          href="https://punesoftwaretechnologies.com/all-blogs"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

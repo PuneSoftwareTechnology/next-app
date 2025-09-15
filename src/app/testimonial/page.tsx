@@ -38,7 +38,7 @@ export default async function AddTestimonialPage() {
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href="https://www.punesoftwaretechnologies.com/add-testimonial"
+          href="https://www.punesoftwaretechnologies.com/testimonial"
         />
         {/* Open Graph Meta Tags */}
         <meta property="og:title" content="Add Testimonial" />
@@ -48,7 +48,7 @@ export default async function AddTestimonialPage() {
         />
         <meta
           property="og:url"
-          content="https://www.punesoftwaretechnologies.com/add-testimonial"
+          content="https://www.punesoftwaretechnologies.com/testimonial"
         />
         <meta property="og:type" content="website" />
         <meta

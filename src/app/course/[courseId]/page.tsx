@@ -86,12 +86,12 @@ export default async function CourseDetail({ params }: { params: Params }) {
 
   const { course } = courseDetails;
 
-  // ✅ JSON-LD with expanded fields
+  // ✅ JSON-LD with required fields fixed
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Course",
     name: course.name,
-    description: course.description,
+    description: course.meta_desc,
     url: `https://www.punesoftwaretechnologies.com/course/${courseId}`,
     courseCode: courseId,
     provider: {
@@ -99,12 +99,29 @@ export default async function CourseDetail({ params }: { params: Params }) {
       name: "Pune Software Technologies",
       sameAs: "https://www.punesoftwaretechnologies.com",
     },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "INR",
-      availability: "https://schema.org/InStock",
-      url: `https://www.punesoftwaretechnologies.com/course/${courseId}`,
-    },
+    // ✅ Add hasCourseInstance array
+    hasCourseInstance: [
+      {
+        "@type": "CourseInstance",
+        name: `${course.name} - Online Batch`,
+        courseMode: "online",
+        startDate: "2025-10-01",
+        endDate: "2025-11-30",
+        location: {
+          "@type": "VirtualLocation",
+          url: `https://www.punesoftwaretechnologies.com/course/${courseId}`,
+        },
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "INR",
+          price: "25000", // or dynamically fetch from courseDetails
+          availability: "https://schema.org/InStock",
+          url: `https://www.punesoftwaretechnologies.com/course/${courseId}`,
+          // ✅ Add missing category
+          category: "Professional Certification",
+        },
+      },
+    ],
   };
 
   return (
@@ -114,6 +131,10 @@ export default async function CourseDetail({ params }: { params: Params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <FullCoursePage courseDetails={courseDetails} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </Suspense>
   );
 }
