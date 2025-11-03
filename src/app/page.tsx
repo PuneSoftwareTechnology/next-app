@@ -21,9 +21,13 @@ interface PageProps {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.punesoftwaretechnologies.com/"),
   title: "Pune Software Technologies - IT Training Platform",
   description:
     "Join Pune Software Technologies for expert-led IT courses and hands-on training in Pune. Unlock your potential in web development, AI, and more.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title:
       "Pune Software Technologies | IT Training, Courses & Placements in Pune",

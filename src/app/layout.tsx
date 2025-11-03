@@ -78,7 +78,7 @@ export default function RootLayout({
           property="og:url"
           content="https://www.punesoftwaretechnologies.com"
         />
-        <link rel="canonical" href="https://www.punesoftwaretechnologies.com" />
+
         <link rel="icon" href="/favicon.ico" />
 
         {/* JSON-LD Structured Data */}

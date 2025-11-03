@@ -7,6 +7,7 @@ import { Courses } from "@/util/interfaces/course";
 import { BASE_URL } from "@/util/urls";
 import { Suspense } from "react";
 import GlobalLoader from "@/components/molecules/GlobalLoader";
+import { Metadata } from "next";
 
 const categoryMeta: Record<
   string,
@@ -49,6 +50,37 @@ const categoryMeta: Record<
 };
 
 type Params = Promise<{ dynamicPage: string }>;
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { dynamicPage } = await params;
+  const meta = categoryMeta[dynamicPage];
+  
+  if (!meta) {
+    return {
+      metadataBase: new URL("https://www.punesoftwaretechnologies.com/"),
+      title: "Page Not Found",
+      alternates: {
+        canonical: `/course-category/${dynamicPage}`,
+      },
+    };
+  }
+
+  return {
+    metadataBase: new URL("https://www.punesoftwaretechnologies.com/"),
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords.join(", "),
+    alternates: {
+      canonical: `/course-category/${dynamicPage}`,
+    },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `https://www.punesoftwaretechnologies.com/course-category/${dynamicPage}`,
+      images: [{ url: meta.heroImage }],
+    },
+  };
+}
 
 export default async function DynamicPage({ params }: { params: Params }) {
   const { dynamicPage } = await params;
