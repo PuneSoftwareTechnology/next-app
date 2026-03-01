@@ -118,8 +118,16 @@ const BlogDetail = async ({ params }: { params: Params }) => {
         `}
       </Script>
       <Header />
-      <div className="bg-white rounded-lg shadow-lg mt-20 lg:mt-24 mb-8 p-4 lg:p-6 mx-4 lg:mx-32">
-        <Typography variant="h1" as="h1" className="mb-4 text-center">
+      <div
+        className="bg-white rounded-lg shadow-lg mt-20 lg:mt-24 mb-8 
+p-4 lg:p-6 mx-4 lg:mx-32 
+overflow-hidden break-words"
+      >
+        <Typography
+          variant="h1"
+          as="h1"
+          className="mb-4 text-center break-words"
+        >
           {title}
         </Typography>
         {featured_image && (
@@ -131,7 +139,11 @@ const BlogDetail = async ({ params }: { params: Params }) => {
             className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/3  md:h-1/2 w-full h-1/3"
           />
         )}
-        <Typography variant="h4" as="h4" className="my-8 text-center">
+        <Typography
+          variant="h4"
+          as="h4"
+          className="my-8 text-center break-words"
+        >
           {introduction}
         </Typography>
         {[
@@ -161,12 +173,20 @@ const BlogDetail = async ({ params }: { params: Params }) => {
             section.title && (
               <div
                 key={index}
-                className="mt-6 py-8 px-2 md:px-8 bg-[#C9E4E9] rounded-lg mb-4"
+                className="mt-6 py-8 px-2 md:px-8 bg-[#C9E4E9] rounded-lg mb-4 overflow-hidden"
               >
-                <Typography variant="h3" as="h3" className="text-center mb-4">
+                <Typography
+                  variant="h3"
+                  as="h3"
+                  className="text-center mb-4 break-words"
+                >
                   {section.title}
                 </Typography>
-                <Typography variant="h5" as="h5" className="text-center mb-4">
+                <Typography
+                  variant="h5"
+                  as="h5"
+                  className="text-center mb-4 break-words"
+                >
                   {section.intro}
                 </Typography>
                 {section?.image && (
@@ -178,28 +198,36 @@ const BlogDetail = async ({ params }: { params: Params }) => {
                     className="rounded-lg  mx-auto border-2 lg:w-2/3 lg:h-1/5  md:h-1/2 w-full h-1/5 mb-8"
                   />
                 )}
-                <Typography variant="h6" as="h6" className="mt-2 text-left">
+                <Typography
+                  variant="h6"
+                  as="h6"
+                  className="mt-2 text-left mr-4 break-words whitespace-pre-wrap"
+                >
                   {section.text}
                 </Typography>
                 {section?.type === "TERTIARY" && (
-                  <ul className="list-disc pl-6 text-gray-700 text-left">
+                  <ul className="mt-2 text-left mr-4 break-words whitespace-pre-wrap">
                     {parsedTertiaryPoints.map(
                       (point: string, index: number) => (
                         <li key={index}>{point}</li>
-                      )
+                      ),
                     )}
                   </ul>
                 )}
               </div>
-            )
+            ),
         )}
 
         {conclusion && (
           <div className="mt-6">
-            <Typography variant="h3" as="h3" className="text-center mb-4">
+            <Typography
+              variant="h3"
+              as="h3"
+              className="text-center mb-4 break-words"
+            >
               Conclusion
             </Typography>
-            <Typography variant="p" className="sm:text-sm">
+            <Typography variant="p" className="sm:text-sm break-words">
               {conclusion}
             </Typography>
           </div>
